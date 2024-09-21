@@ -22,7 +22,7 @@ const DashBoard = () => {
               : "font-[600] text-[26px] leading-[42.94px] "
           }
         >
-          Good {time >=0 ? "Morning" : time >=12 ? "Afternoon" : "Evening"}, {userName}{" "}
+          Good {time >=0 ? "Morning" : time >=12 ? "Afternoon" : time>=16 ? "Evening" : ""}, {userName}{" "}
         </h1>
         {/* container holding all contents */}
         <div
