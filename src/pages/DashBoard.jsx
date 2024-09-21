@@ -5,6 +5,10 @@ import { Context } from "../contexts/DashBoardContext";
 
 const DashBoard = () => {
   const { open, userName } = Context();
+  const date = new Date();
+  const time = date.getHours()
+  console.log(time);
+  
   
   return (
     <main className="w-full flex flex-col min-h-screen p-[25px]">
@@ -18,7 +22,7 @@ const DashBoard = () => {
               : "font-[600] text-[26px] leading-[42.94px] "
           }
         >
-          Good Morning, {userName}{" "}
+          Good {time >=0 ? "Morning" : time >=12 ? "Afternoon" : "Evening"}, {userName}{" "}
         </h1>
         {/* container holding all contents */}
         <div
