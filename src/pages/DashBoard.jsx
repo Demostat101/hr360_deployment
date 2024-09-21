@@ -7,7 +7,6 @@ const DashBoard = () => {
   const { open, userName } = Context();
   const date = new Date();
   const time = date.getHours()
-  console.log(time);
   
   
   return (
@@ -22,7 +21,7 @@ const DashBoard = () => {
               : "font-[600] text-[26px] leading-[42.94px] "
           }
         >
-          Good {time >=0 ? "Morning" : time >=12 ? "Afternoon" : time>=16 ? "Evening" : ""}, {userName}{" "}
+          Good {time >=12 ?  time>=16 ? "Evening": "Afternoon" : "Morning" }, {userName}{" "}
         </h1>
         {/* container holding all contents */}
         <div
