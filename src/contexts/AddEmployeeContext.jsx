@@ -11,7 +11,8 @@ export const addEmployeeContext = ()=>{
 
 
 const AddEmployeeContext = ({children}) => {
-    const [files, setFiles] = useState(null);
+    const [files, setFiles] = useState("");
+    const [file, setFile] = useState("");
     const [ formData, setFormData] = useState({
         firstName:"",
         middleName:"",
@@ -26,6 +27,7 @@ const AddEmployeeContext = ({children}) => {
         educationalQualification:"",
         nationality:"",
         languageSpoken:"",
+        file:files,
         emergencyContactName:"",
         emergencyContactPhoneNo:{ code: '', phone: '' },
         emergencyContactRelationship:"",
@@ -59,16 +61,43 @@ const AddEmployeeContext = ({children}) => {
     console.log(formData.emergencyContactName);
     console.log(formData.emergencyContactPhoneNo.phone);
     console.log(formData.emergencyContactPhoneNo.code);
-
-    const [form,setForm] = useState(sessionStorage.getItem("form"))
-
-    console.log(form);
+    
+    console.log(formData.officialDetailsPhoneNo.phone);
+    console.log(formData.officialDetailsPhoneNo.code);
+    console.log(formData.middleName);
+    console.log(formData.lastName);
+    console.log(formData.email);
+    console.log(formData.address);
+    console.log(formData.dateOfBirth);
+    console.log(formData.maritalStatus);
+    console.log(formData.religion);
+    console.log(formData.educationalQualification);
+    console.log(formData.nationality);
+    console.log(formData.languageSpoken);
+    console.log(formData.emergencyContactName);
+    console.log(formData.emergencyContactRelationship);
+    console.log(formData.emergencyContactAddress);
+    console.log(formData.officialDetailsEmployeeId);
+    console.log(formData.officialDetailsJobTitle);
+    console.log(formData.officialDetailsDepartment);
+    console.log(formData.officialDetailsEmail);
+    console.log(formData.officialDetailsReportingSupervisor);
+    console.log(formData.officialDetailsWorkSchedule);
+    console.log(formData.officialDetailsEmploymentType);
+    console.log(formData.officialDetailsRegion);
+    console.log(formData.officialDetailsBasicSalary);
+    console.log(formData.officialDetailsStartingDate);
+    console.log(formData.officialDetailsContractEndDate);
+    console.log(formData.officialDetailsSkills.split(","));
+    console.log(formData.bankName);
+    console.log(formData.accountNumber);
+    console.log(formData.accountHoldersName);
+    console.log(formData.swiftCode);
+    // console.log(files.name);
     
     
 
-    useEffect(()=>{
-        sessionStorage.setItem("form", formData)
-    },[formData])
+
     
 
     const handleInputChange = (e) => {
@@ -95,12 +124,22 @@ const AddEmployeeContext = ({children}) => {
                     [key]: value, // Update the specific field in phoneNo
                 },
             }));
-        } else {
+        } 
+        if (name.startsWith('officialDetailstPhoneNo.')) {
+            const key = name.split('.')[1]; // Get 'code' or 'phone'
             setFormData((prevEmployee) => ({
+                ...prevEmployee,
+                officialDetailstPhoneNo: {
+                    ...prevEmployee.officialDetailstPhoneNo,
+                    [key]: value, // Update the specific field in phoneNo
+                },
+            }));
+        }
+         setFormData((prevEmployee) => ({
                 ...prevEmployee,
                 [name]: value,
             }));
-        }
+        
     };
     
 

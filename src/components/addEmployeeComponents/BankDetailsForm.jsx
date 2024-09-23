@@ -1,4 +1,7 @@
+import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
+
 const BankDetailsForm = () => {
+  const {formData, handleInputChange} = addEmployeeContext();
   return (
     <div className="w-full flex flex-col  place-items-center">
       <form
@@ -17,7 +20,8 @@ const BankDetailsForm = () => {
             className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
             type="text"
             id="bank"
-            name="bank"
+            name="bankName"
+               onChange={handleInputChange}
             required
           />
         </span>{" "}
@@ -32,7 +36,8 @@ const BankDetailsForm = () => {
             className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
             type="text"
             id="account"
-            name="account"
+            name="accoountNumber"
+               onChange={handleInputChange}
             required
           />
         </span>{" "}
@@ -47,7 +52,8 @@ const BankDetailsForm = () => {
             className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
             type="text"
             id="accholder"
-            name="accholder"
+            name="accountHoldersName"
+               onChange={handleInputChange}
             required
           />
         </span>{" "}
@@ -62,7 +68,8 @@ const BankDetailsForm = () => {
             className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
             type="text"
             id="biccode"
-            name="biccode"
+            name="swiftCode"
+               onChange={handleInputChange}
             required
           />
         </span>{" "}

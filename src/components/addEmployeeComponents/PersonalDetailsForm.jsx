@@ -369,7 +369,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="relationship"
-                name="relationship"
+                name="emergencyContactRelationship"
+                  onChange={handleInputChange}
                 required
               />
             </span>
@@ -385,7 +386,8 @@ const PersonalDetailsForm = () => {
               className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
               type="text"
               id="contactaddress"
-              name="contactaddress"
+              name="emergencyContactAddress"
+                  onChange={handleInputChange}
               required
             />
           </div>{" "}
