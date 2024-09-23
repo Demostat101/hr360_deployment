@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { PiUploadThin } from "react-icons/pi";
+import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const PersonalDetailsForm = () => {
-  const [files, setFiles] = useState(null);
+  const {formData, handleInputChange,files,setFiles} = addEmployeeContext();
   const inputRef = useRef();
 
   const handleDragOver = (event) => {
@@ -14,7 +15,10 @@ const PersonalDetailsForm = () => {
     setFiles(event.dataTransfer.files);
   };
 
-  const handleUpload = () => {};
+  console.log(formData.firstName);
+  
+
+
 
 // const [val, setVal] = useState("")
 //   const restApi = async ()=>{
@@ -46,7 +50,6 @@ const PersonalDetailsForm = () => {
 
   return (
     <div>
-      {/* <div>{val.root}</div> */}
       <form
         className="flex flex-col gap-[30px]"
         action=""
@@ -66,7 +69,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="fname"
-                name="fname"
+               onChange={handleInputChange}
+                name="firstName"
                 required
               />
             </span>{" "}
@@ -81,7 +85,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="middlename"
-                name="middlename"
+                onChange={handleInputChange}
+                name="middleName"
               
               />
             </span>
@@ -96,7 +101,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="lastname"
-                name="lastname"
+                onChange={handleInputChange}
+                name="lastName"
                 required
               />
             </span>
@@ -113,6 +119,8 @@ const PersonalDetailsForm = () => {
               </label>
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
+                
+                onChange={handleInputChange}
                 name="gender"
                 id="gender"
               >
@@ -132,6 +140,7 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="email"
                 id="email"
+                onChange={handleInputChange}
                 name="email"
                 required
               />
@@ -146,18 +155,22 @@ const PersonalDetailsForm = () => {
               <span className="flex justify-between">
                 <select
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
-                  name=""
+                  name="phoneNo.code"
                   id=""
+                  
+                onChange={handleInputChange}
                 >
-                  <option value="234">+234</option>
-                  <option value="1">+1</option>
+                  <option value="+234">+234</option>
+                  <option value="+1">+1</option>
                   <option value="+222">222</option>
                 </select>
                 <input
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
                   type="tel"
                   id="phone"
-                  name="phone"
+                  name="phoneNo.phone"
+                  // value={formData.phoneNo[phone]}
+                onChange={handleInputChange}
                   required
                 />
               </span>
@@ -175,6 +188,8 @@ const PersonalDetailsForm = () => {
               type="text"
               id="address"
               name="address"
+               onChange={handleInputChange}
+              
               required
             />
           </div>{" "}
@@ -192,7 +207,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="date"
                 id="dob"
-                name="dob"
+                name="dateOfBirth"
+                onChange={handleInputChange}
                 required
               />
             </span>{" "}
@@ -205,7 +221,8 @@ const PersonalDetailsForm = () => {
               </label>
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
-                name="maritalstatus"
+                name="maritalStatus"
+                onChange={handleInputChange}
                 id="maritalstatus"
               >
                 <option value="">- Select -</option>
@@ -223,6 +240,8 @@ const PersonalDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
                 name="religion"
+              
+                onChange={handleInputChange}
                 id="religion"
               >
                 <option value="">- Select -</option>
@@ -242,7 +261,8 @@ const PersonalDetailsForm = () => {
               className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
               type="text"
               id="education"
-              name="education"
+              name="educationalQualification"
+                onChange={handleInputChange}
               required
             />
           </div>{" "}
@@ -259,6 +279,8 @@ const PersonalDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 name="nationality"
+              
+                onChange={handleInputChange}
                 id="nationality"
               >
                 <option value="">Select</option>
@@ -277,7 +299,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="language"
-                name="language"
+                name="languageSpoken"
+                onChange={handleInputChange}
                 required
               />
             </span>{" "}
@@ -302,7 +325,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="name"
-                name="name"
+                name="emergencyContactName"
+                onChange={handleInputChange}
                 required
               />
             </span>{" "}
@@ -316,7 +340,8 @@ const PersonalDetailsForm = () => {
               <span className="flex justify-between">
                 <select
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
-                  name="contact"
+                  name="emergencyContactPhoneNo.code"
+                onChange={handleInputChange}
                   id=""
                 >
                   <option value="234">+234</option>
@@ -327,7 +352,8 @@ const PersonalDetailsForm = () => {
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
                   type="tel"
                   id="contactphone"
-                  name="contactphone"
+                  name="emergencyContactPhoneNo.phone"
+                  onChange={handleInputChange}
                   required
                 />
               </span>
@@ -408,11 +434,9 @@ const PersonalDetailsForm = () => {
                     </span>
                     <div>
                       <button type="button" onClick={() => setFiles(null)}>
-                        Cancle
+                        Cancel
                       </button>
-                      <button type="button" onClick={handleUpload}>
-                        Upload
-                      </button>
+                     
                     </div>
                   </div>
                 )}

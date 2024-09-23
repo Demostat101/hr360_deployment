@@ -1,6 +1,8 @@
 import React from "react";
+import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const OfficialDetailsForm = () => {
+  const {formData, handleInputChange} = addEmployeeContext();
   return (
     <div>
       <form
