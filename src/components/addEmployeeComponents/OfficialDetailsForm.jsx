@@ -2,13 +2,13 @@ import React from "react";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const OfficialDetailsForm = () => {
-  const {formData, handleInputChange} = addEmployeeContext();
+  const {handleSubmit,handleChangeOfficialDetails,officialDetails} = addEmployeeContext();
   return (
     <div>
       <form
         className="flex flex-col gap-[30px]"
         action=""
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={e => e.preventDefault()}
       >
         {/* Container holding top details */}
         <div className="flex flex-col gap-[13.8px]">
@@ -25,7 +25,8 @@ const OfficialDetailsForm = () => {
                 type="text"
                 id="empID"
                 name="officialDetailsEmployeeId"
-               onChange={handleInputChange}
+                value={officialDetails.employeeId}
+               onChange={handleChangeOfficialDetails}
                 required
               />
             </span>{" "}
@@ -41,7 +42,8 @@ const OfficialDetailsForm = () => {
                 type="text"
                 id="jobtitle"
                 name="officialDetailsJobTitle"
-                onChange={handleInputChange}
+                value={officialDetails.jobTitle}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>
@@ -57,7 +59,8 @@ const OfficialDetailsForm = () => {
                 type="text"
                 id="department"
                 name="officialDetailsDepartment"
-                onChange={handleInputChange}
+                value={officialDetails.department}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>
@@ -77,7 +80,8 @@ const OfficialDetailsForm = () => {
                 type="email"
                 id="officialemail"
                 name="officialDetailsEmail"
-               onChange={handleInputChange}
+                value={officialDetails.email}
+               onChange={handleChangeOfficialDetails}
                 required
               />
             </span>
@@ -92,8 +96,9 @@ const OfficialDetailsForm = () => {
               <span className="flex justify-between">
                 <select
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
-                  name="officialDetailsPhoneNo.code"
-                  onChange={handleInputChange}
+                  name="officialDetailsPhoneNoCode"
+                  value={officialDetails.phoneNoCode}
+                  onChange={handleChangeOfficialDetails}
                   id=""
                 >
                   <option value="234">+234</option>
@@ -104,8 +109,9 @@ const OfficialDetailsForm = () => {
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
                   type="tel"
                   id="officialphone"
-                  name="officialDetailsPhoneNo.phone"
-                  onChange={handleInputChange}
+                  name="officialDetailsPhoneNo"
+                  value={officialDetails.phoneNo}
+                  onChange={handleChangeOfficialDetails}
                   required
                 />
               </span>
@@ -123,7 +129,8 @@ const OfficialDetailsForm = () => {
                 type="text"
                 id="supervisor"
                 name="officialDetailsReportingSupervisor"
-                onChange={handleInputChange}
+                value={officialDetails.reportingSupervisor}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>
@@ -141,7 +148,8 @@ const OfficialDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
                 name="officialDetailsWorkSchedule"
-                onChange={handleInputChange}
+                value={officialDetails.workSchedule}
+                onChange={handleChangeOfficialDetails}
                 id="schedule"
               >
                 <option value="">- Select -</option>
@@ -160,7 +168,8 @@ const OfficialDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
                 name="officialDetailsEmploymentType"
-                onChange={handleInputChange}
+                value={officialDetails.employmentType}
+                onChange={handleChangeOfficialDetails}
                 id="empType"
               >
                 <option value="">- Select -</option>
@@ -179,7 +188,8 @@ const OfficialDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
                 name="officialDetailsRegion"
-                onChange={handleInputChange}
+                value={officialDetails.region}
+                onChange={handleChangeOfficialDetails}
                 id="region"
               >
                 <option value="">- Select -</option>
@@ -203,7 +213,8 @@ const OfficialDetailsForm = () => {
                 type="text"
                 id="salary"
                 name="officialDetailsBasicSalary"
-                onChange={handleInputChange}
+                value={officialDetails.basicSalary}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>{" "}
@@ -219,7 +230,8 @@ const OfficialDetailsForm = () => {
                 type="date"
                 id="startdate"
                 name="officialDetailsStartingDate"
-                onChange={handleInputChange}
+                value={officialDetails.startingDate}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>{" "}
@@ -235,7 +247,8 @@ const OfficialDetailsForm = () => {
                 type="date"
                 id="enddate"
                 name="officialDetailsContractEndDate"
-                onChange={handleInputChange}
+                value={officialDetails.contractEndDate}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>{" "}
@@ -250,7 +263,8 @@ const OfficialDetailsForm = () => {
             <textarea
               className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[70px] focus:outline-none"
               name="officialDetailsSkills"
-                onChange={handleInputChange}
+              value={officialDetails.skills}
+                onChange={handleChangeOfficialDetails}
               id="skills"
             ></textarea>
           </div>{" "}

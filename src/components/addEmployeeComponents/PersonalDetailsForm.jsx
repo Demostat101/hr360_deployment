@@ -3,7 +3,7 @@ import { PiUploadThin } from "react-icons/pi";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const PersonalDetailsForm = () => {
-  const {formData, handleInputChange,files,setFiles} = addEmployeeContext();
+  const {files,setFiles,handleChangePersonalInfo,personalInfo,handleChangeEmergencyContact,emergencyContact} = addEmployeeContext();
   const inputRef = useRef();
 
   const handleDragOver = (event) => {
@@ -12,10 +12,11 @@ const PersonalDetailsForm = () => {
 
   const handleDrop = (event) => {
     event.preventDefault();
-    setFiles(event.dataTransfer.files);
-  };
+    const filesArray = [...event.dataTransfer.files];
+    setFiles(filesArray);
+};
 
-  console.log(formData.firstName);
+
   
 
 
@@ -53,7 +54,7 @@ const PersonalDetailsForm = () => {
       <form
         className="flex flex-col gap-[30px]"
         action=""
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={e => e.preventDefault()}
       >
         {/* Container holding top details */}
         <div className="flex flex-col gap-[13.8px]">
@@ -69,8 +70,9 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="fname"
-               onChange={handleInputChange}
+               onChange={handleChangePersonalInfo}
                 name="firstName"
+                value={personalInfo.firstName}
                 required
               />
             </span>{" "}
@@ -85,7 +87,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="middlename"
-                onChange={handleInputChange}
+                value={personalInfo.middleName}
+                onChange={handleChangePersonalInfo}
                 name="middleName"
               
               />
@@ -101,7 +104,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="lastname"
-                onChange={handleInputChange}
+                value={personalInfo.lastName}
+                onChange={handleChangePersonalInfo}
                 name="lastName"
                 required
               />
@@ -119,8 +123,8 @@ const PersonalDetailsForm = () => {
               </label>
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
-                
-                onChange={handleInputChange}
+                value={personalInfo.gender}
+                onChange={handleChangePersonalInfo}
                 name="gender"
                 id="gender"
               >
@@ -140,7 +144,8 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="email"
                 id="email"
-                onChange={handleInputChange}
+                value={personalInfo.email}
+                onChange={handleChangePersonalInfo}
                 name="email"
                 required
               />
@@ -155,10 +160,10 @@ const PersonalDetailsForm = () => {
               <span className="flex justify-between">
                 <select
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
-                  name="phoneNo.code"
+                  name="phoneNoCode"
                   id=""
-                  
-                onChange={handleInputChange}
+                  value={personalInfo.phoneNoCode}
+                onChange={handleChangePersonalInfo}
                 >
                   <option value="+234">+234</option>
                   <option value="+1">+1</option>
@@ -168,9 +173,10 @@ const PersonalDetailsForm = () => {
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
                   type="tel"
                   id="phone"
-                  name="phoneNo.phone"
-                  // value={formData.phoneNo[phone]}
-                onChange={handleInputChange}
+                  name="phoneNo"
+                  
+                  value={personalInfo.phoneNo}
+                onChange={handleChangePersonalInfo}
                   required
                 />
               </span>
@@ -188,7 +194,8 @@ const PersonalDetailsForm = () => {
               type="text"
               id="address"
               name="address"
-               onChange={handleInputChange}
+              value={personalInfo.address}
+               onChange={handleChangePersonalInfo}
               
               required
             />
@@ -208,7 +215,8 @@ const PersonalDetailsForm = () => {
                 type="date"
                 id="dob"
                 name="dateOfBirth"
-                onChange={handleInputChange}
+                value={personalInfo.dateOfBirth}
+                onChange={handleChangePersonalInfo}
                 required
               />
             </span>{" "}
@@ -222,7 +230,8 @@ const PersonalDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
                 name="maritalStatus"
-                onChange={handleInputChange}
+                value={personalInfo.maritalStatus}
+                onChange={handleChangePersonalInfo}
                 id="maritalstatus"
               >
                 <option value="">- Select -</option>
@@ -240,8 +249,8 @@ const PersonalDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
                 name="religion"
-              
-                onChange={handleInputChange}
+                value={personalInfo.religion}
+                onChange={handleChangePersonalInfo}
                 id="religion"
               >
                 <option value="">- Select -</option>
@@ -262,7 +271,8 @@ const PersonalDetailsForm = () => {
               type="text"
               id="education"
               name="educationalQualification"
-                onChange={handleInputChange}
+              value={personalInfo.educationalQualification}
+                onChange={handleChangePersonalInfo}
               required
             />
           </div>{" "}
@@ -279,8 +289,8 @@ const PersonalDetailsForm = () => {
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 name="nationality"
-              
-                onChange={handleInputChange}
+                value={personalInfo.nationality}
+                onChange={handleChangePersonalInfo}
                 id="nationality"
               >
                 <option value="">Select</option>
@@ -300,7 +310,8 @@ const PersonalDetailsForm = () => {
                 type="text"
                 id="language"
                 name="languageSpoken"
-                onChange={handleInputChange}
+                value={personalInfo.languageSpoken}
+                onChange={handleChangePersonalInfo}
                 required
               />
             </span>{" "}
@@ -326,7 +337,8 @@ const PersonalDetailsForm = () => {
                 type="text"
                 id="name"
                 name="emergencyContactName"
-                onChange={handleInputChange}
+                value={emergencyContact.name}
+                onChange={handleChangeEmergencyContact}
                 required
               />
             </span>{" "}
@@ -340,8 +352,9 @@ const PersonalDetailsForm = () => {
               <span className="flex justify-between">
                 <select
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
-                  name="emergencyContactPhoneNo.code"
-                onChange={handleInputChange}
+                  name="emergencyContactPhoneNoCode"
+                  value={emergencyContact.phoneNoCode}
+                onChange={handleChangeEmergencyContact}
                   id=""
                 >
                   <option value="234">+234</option>
@@ -352,8 +365,9 @@ const PersonalDetailsForm = () => {
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
                   type="tel"
                   id="contactphone"
-                  name="emergencyContactPhoneNo.phone"
-                  onChange={handleInputChange}
+                  name="emergencyContactPhoneNo"
+                  value={emergencyContact.phoneNo}
+                  onChange={handleChangeEmergencyContact}
                   required
                 />
               </span>
@@ -370,7 +384,8 @@ const PersonalDetailsForm = () => {
                 type="text"
                 id="relationship"
                 name="emergencyContactRelationship"
-                  onChange={handleInputChange}
+                value={emergencyContact.relationship}
+                  onChange={handleChangeEmergencyContact}
                 required
               />
             </span>
@@ -387,7 +402,8 @@ const PersonalDetailsForm = () => {
               type="text"
               id="contactaddress"
               name="emergencyContactAddress"
-                  onChange={handleInputChange}
+              value={emergencyContact.address}
+              onChange={handleChangeEmergencyContact}
               required
             />
           </div>{" "}

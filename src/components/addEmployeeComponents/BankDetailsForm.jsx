@@ -1,12 +1,12 @@
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const BankDetailsForm = () => {
-  const {formData, handleInputChange} = addEmployeeContext();
+  const { handleChangeBankDetails,bankDetails} = addEmployeeContext();
   return (
     <div className="w-full flex flex-col  place-items-center">
       <form
         action=""
-        onSubmit={(e) => e.preventDefault()}
+        onSubmit={e => e.preventDefault()}
         className="w-[450px] flex flex-col gap-[40px] my-[20px]"
       >
         <span className="flex flex-col gap-[2px]  w-full h-[73px]">
@@ -21,7 +21,8 @@ const BankDetailsForm = () => {
             type="text"
             id="bank"
             name="bankName"
-               onChange={handleInputChange}
+            value={bankDetails.bankName}
+               onChange={handleChangeBankDetails}
             required
           />
         </span>{" "}
@@ -37,7 +38,8 @@ const BankDetailsForm = () => {
             type="text"
             id="account"
             name="accoountNumber"
-               onChange={handleInputChange}
+            value={bankDetails.accountNumber}
+               onChange={handleChangeBankDetails}
             required
           />
         </span>{" "}
@@ -53,7 +55,8 @@ const BankDetailsForm = () => {
             type="text"
             id="accholder"
             name="accountHoldersName"
-               onChange={handleInputChange}
+            value={bankDetails.accountHoldersName}
+               onChange={handleChangeBankDetails}
             required
           />
         </span>{" "}
@@ -69,7 +72,8 @@ const BankDetailsForm = () => {
             type="text"
             id="biccode"
             name="swiftCode"
-               onChange={handleInputChange}
+            value={bankDetails.swiftCode}
+               onChange={handleChangeBankDetails}
             required
           />
         </span>{" "}
