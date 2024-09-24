@@ -2,7 +2,7 @@ import React from "react";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const OfficialDetailsForm = () => {
-  const {handleSubmit,handleChangeOfficialDetails,officialDetails} = addEmployeeContext();
+  const {handleChangeOfficialDetails,officialDetails} = addEmployeeContext();
   return (
     <div>
       <form
@@ -24,7 +24,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="empID"
-                name="officialDetailsEmployeeId"
+                name="employeeId"
                 value={officialDetails.employeeId}
                onChange={handleChangeOfficialDetails}
                 required
@@ -41,7 +41,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="jobtitle"
-                name="officialDetailsJobTitle"
+                name="jobTitle"
                 value={officialDetails.jobTitle}
                 onChange={handleChangeOfficialDetails}
                 required
@@ -58,7 +58,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="department"
-                name="officialDetailsDepartment"
+                name="department"
                 value={officialDetails.department}
                 onChange={handleChangeOfficialDetails}
                 required
@@ -79,7 +79,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="email"
                 id="officialemail"
-                name="officialDetailsEmail"
+                name="email"
                 value={officialDetails.email}
                onChange={handleChangeOfficialDetails}
                 required
@@ -96,7 +96,7 @@ const OfficialDetailsForm = () => {
               <span className="flex justify-between">
                 <select
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
-                  name="officialDetailsPhoneNoCode"
+                  name="phoneNoCode"
                   value={officialDetails.phoneNoCode}
                   onChange={handleChangeOfficialDetails}
                   id=""
@@ -109,7 +109,7 @@ const OfficialDetailsForm = () => {
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
                   type="tel"
                   id="officialphone"
-                  name="officialDetailsPhoneNo"
+                  name="phoneNo"
                   value={officialDetails.phoneNo}
                   onChange={handleChangeOfficialDetails}
                   required
@@ -128,7 +128,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="supervisor"
-                name="officialDetailsReportingSupervisor"
+                name="reportingSupervisor"
                 value={officialDetails.reportingSupervisor}
                 onChange={handleChangeOfficialDetails}
                 required
@@ -147,7 +147,7 @@ const OfficialDetailsForm = () => {
               </label>
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
-                name="officialDetailsWorkSchedule"
+                name="workSchedule"
                 value={officialDetails.workSchedule}
                 onChange={handleChangeOfficialDetails}
                 id="schedule"
@@ -167,7 +167,7 @@ const OfficialDetailsForm = () => {
               </label>
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
-                name="officialDetailsEmploymentType"
+                name="employmentType"
                 value={officialDetails.employmentType}
                 onChange={handleChangeOfficialDetails}
                 id="empType"
@@ -187,7 +187,7 @@ const OfficialDetailsForm = () => {
               </label>
               <select
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
-                name="officialDetailsRegion"
+                name="region"
                 value={officialDetails.region}
                 onChange={handleChangeOfficialDetails}
                 id="region"
@@ -212,7 +212,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="salary"
-                name="officialDetailsBasicSalary"
+                name="basicSalary"
                 value={officialDetails.basicSalary}
                 onChange={handleChangeOfficialDetails}
                 required
@@ -229,7 +229,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="date"
                 id="startdate"
-                name="officialDetailsStartingDate"
+                name="startingDate"
                 value={officialDetails.startingDate}
                 onChange={handleChangeOfficialDetails}
                 required
@@ -246,7 +246,7 @@ const OfficialDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="date"
                 id="enddate"
-                name="officialDetailsContractEndDate"
+                name="contractEndDate"
                 value={officialDetails.contractEndDate}
                 onChange={handleChangeOfficialDetails}
                 required
@@ -262,7 +262,7 @@ const OfficialDetailsForm = () => {
             </label>
             <textarea
               className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[70px] focus:outline-none"
-              name="officialDetailsSkills"
+              name="skills"
               value={officialDetails.skills}
                 onChange={handleChangeOfficialDetails}
               id="skills"

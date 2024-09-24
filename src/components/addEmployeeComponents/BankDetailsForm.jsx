@@ -7,7 +7,7 @@ const BankDetailsForm = () => {
       <form
         action=""
         onSubmit={e => e.preventDefault()}
-        className="w-[450px] flex flex-col gap-[40px] my-[20px]"
+        className="w-[100%] flex flex-col gap-[40px] my-[20px]"
       >
         <span className="flex flex-col gap-[2px]  w-full h-[73px]">
           <label
@@ -17,7 +17,7 @@ const BankDetailsForm = () => {
             Bank Name
           </label>
           <input
-            className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
+            className="border-[1.63px] w-full border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
             type="text"
             id="bank"
             name="bankName"
@@ -37,7 +37,7 @@ const BankDetailsForm = () => {
             className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
             type="text"
             id="account"
-            name="accoountNumber"
+            name="accountNumber"
             value={bankDetails.accountNumber}
                onChange={handleChangeBankDetails}
             required

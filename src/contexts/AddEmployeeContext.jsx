@@ -192,10 +192,12 @@ const postEmployeeData = async () => {
           }
     }
     try {
-        const response = await axios.post('http://localhost:4501/employee', employeeData);
+        const response = await axios.post('http://localhost:4501/employee', employeeData,{
+            headers:{"Content-Type":"multipart/form-data"}
+        });
         console.log(response.data);
     } catch (error) {
-        console.error('Error posting data:', error);
+        console.error('Error posting data:', error.message);
     }
 };
 

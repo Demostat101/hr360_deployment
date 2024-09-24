@@ -16,6 +16,16 @@ const PersonalDetailsForm = () => {
     setFiles(filesArray);
 };
 
+// const handleSubmit =()=>{
+//   const formData = new FormData()
+//   formData.append("file", files)
+//   console.log(files);
+  
+// }
+
+console.log(files.name);
+
+
 
   
 
@@ -336,7 +346,7 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="name"
-                name="emergencyContactName"
+                name="name"
                 value={emergencyContact.name}
                 onChange={handleChangeEmergencyContact}
                 required
@@ -352,7 +362,7 @@ const PersonalDetailsForm = () => {
               <span className="flex justify-between">
                 <select
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
-                  name="emergencyContactPhoneNoCode"
+                  name="phoneNoCode"
                   value={emergencyContact.phoneNoCode}
                 onChange={handleChangeEmergencyContact}
                   id=""
@@ -365,7 +375,7 @@ const PersonalDetailsForm = () => {
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
                   type="tel"
                   id="contactphone"
-                  name="emergencyContactPhoneNo"
+                  name="phoneNo"
                   value={emergencyContact.phoneNo}
                   onChange={handleChangeEmergencyContact}
                   required
@@ -383,7 +393,7 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="relationship"
-                name="emergencyContactRelationship"
+                name="relationship"
                 value={emergencyContact.relationship}
                   onChange={handleChangeEmergencyContact}
                 required
@@ -401,7 +411,7 @@ const PersonalDetailsForm = () => {
               className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
               type="text"
               id="contactaddress"
-              name="emergencyContactAddress"
+              name="address"
               value={emergencyContact.address}
               onChange={handleChangeEmergencyContact}
               required
@@ -437,7 +447,8 @@ const PersonalDetailsForm = () => {
                         type="file"
                         id="file"
                         name="file"
-                        onChange={(event) => setFiles(event.target.files)}
+                        accept="application/pdf"
+                        onChange={(event) => setFiles(event.target.files[0])}
                         hidden
                         ref={inputRef}
                       />
@@ -448,12 +459,14 @@ const PersonalDetailsForm = () => {
                 {files && (
                   <div>
                     <span>
-                      {Array.from(files).map((file, index) => file.name)}
+                      {/* {Array.from(files).map((file, index) => file.name)} */}
+                      {files.name}
                     </span>
                     <div>
                       <button type="button" onClick={() => setFiles(null)}>
                         Cancel
                       </button>
+                    
                      
                     </div>
                   </div>
