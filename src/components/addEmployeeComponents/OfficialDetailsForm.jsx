@@ -103,7 +103,7 @@ const OfficialDetailsForm = () => {
                 >
                   <option value="234">+234</option>
                   <option value="1">+1</option>
-                  <option value="+222">222</option>
+                  <option value="+222">+222</option>
                 </select>
                 <input
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"

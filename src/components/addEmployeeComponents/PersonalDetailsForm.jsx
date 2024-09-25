@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { PiUploadThin } from "react-icons/pi";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
+
+
+
 const PersonalDetailsForm = () => {
   const {files,setFiles,handleChangePersonalInfo,personalInfo,handleChangeEmergencyContact,emergencyContact} = addEmployeeContext();
   const inputRef = useRef();
@@ -15,48 +18,6 @@ const PersonalDetailsForm = () => {
     const filesArray = [...event.dataTransfer.files];
     setFiles(filesArray);
 };
-
-// const handleSubmit =()=>{
-//   const formData = new FormData()
-//   formData.append("file", files)
-//   console.log(files);
-  
-// }
-
-console.log(files.name);
-
-
-
-  
-
-
-
-// const [val, setVal] = useState("")
-//   const restApi = async ()=>{
-//     try {
-//       const res = await fetch("https://restcountries.com/v3.1/all");
-
-//       const data = await res.json()
-//       console.log(data);
-//       console.log(res);
-
-//       let mapper = data.map(({idd})=> idd)
-//       setVal(mapper)
-//       console.log(mapper);
-      
-      
-//     } catch (error) {
-//       console.log(error);
-      
-//     }
-
-//   }
-
-//   useEffect(()=>{
-//     restApi()
-//   },[])
-
-// console.log(val.root);
 
 
   return (
@@ -169,12 +130,13 @@ console.log(files.name);
               </label>
               <span className="flex justify-between">
                 <select
-                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-[10px]"
                   name="phoneNoCode"
                   id=""
                   value={personalInfo.phoneNoCode}
                 onChange={handleChangePersonalInfo}
                 >
+                
                   <option value="+234">+234</option>
                   <option value="+1">+1</option>
                   <option value="+222">222</option>
@@ -366,9 +328,10 @@ console.log(files.name);
                   value={emergencyContact.phoneNoCode}
                 onChange={handleChangeEmergencyContact}
                   id=""
+                
                 >
-                  <option value="234">+234</option>
-                  <option value="1">+1</option>
+                  <option value="+234">+234</option>
+                  <option value="+1">+1</option>
                   <option value="+222">222</option>
                 </select>
                 <input

@@ -12,7 +12,11 @@ export const addEmployeeContext = ()=>{
 
 
 const AddEmployeeContext = ({children}) => {
+
     const [files, setFiles] = useState("");
+    const [message,setMessage]=useState("")
+    const [error,setError]=useState("")
+    
      // Personal Information State
      const [personalInfo, setPersonalInfo] = useState({
         firstName: '',
@@ -30,6 +34,9 @@ const AddEmployeeContext = ({children}) => {
         nationality: '',
         languageSpoken: '',
     });
+
+    console.log(personalInfo.phoneNoCode);
+    
 
     // Emergency Contact State
     const [emergencyContact, setEmergencyContact] = useState({
@@ -88,59 +95,8 @@ const AddEmployeeContext = ({children}) => {
         setBankDetails((prev) => ({ ...prev, [name]: value }));
     };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     console.log({ personalInfo, emergencyContact, officialDetails });
-    // };
-
-    
-
-    
-    // console.log(formData.phoneNo);
-    // console.log(formData.phoneNoCode);
-    console.log(personalInfo.firstName);
-    // console.log(formData.gender);
-    // console.log(formData.emergencyContactName);
-    // console.log(formData.emergencyContactPhoneNo);
-    // console.log(formData.emergencyContactPhoneNoCode);
-    
-    // console.log(formData.officialDetailsPhoneNo);
-    // console.log(formData.officialDetailsPhoneNoCode);
-    console.log(personalInfo.middleName);
-    // console.log(formData.lastName);
-    // console.log(formData.email);
-    // console.log(formData.address);
-    // console.log(formData.dateOfBirth);
-    // console.log(formData.maritalStatus);
-    // console.log(formData.religion);
-    // console.log(formData.educationalQualification);
-    // console.log(formData.nationality);
-    // console.log(formData.languageSpoken);
-    // console.log(formData.emergencyContactName);
-    // console.log(formData.emergencyContactRelationship);
-    // console.log(formData.emergencyContactAddress);
-    // console.log(formData.officialDetailsEmployeeId);
-    // console.log(formData.officialDetailsJobTitle);
-    // console.log(formData.officialDetailsDepartment);
-    // console.log(formData.officialDetailsEmail);
-    // console.log(formData.officialDetailsReportingSupervisor);
-    // console.log(formData.officialDetailsWorkSchedule);
-    // console.log(formData.officialDetailsEmploymentType);
-    // console.log(formData.officialDetailsRegion);
-    // console.log(formData.officialDetailsBasicSalary);
-    // console.log(formData.officialDetailsStartingDate);
-    // console.log(formData.officialDetailsContractEndDate);
-    // console.log(formData.officialDetailsSkills.split(","));
-    // console.log(formData.bankName);
-    // console.log(formData.accountNumber);
-    // console.log(formData.accountHoldersName);
-    // console.log(formData.swiftCode);
-    // console.log(files);
-    
 
 const postEmployeeData = async () => {
-    // event.preventDefault()
-    // console.log(isDefaultPrevented());
     
     const employeeData = {
         firstName:personalInfo.firstName,
@@ -156,7 +112,7 @@ const postEmployeeData = async () => {
         educationalQualification:personalInfo.educationalQualification,
         nationality:personalInfo.nationality,
         languageSpoken:personalInfo.languageSpoken,
-        file:files,
+        pdf:files,
         emergencyContact: {
             name: emergencyContact.name,
             phoneNo: { 
@@ -192,11 +148,22 @@ const postEmployeeData = async () => {
           }
     }
     try {
-        const response = await axios.post('http://localhost:4501/employee', employeeData,{
+        const response = await axios.post('https://hr360employeescrudbackend.onrender.com/employee', employeeData,{
             headers:{"Content-Type":"multipart/form-data"}
         });
-        console.log(response.data);
+        if (response.status === 200) {
+            setMessage(response.data.message)
+            setTimeout(() => {
+                setMessage("");
+              }, 3000);
+
+        }
+        console.log(response);
     } catch (error) {
+        setError(error.message)
+            setTimeout(() => {
+                setError("");
+              }, 3000);
         console.error('Error posting data:', error.message);
     }
 };
@@ -217,7 +184,9 @@ const postEmployeeData = async () => {
         emergencyContact,
         officialDetails,
         bankDetails,
-        handleChangeBankDetails
+        handleChangeBankDetails,
+        message,
+        error
 
     }}>
         {children}
