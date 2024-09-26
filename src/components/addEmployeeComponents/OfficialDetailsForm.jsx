@@ -256,6 +256,24 @@ const OfficialDetailsForm = () => {
           <div className="flex flex-col gap-[6.9px]  w-[100%]">
             <label
               className="font-[500] text-[12.37px] leading-[18.55px]"
+              htmlFor="role"
+            >
+              Role
+            </label>
+            <input
+              className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+              type="text"
+              id="role"
+              name="role"
+              value={officialDetails.role}
+               onChange={handleChangeOfficialDetails}
+              
+              required
+            />
+          </div>{" "}
+          <div className="flex flex-col gap-[6.9px]  w-[100%]">
+            <label
+              className="font-[500] text-[12.37px] leading-[18.55px]"
               htmlFor="skills"
             >
               Add Skills

@@ -10,7 +10,8 @@ export const Context = () => {
 };
 
 export const ContextProvider = ({ children }) => {
-  const API_URL = "http://localhost:4000/data";
+  // const API_URL = "http://localhost:4000/data";
+  
   const [error, setError] = useState(null);
   const [searchName, setSearchName] = useState("");
   const [searchEmpID, setSearchEmpID] = useState("");
@@ -19,8 +20,9 @@ export const ContextProvider = ({ children }) => {
   const [openModal, setOpenModal] = useState(false);
 
   const { data, fetchError, isLoading, setData } = useAxiosFetch(
-    `http://localhost:4000/data`
+    `https://hr360employeescrudbackend.onrender.com/employees`
   );
+  
 
   const handleOpenBar = () => {
     const close = !open;
@@ -28,10 +30,11 @@ export const ContextProvider = ({ children }) => {
   };
 
   const handleCheckBox = async (id) => {
-    const toggleCheckBox = data.map((item) =>
-      item.id.toString() === id.toString()
+    const API_URL = `https://hr360employeescrudbackend.onrender.com/employee/${id}`;
+    const toggleCheckBox = data.map((item) =>{
+    return  `${item._id}` === `${id}`
         ? { ...item, active: !item.active }
-        : item
+        : item}
     );
 
     setData(toggleCheckBox);
@@ -39,7 +42,11 @@ export const ContextProvider = ({ children }) => {
     //to update Status
 
     const myItem = toggleCheckBox.filter(
-      (item) => item.id.toString() === id.toString()
+      (item) => {
+        
+        return `${item._id}` === `${id}`
+        
+      }
     );
 
     const updateOptions = {
@@ -47,15 +54,20 @@ export const ContextProvider = ({ children }) => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ active: myItem[0].active }),
+      body: JSON.stringify({ active: `${myItem[0]}`.active }),
     };
 
-    const reqUrl = `${API_URL}/${id}`;
-    const result = await apiRequest(reqUrl, updateOptions);
+    
+    const result = await apiRequest(API_URL, updateOptions);
 
-    if (result) {
-      setError(result);
-    }
+if (result.error) {
+  setError(result.error); // Handle the error properly
+} else {
+  // Handle success case, e.g., updating the state or notifying the user
+  console.log("successfully updated");
+  
+}
+
   };
 
   // LOGIN AND SIGNUP PAGE LOGIC
@@ -73,6 +85,7 @@ export const ContextProvider = ({ children }) => {
     sessionStorage.getItem("logged")
   );
   const [userName, setUserName] = useState(sessionStorage.getItem("user"));
+  const [surName, setSurName] = useState(sessionStorage.getItem("surname"));
   const [isSignupLoading, setIsSignupLoading] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false);
 
@@ -89,14 +102,18 @@ export const ContextProvider = ({ children }) => {
         signupFormData
       );
       const signUpData = await response.data;
+      console.log(signUpData);
+      
 
       if (signUpData.success) {
         sessionStorage.setItem("auth-token", signUpData.token);
         sessionStorage.setItem("logged", signUpData.success);
         sessionStorage.setItem("user", signUpData.user.name);
+        sessionStorage.setItem("surname", signUpData.user.surname);
         setIsSignedIn(signUpData.success);
         window.location.replace("layout/dashboard");
         setUserName(signUpData.user.name);
+        setSurName(signUpData.user.surname);
       } else {
         setLoginErrors(signUpData.errors);
         setTimeout(() => {
@@ -313,6 +330,7 @@ export const ContextProvider = ({ children }) => {
         signupErrors,
         loginErrors,
         userName,
+        surName,
         handleForgotPassword,
         handleOtpSubmit,
         isSignupLoading,

@@ -35,7 +35,7 @@ const AddEmployeeContext = ({children}) => {
         languageSpoken: '',
     });
 
-    console.log(personalInfo.phoneNoCode);
+   
     
 
     // Emergency Contact State
@@ -66,11 +66,13 @@ const AddEmployeeContext = ({children}) => {
         workSchedule: '',
         employmentType: '',
         region: '',
+        role: '',
         basicSalary: '',
         startingDate: '',
         contractEndDate: '',
         skills: '',
     });
+
 
     // Handle changes for personal info
     const handleChangePersonalInfo = (e) => {
@@ -135,6 +137,7 @@ const postEmployeeData = async () => {
             workSchedule: officialDetails.workSchedule,
             employmentType: officialDetails.employmentType,
             region: officialDetails.region,
+            role: officialDetails.role,
             basicSalary: officialDetails.basicSalary,
             startingDate: officialDetails.startingDate,
             contractEndDate: officialDetails.contractEndDate,

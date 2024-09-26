@@ -14,7 +14,7 @@ export const EditDetailsContext = ({ children }) => {
   const [editOfficialDetailsButton, setEditOfficialDetailsButton] =
     useState(false);
 
-  const { data, setData } = useAxiosFetch(`http://localhost:4000/data`);
+  const { data, setData } = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`);
 
   
 

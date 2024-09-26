@@ -12,7 +12,7 @@ const EmployeeDetails = () => {
   const { open, data } = Context();
   const { id } = useParams();
   const employeeFilter = data.filter(
-    (employee) => employee.id.toString() === id
+    (employee) => employee._id.toString() === id
   );
 
   return (
@@ -28,13 +28,22 @@ const EmployeeDetails = () => {
           {employeeFilter.map((employee) => {
             return (
               <div
-                key={employee.id}
+                key={employee._id}
                 className={
                   open
                     ? "w-[536.94px] h-[164.37px] flex gap-[10px] place-items-center"
                     : "w-[589.17px] h-[180.35px] flex gap-[10.97px] place-items-center"
                 }
               >
+                {/* <div className={
+                    open
+                      ? "w-[164.37px] h-[164.37px] border-2 text-[40px]"
+                      : "w-[180.85px] h-[180.85px] border-2 text-[45px]"
+                  }>
+                    <span>{employee.firstName.slice(0,1)}</span>
+                    <span>{employee.lastName.slice(0,1)}</span>
+
+                </div> */}
                 <img
                   src={Image}
                   alt=""
@@ -61,11 +70,12 @@ const EmployeeDetails = () => {
                     <h3
                       className={
                         open
-                          ? "font-[600] text-[16px] leading-[24px] text-nowrap"
-                          : "font-[600] text-[17.56px] leading-[26.33px] text-nowrap"
+                          ? "font-[600] text-[16px] leading-[24px] text-nowrap flex gap-[8px]"
+                          : "font-[600] text-[17.56px] leading-[26.33px] text-nowrap flex gap-[8px"
                       }
                     >
-                      {employee.name}
+                      <span>{employee.firstName}</span>
+                      <span>{employee.lastName}</span>
                     </h3>
                     <small
                       className={
@@ -74,7 +84,7 @@ const EmployeeDetails = () => {
                           : "font-[400] text-[15.36px] leading-[23.04px] text-black opacity-60 text-nowrap"
                       }
                     >
-                      {employee.job}
+                      {employee.officialDetails.jobTitle}
                     </small>
                   </div>
 
@@ -108,7 +118,7 @@ const EmployeeDetails = () => {
                               : "font-[500] text-[17.56px] leading-[26.33px] text-black opacity-70 text-nowrap"
                           }
                         >
-                          {employee.department}
+                          {employee.officialDetails.department}
                         </span>{" "}
                       </div>
                       <div
@@ -130,7 +140,7 @@ const EmployeeDetails = () => {
                               : "font-[500] text-[17.56px] leading-[26.33px] text-black opacity-70 text-nowrap"
                           }
                         >
-                          {employee.date}
+                          {employee.officialDetails.startingDate.slice(0,10)}
                         </span>{" "}
                       </div>
                     </div>
@@ -161,7 +171,7 @@ const EmployeeDetails = () => {
                               : "font-[500] text-[17.56px] leading-[26.33px] text-black opacity-70"
                           }
                         >
-                          {employee.email}
+                          {employee.officialDetails.email}
                         </span>{" "}
                       </div>
                       <div
@@ -176,11 +186,12 @@ const EmployeeDetails = () => {
                         <span
                           className={
                             open
-                              ? "font-[500] text-[16px] leading-[24px] text-black opacity-70"
-                              : "font-[500] text-[17.56px] leading-[26.33px] text-black opacity-70"
+                              ? "font-[500] text-[16px] leading-[24px] text-black opacity-70 flex gap-2"
+                              : "font-[500] text-[17.56px] leading-[26.33px] text-black opacity-70 flex gap-2"
                           }
                         >
-                          {employee.phone}
+                          <span>{employee.officialDetails.phoneNo.code}</span>
+                          <span>{employee.officialDetails.phoneNo.phone}</span>
                         </span>{" "}
                       </div>
                     </div>
@@ -202,7 +213,7 @@ const EmployeeDetails = () => {
             {employeeFilter.map((val) => {
               return (
                 <nav
-                  key={val.id}
+                  key={val._id}
                   className={
                     open
                       ? "w-full h-[67.61px] rounded-[10px] border-[1.75px] border-[#ECEEF6] shadow-md bg-white flex place-items-center px-[20px]"

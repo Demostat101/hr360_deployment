@@ -40,13 +40,15 @@ export const useAxiosFetch = (dataUrl) => {
 
 export const apiRequest = async (url = [], optionObj = {}, errMsg = null) => {
   try {
-    const data = await fetch(url, optionObj);
-    if (!data.ok) {
-      throw Error("please reload the app");
+    const response = await fetch(url, optionObj);
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "An error occurred");
     }
+    return await response.json();
   } catch (error) {
     errMsg = error.message;
-  } finally {
-    return errMsg;
+    return { error: errMsg }; 
   }
 };
+

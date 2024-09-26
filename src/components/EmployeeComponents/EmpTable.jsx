@@ -35,9 +35,10 @@ const EmpTable = () => {
       data
         .filter(
           (employee) =>
-            employee.name.toLowerCase().includes(searchName.toLowerCase()) &&
-            employee.empID.toString().includes(searchEmpID.toString()) &&
-            employee.region
+            employee.firstName.toLowerCase().includes(searchName.toLowerCase()) &&
+            employee.officialDetails.employeeId
+            .toString().includes(searchEmpID.toString()) &&
+            employee.officialDetails.region
               .toLowerCase()
               .includes(searchEmpRegion.toLowerCase())
         )
@@ -124,7 +125,7 @@ const EmpTable = () => {
           {filteredEmployeeList.map((val) => {
             return (
               <tr
-                key={val.id}
+                key={val._id}
                 className={
                   open
                     ? " w-full h-[62.62px] text-[#8F8F8F] th-bb"
@@ -134,18 +135,18 @@ const EmpTable = () => {
                 <td>
                   <input
                     className="ml-[15px] border-[#8F8F8F]"
-                    onChange={() => handleCheckBox(val.id)}
+                    onChange={() => handleCheckBox(val._id)}
                     type="checkbox"
                     name=""
                     id=""
                   />
-                  <span className="pl-[10px]">{val.empID}</span>
+                  <span className="pl-[10px]">{val.officialDetails.employeeId}</span>
                 </td>
-                <td>{val.name}</td>
-                <td>{val.department}</td>
-                <td>{val.role}</td>
-                <td>{val.email}</td>
-                <td>{val.empType}</td>
+                <td className="flex gap-[8px] place-items-center"><span>{val.firstName}</span> <span>{val.lastName}</span></td>
+                <td>{val.officialDetails.department}</td>
+                <td>{val.officialDetails.role}</td>
+                <td>{val.officialDetails.email}</td>
+                <td>{val.officialDetails.employmentType}</td>
                 <td>
                   {val.active ? (
                     <div className="text-green-400">Active</div>
@@ -155,7 +156,7 @@ const EmpTable = () => {
                 </td>
                 <td>
                   <Link
-                    to={`${val.id}`}
+                    to={`${val._id}`}
                     className="link text-[#176B87] bg-white"
                   >
                     Details
