@@ -14,7 +14,7 @@ export const EditDetailsContext = ({ children }) => {
   const [editOfficialDetailsButton, setEditOfficialDetailsButton] =
     useState(false);
 
-  const { data, setData } = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`);
+  const { data, setData ,isLoading} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`);
 
   
 
@@ -55,7 +55,7 @@ export const EditDetailsContext = ({ children }) => {
     } else {
       try {
         const response = await axios.patch(
-          `http://localhost:4000/data/${id}`,
+          `https://hr360employeescrudbackend.onrender.com/employee/${id}`,
           edit
         );
 
@@ -75,7 +75,7 @@ export const EditDetailsContext = ({ children }) => {
 
         setData(
           data.map((employee) =>
-            employee.id === id ? { ...response.data } : employee
+            employee._id === id ? { ...response.data } : employee
           )
         );
       } catch (error) {
@@ -113,7 +113,7 @@ export const EditDetailsContext = ({ children }) => {
     } else {
       try {
         const response = await axios.patch(
-          `http://localhost:4000/data/${id}`,
+          `https://hr360employeescrudbackend.onrender.com/employee/${id}`,
           edit
         );
 
@@ -129,7 +129,7 @@ export const EditDetailsContext = ({ children }) => {
 
         setData(
           data.map((employee) =>
-            employee.id === id ? { ...response.data } : employee
+            employee._id === id ? { ...response.data } : employee
           )
         );
       } catch (error) {
@@ -188,6 +188,7 @@ export const EditDetailsContext = ({ children }) => {
         editSkills,
         setEditSkills,
         data,
+        isLoading
       }}
     >
       {children}

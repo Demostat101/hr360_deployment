@@ -13,7 +13,7 @@ const EmployeePage = () => {
   const { id } = useParams();
 
   const { open } = Context();
-  const { data } = editEmployeeContext();
+  const { data,isLoading } = editEmployeeContext();
 
   const {
     editPersonalDetailsButton,
@@ -47,7 +47,7 @@ const EmployeePage = () => {
   const employeeFilter = data.filter(
     (employee) => employee._id.toString() === id
   );
-  
+
   
 
   const handleEditPersonalDetailsButton = () => {
@@ -112,6 +112,22 @@ const EmployeePage = () => {
     setEditRegion,
     setEditSkills,
   ]);
+
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  
 
   return (
     <div className="w-full h-full flex flex-col gap-[30px]">
@@ -307,7 +323,10 @@ const EmployeePage = () => {
                               : "font-[500] text-[17.6px] leading-[26.4px]"
                           }
                         >
-                          {employee.dateOfBirth.slice(0,10)}
+                        <span>{employee.dateOfBirth.slice(8,10)}</span>
+                        <span> {months[Number(employee.dateOfBirth.slice(6,7)-1)]},</span>
+                        <span> {employee.dateOfBirth.slice(0,4)}</span>
+                          
                         </div>
                       </div>
 
@@ -767,7 +786,7 @@ const EmployeePage = () => {
                                   {val}
                                 </div>
                               );
-                            })}
+                            }).reverse()}
                           </div>
                         </div>
                       </div>

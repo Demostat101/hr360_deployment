@@ -9,11 +9,26 @@ import { Context } from "../../contexts/DashBoardContext";
 const EmployeeDetails = () => {
   const { pathname } = useLocation();
   
-  const { open, data } = Context();
+  const { open, data ,isLoading} = Context();
   const { id } = useParams();
   const employeeFilter = data.filter(
     (employee) => employee._id.toString() === id
   );
+
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
 
   return (
     <main className="w-full p-[25px]">
@@ -25,13 +40,21 @@ const EmployeeDetails = () => {
               : "w-full h-[245.01px] rounded-xl flex flex-col justify-center bg-white pl-[20px] shadow-md border-[1.75px] border-[#ECEEF6]"
           }
         >
-          {employeeFilter.map((employee) => {
+          {
+            isLoading && <div className="w-full h-full flex justify-center place-items-center">
+              <div className="loading "></div>
+            </div>
+          }
+
+          {
+            !isLoading && <>
+              {employeeFilter.map((employee) => {
             return (
               <div
                 key={employee._id}
                 className={
                   open
-                    ? "w-[536.94px] h-[164.37px] flex gap-[10px] place-items-center"
+                    ? "w-[536.94px] h-[164.37px] flex gap-[10px] place-items-center "
                     : "w-[589.17px] h-[180.35px] flex gap-[10.97px] place-items-center"
                 }
               >
@@ -56,15 +79,15 @@ const EmployeeDetails = () => {
                 <div
                   className={
                     open
-                      ? "w-[361.63px] h-[138px] "
-                      : "w-[396.94px] h-[150.38px]"
+                      ? "w-fit h-[138px] "
+                      : "w-fit h-[150.38px]"
                   }
                 >
                   <div
                     className={
                       open
-                        ? "w-[117px] h-[65px] p-[5px] flex flex-col gap-[10px]"
-                        : "w-[127.97px] h-[70.95px] p-[5.49px] flex flex-col gap-[10.97px]"
+                        ? "w-fit h-[65px] p-[5px] flex flex-col gap-[10px]"
+                        : "w-fit h-[70.95px] p-[5.49px] flex flex-col gap-[10.97px]"
                     }
                   >
                     <h3
@@ -105,8 +128,8 @@ const EmployeeDetails = () => {
                       <div
                         className={
                           open
-                            ? "w-[111.31px] h-[24px] flex gap-[6px] place-items-center"
-                            : "w-[122.17px] h-[26px] flex gap-[6.58px] place-items-center"
+                            ? "w-fit h-[24px] flex gap-[6px] place-items-center"
+                            : "w-fit h-[26px] flex gap-[6.58px] place-items-center"
                         }
                       >
                         {" "}
@@ -124,8 +147,8 @@ const EmployeeDetails = () => {
                       <div
                         className={
                           open
-                            ? "w-[120.31px] h-[24px] flex gap-[6px] place-items-center"
-                            : "w-[132.17px] h-[26px] flex gap-[6.58px] place-items-center"
+                            ? "w-fit h-[24px] flex gap-[6px] place-items-center"
+                            : "w-fit h-[26px] flex gap-[6.58px] place-items-center"
                         }
                       >
                         {" "}
@@ -140,7 +163,10 @@ const EmployeeDetails = () => {
                               : "font-[500] text-[17.56px] leading-[26.33px] text-black opacity-70 text-nowrap"
                           }
                         >
-                          {employee.officialDetails.startingDate.slice(0,10)}
+                        <span>{months[Number(employee.officialDetails.startingDate.slice(6,7)-1)]}</span>
+                          <span> {employee.officialDetails.startingDate.slice(8,10)}th,</span>
+                        <span> {employee.officialDetails.startingDate.slice(0,4)}</span>
+                          
                         </span>{" "}
                       </div>
                     </div>
@@ -155,8 +181,8 @@ const EmployeeDetails = () => {
                       <div
                         className={
                           open
-                            ? "w-[157.31px] h-[24px] flex gap-[6px] place-items-center"
-                            : "w-[172.17px] h-[26px] flex gap-[6.58px] place-items-center"
+                            ? "w-fit h-[24px] flex gap-[6px] place-items-center"
+                            : "w-fit h-[26px] flex gap-[6.58px] place-items-center"
                         }
                       >
                         {" "}
@@ -177,8 +203,8 @@ const EmployeeDetails = () => {
                       <div
                         className={
                           open
-                            ? "w-[173.31px] h-[24px] flex gap-[6px] place-items-center"
-                            : "w-[190.17px] h-[26px] flex gap-[6.58px] place-items-center"
+                            ? "w-fit h-[24px] flex gap-[6px] place-items-center"
+                            : "w-fit h-[26px] flex gap-[6.58px] place-items-center"
                         }
                       >
                         {" "}
@@ -200,6 +226,8 @@ const EmployeeDetails = () => {
               </div>
             );
           })}
+            </>
+          }
         </div>
 
         <div
