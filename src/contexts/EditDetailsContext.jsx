@@ -21,6 +21,8 @@ export const EditDetailsContext = ({ children }) => {
   // Handle Edit Personal Employee Details
 
   const [editName, setEditName] = useState("");
+  const [editSurname, setEditSurname] = useState("");
+  const [editMiddleName, setEditMiddleName] = useState("");
   const [editGender, setEditGender] = useState("");
   const [editPhone, setEditPhone] = useState("");
   const [editEmail, setEditEmail] = useState("");
@@ -28,30 +30,44 @@ export const EditDetailsContext = ({ children }) => {
   const [editMaritalStatus, setEditMaritalStatus] = useState("");
   const [editReligion, setEditReligion] = useState("");
   const [editAddress, setEditAddress] = useState("");
-  const [editEducation, setEditEducation] = useState("");
+  const [editEducationalQualification, setEditEducationalQualification] = useState("");
   const [editNationality, setEditNationality] = useState("");
-  const [editLanguage, setEditLanguage] = useState("");
-  const [editEmergencyContact, setEditEmergencyContact] = useState("");
+  const [editLanguageSpoken, setEditLanguageSpoken] = useState("");
+  const [editEmergencyContactCode, setEditEmergencyContactCode] = useState("");
+  const [editEmergencyContactPhone, setEditEmergencyContactPhone] = useState("");
+  const [editEmergencyContactRelationship, setEditEmergencyContactRelationship] = useState("");
 
   const handleEditPersonalDetails = async (id) => {
     const edit = {
       id: (data.length + 1).toString(),
-      name: editName,
-      gender: editGender,
-      phone: editPhone,
-      email: editEmail,
-      dob: editDateOfBirth,
-      maritalStatus: editMaritalStatus,
-      Religion: editReligion,
-      address: editAddress,
-      education: editEducation,
-      Nationality: editNationality,
-      language: editLanguage,
-      emergencyContact: editEmergencyContact,
+      firstName:editName,
+        middleName:editMiddleName,
+        lastName:editSurname,
+        gender:editGender,
+        email:editEmail,
+        phoneNo:{phone: editPhone },
+        address:editAddress,
+        dateOfBirth:editDateOfBirth,
+        maritalStatus:editMaritalStatus,
+        religion:editRegion,
+        educationalQualification:editEducationalQualification,
+        nationality:editNationality,
+        languageSpoken:editLanguageSpoken,
+        emergencyContact: {
+        
+          phoneNo: { 
+              code:editEmergencyContactCode,
+              phone:editEmergencyContactPhone
+           },
+          relationship: editEmergencyContactRelationship
+          
+      },
+     
     };
 
-    if (editName === "" || editEmail === "") {
+    if (editName === "" || editEmail === "" || editDateOfBirth === "") {
       alert("fields cant be blank");
+      return;
     } else {
       try {
         const response = await axios.patch(
@@ -60,6 +76,8 @@ export const EditDetailsContext = ({ children }) => {
         );
 
         setEditName("");
+        setEditSurname("");
+        setEditMiddleName("");
         setEditGender("");
         setEditPhone("");
         setEditEmail("");
@@ -67,10 +85,12 @@ export const EditDetailsContext = ({ children }) => {
         setEditMaritalStatus("");
         setEditReligion("");
         setEditAddress("");
-        setEditEducation("");
+        setEditEducationalQualification("");
         setEditNationality("");
-        setEditLanguage("");
-        setEditEmergencyContact("");
+        setEditLanguageSpoken("");
+        setEditEmergencyContactCode("");
+        setEditEmergencyContactPhone("");
+        setEditEmergencyContactRelationship("");
         setEditPersonalDetailsButton(false);
 
         setData(
@@ -93,19 +113,21 @@ export const EditDetailsContext = ({ children }) => {
   const [editDepartment, setEditDepartment] = useState("");
   const [editReportingOfficer, setEditReportingOfficer] = useState("");
   const [editRegion, setEditRegion] = useState("");
-  const [editSkills, setEditSkills] = useState([]);
+  const [editSkills, setEditSkills] = useState("");
 
   const handleEditOfficialDetails = async (id) => {
     const edit = {
       id: (data.length + 1).toString(),
-      empID: editEmployeeId,
-      empType: editEmployementType,
-      schedule: editWorkSchedule,
-      job: editJobTitle,
-      department: editDepartment,
-      reportingSupervisor: editReportingOfficer,
-      region: editRegion,
-      skills: editSkills,
+      officialDetails: {
+        employeeId: editEmployeeId,
+        jobTitle: editJobTitle,
+        department: editDepartment,
+        reportingOfficer:editReportingOfficer,
+        workSchedule: editWorkSchedule,
+        employmentType: editEmployementType,
+        region: editRegion,
+        skills: editSkills
+      }
     };
 
     if (editDepartment === "" || editReportingOfficer === "") {
@@ -145,6 +167,12 @@ export const EditDetailsContext = ({ children }) => {
         setEditPersonalDetailsButton,
         editName,
         setEditName,
+        editSurname,
+        setEditSurname,
+        editMiddleName,
+        setEditMiddleName,
+        editEducationalQualification,
+        setEditEducationalQualification,
         editGender,
         setEditGender,
         editPhone,
@@ -159,14 +187,18 @@ export const EditDetailsContext = ({ children }) => {
         setEditReligion,
         editAddress,
         setEditAddress,
-        editEducation,
-        setEditEducation,
+        editEducationalQualification, 
+        setEditEducationalQualification,
         editNationality,
         setEditNationality,
-        editLanguage,
-        setEditLanguage,
-        editEmergencyContact,
-        setEditEmergencyContact,
+        editLanguageSpoken,
+        setEditLanguageSpoken,
+        editEmergencyContactCode,
+        setEditEmergencyContactCode,
+        editEmergencyContactPhone, 
+        setEditEmergencyContactPhone,
+        editEmergencyContactRelationship,
+        setEditEmergencyContactRelationship,
         handleEditPersonalDetails,
         editOfficialDetailsButton,
         setEditOfficialDetailsButton,

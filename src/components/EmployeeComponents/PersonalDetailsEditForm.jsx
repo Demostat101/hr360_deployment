@@ -2,31 +2,39 @@ import { editEmployeeContext } from "../../contexts/EditDetailsContext";
 
 const PersonalDetailsEditForm = () => {
   const {
-    open,
-    editName,
-    setEditName,
-    editGender,
-    setEditGender,
-    editPhone,
-    setEditPhone,
-    editEmail,
-    setEditEmail,
-    editDateOfBirth,
-    setEditDateOfBirth,
-    editMaritalStatus,
-    setEditMaritalStatus,
-    editReligion,
-    setEditReligion,
-    editAddress,
-    setEditAddress,
-    editEducation,
-    setEditEducation,
-    editNationality,
-    setEditNationality,
-    editLanguage,
-    setEditLanguage,
-    editEmergencyContact,
-    setEditEmergencyContact,
+        open,
+        editName,
+        setEditName,
+        editSurname,
+        setEditSurname,
+        editMiddleName,
+        setEditMiddleName,
+        editGender,
+        setEditGender,
+        editPhone,
+        setEditPhone,
+        editEmail,
+        setEditEmail,
+        editDateOfBirth,
+        setEditDateOfBirth,
+        editMaritalStatus,
+        setEditMaritalStatus,
+        editReligion,
+        setEditReligion,
+        editAddress,
+        setEditAddress,
+        editEducationalQualification, 
+        setEditEducationalQualification,
+        editNationality,
+        setEditNationality,
+        editLanguageSpoken,
+        setEditLanguageSpoken,
+        editEmergencyContactCode,
+        setEditEmergencyContactCode,
+        editEmergencyContactPhone, 
+        setEditEmergencyContactPhone,
+        editEmergencyContactRelationship,
+        setEditEmergencyContactRelationship,
   } = editEmployeeContext();
 
   return (
@@ -35,22 +43,22 @@ const PersonalDetailsEditForm = () => {
         onSubmit={(e) => e.preventDefault()}
         className={
           open
-            ? "w-full h-[296.68px] flex justify-between gap-[30px]"
-            : "w-full h-[326.37px] flex justify-between"
+            ? "w-full h-fit flex justify-between gap-[30px]"
+            : "w-full h-fit flex justify-between"
         }
       >
         <div
           className={
             open
-              ? "w-[211.69px] h-[269.52px] flex flex-col  gap-[18.07px]"
-              : "w-[232.88px] h-[293.28px] flex flex-col  gap-[19.88px]"
+              ? "w-[211.69px] h-fit flex flex-col  gap-[18.07px]"
+              : "w-[232.88px] h-fit flex flex-col  gap-[19.88px]"
           }
         >
-          <div className="w-full ">
+          <div className="w-full flex gap-4 flex-col">
             <label
               className={
                 open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
+                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60 "
                   : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
               }
             >
@@ -63,9 +71,31 @@ const PersonalDetailsEditForm = () => {
                   : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               }
               type="text"
-              placeholder="Full Name"
+              placeholder="first Name"
               value={editName}
               onChange={(e) => setEditName(e.target.value)}
+            />
+            <input
+              className={
+                open
+                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+              }
+              type="text"
+              placeholder="Middle Name"
+              value={editMiddleName}
+              onChange={(e) => setEditMiddleName(e.target.value)}
+            />
+            <input
+              className={
+                open
+                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+              }
+              type="text"
+              placeholder="Surname"
+              value={editSurname}
+              onChange={(e) => setEditSurname(e.target.value)}
             />
           </div>
 
@@ -162,8 +192,8 @@ const PersonalDetailsEditForm = () => {
                   ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
                   : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               }
-              type="text"
-              placeholder="14th february, 2005"
+              type="date"
+              
               value={editDateOfBirth}
               onChange={(e) => setEditDateOfBirth(e.target.value)}
             />
@@ -265,8 +295,8 @@ const PersonalDetailsEditForm = () => {
               }
               type="text"
               placeholder="Education"
-              value={editEducation}
-              onChange={(e) => setEditEducation(e.target.value)}
+              value={editEducationalQualification}
+              onChange={(e) => setEditEducationalQualification(e.target.value)}
             />
           </div>
 
@@ -311,12 +341,12 @@ const PersonalDetailsEditForm = () => {
               }
               type="text"
               placeholder="Language Spoken"
-              value={editLanguage}
-              onChange={(e) => setEditLanguage(e.target.value)}
+              value={editLanguageSpoken}
+              onChange={(e) => setEditLanguageSpoken(e.target.value)}
             />
           </div>
 
-          <div className="w-full">
+          <div className="flex gap-4 flex-col border-2">
             <label
               className={
                 open
@@ -329,13 +359,35 @@ const PersonalDetailsEditForm = () => {
             <input
               className={
                 open
+                  ? "w-full font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+              }
+              type="text"
+              
+              value={editEmergencyContactCode}
+              onChange={(e) => setEditEmergencyContactCode(e.target.value)}
+            />
+            <input
+              className={
+                open
                   ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
                   : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               }
               type="text"
-              placeholder="Emergency Contact"
-              value={editEmergencyContact}
-              onChange={(e) => setEditEmergencyContact(e.target.value)}
+              placeholder="7045237883"
+              value={editEmergencyContactPhone}
+              onChange={(e) => setEditEmergencyContactPhone(e.target.value)}
+            />
+            <input
+              className={
+                open
+                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+              }
+              type="text"
+              placeholder="brother, sister, father"
+              value={editEmergencyContactRelationship}
+              onChange={(e) => setEditEmergencyContactRelationship(e.target.value)}
             />
           </div>
         </div>

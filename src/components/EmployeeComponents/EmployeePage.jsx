@@ -19,6 +19,8 @@ const EmployeePage = () => {
     editPersonalDetailsButton,
     setEditPersonalDetailsButton,
     setEditName,
+    setEditMiddleName,
+    setEditSurname,
     setEditGender,
     setEditPhone,
     setEditEmail,
@@ -26,10 +28,12 @@ const EmployeePage = () => {
     setEditMaritalStatus,
     setEditReligion,
     setEditAddress,
-    setEditEducation,
+    setEditEducationalQualification,
     setEditNationality,
-    setEditLanguage,
-    setEditEmergencyContact,
+    setEditLanguageSpoken,
+    setEditEmergencyContactCode,
+    setEditEmergencyContactPhone,
+    setEditEmergencyContactRelationship,
     handleEditPersonalDetails,
     editOfficialDetailsButton,
     setEditOfficialDetailsButton,
@@ -47,7 +51,6 @@ const EmployeePage = () => {
   const employeeFilter = data.filter(
     (employee) => employee._id.toString() === id
   );
-
   
 
   const handleEditPersonalDetailsButton = () => {
@@ -58,10 +61,14 @@ const EmployeePage = () => {
   };
 
   const post = data.find((post) => post._id.toString() === id);
+  
+
 
   useEffect(() => {
     if (post) {
       setEditName(post.firstName);
+      setEditMiddleName(post.middleName);
+      setEditSurname(post.lastName);
       setEditGender(post.gender);
       setEditPhone(post.phoneNo.phone);
       setEditEmail(post.email);
@@ -69,25 +76,32 @@ const EmployeePage = () => {
       setEditMaritalStatus(post.maritalStatus);
       setEditReligion(post.religion);
       setEditAddress(post.address);
-      setEditEducation(post.educationalQualification);
+      setEditEducationalQualification(post.educationalQualification);
       setEditNationality(post.nationality);
-      setEditLanguage(post.languageSpoken);
-      // setEditEmergencyContact(post.emergencyContact);
+      setEditLanguageSpoken(post.languageSpoken);
+      setEditEmergencyContactCode(post.emergencyContact.phoneNo.code);
+      setEditEmergencyContactPhone(post.emergencyContact.phoneNo.phone);
+      setEditEmergencyContactRelationship(post.emergencyContact.relationship);
+      
     }
   }, [
     post,
     setEditName,
     setEditGender,
+    setEditMiddleName,
+    setEditSurname,
     setEditPhone,
     setEditEmail,
     setEditDateOfBirth,
     setEditMaritalStatus,
     setEditReligion,
     setEditAddress,
-    setEditEducation,
+    setEditEducationalQualification,
     setEditNationality,
-    setEditLanguage,
-    // setEditEmergencyContact,
+    setEditLanguageSpoken,
+    setEditEmergencyContactCode,
+    setEditEmergencyContactPhone,
+    setEditEmergencyContactRelationship
   ]);
 
   useEffect(() => {
@@ -98,7 +112,7 @@ const EmployeePage = () => {
       setEditJobTitle(post.officialDetails.jobTitle);
       setEditDepartment(post.officialDetails.department);
       setEditReportingOfficer(post.officialDetails.reportingOfficer);
-      setEditRegion(post.region);
+      setEditRegion(post.officialDetails.region);
       setEditSkills(post.officialDetails.skills.map((vals) => vals));
     }
   }, [
@@ -134,8 +148,8 @@ const EmployeePage = () => {
       <div
         className={
           open
-            ? "w-full h-[395.18px] border-[1.75px] border-[#ECEEF6] shadow-md bg-white rounded-xl"
-            : "w-full h-[434.73px] border-[1.92px] border-[#ECEEF6] shadow-md bg-white rounded-xl"
+            ? "w-full h-fit border-[1.75px] border-[#ECEEF6] shadow-md bg-white rounded-xl"
+            : "w-full h-fit border-[1.92px] border-[#ECEEF6] shadow-md bg-white rounded-xl"
         }
       >
         <div
@@ -192,7 +206,7 @@ const EmployeePage = () => {
         </div>
         <hr />
 
-        <div className="w-full p-[20px]">
+        <div className="w-full p-[20px] h-fit">
           {!editPersonalDetailsButton ? (
             <>
               {employeeFilter.map((employee) => {

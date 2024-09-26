@@ -47,7 +47,7 @@ const EmployeeDetails = () => {
           }
 
           {
-            !isLoading && <>
+            !isLoading &&  <>
               {employeeFilter.map((employee) => {
             return (
               <div

@@ -3,7 +3,6 @@ import { editEmployeeContext } from "../../contexts/EditDetailsContext";
 import { FaPlus } from "react-icons/fa";
 
 const OfficialDetailsEditForm = ({employee}) => {
-  console.log(employee);
   
   const {
     open,
@@ -269,12 +268,11 @@ const OfficialDetailsEditForm = ({employee}) => {
                 <div className="font-[500] text-red-500">{message}</div>
             <div className="flex gap-4 items-center">
               <input
-                // readOnly
+               
                 className="focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
                 value={skills}
                 onChange={e => setSkills(e.target.value)}
-                // value={editSkills}
-                // onChange={(e) => setEditSkills(e.target.value)}
+                
                 
                 type="text"
                 placeholder="skills"
@@ -284,13 +282,21 @@ const OfficialDetailsEditForm = ({employee}) => {
                 ><FaPlus/>
               </button>
               </div>
-              <div className="w-full mt-2">
+              <div className="w-full mt-2  border-2">
                 {
                   employee.map((val,index)=>{
-                    return <div className=" w-full flex gap-2 flex-wrap">{val.skills.map((val,index)=>{
-                      return <div className=" text-nowrap">{val},</div>
-                    })}</div>
+                    return <div className="flex flex-wrap gap-2" key={index}>
+                      {
+                        val.officialDetails.skills.map((val,index)=>{
+                          return <div key={index}>{val},</div>
+                        })
+                      }
+                     
+                    
+                    </div>
                   })
+                  
+                 
                 }
               </div>
                 <div>
