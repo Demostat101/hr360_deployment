@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useAxiosFetch } from "../hooks/UseAxiosFetch";
+import {  toast } from 'react-toastify';
 
 export const editContext = createContext();
 
@@ -65,6 +66,11 @@ export const EditDetailsContext = ({ children }) => {
      
     };
 
+    toast.loading("Saving Details...")
+    
+
+    
+
     if (editName === "" || editEmail === "" || editDateOfBirth === "") {
       alert("fields cant be blank");
       return;
@@ -75,7 +81,9 @@ export const EditDetailsContext = ({ children }) => {
           edit
         );
 
-        setEditName("");
+        if (response.status === 200) {
+          toast.dismiss()
+          setEditName("");
         setEditSurname("");
         setEditMiddleName("");
         setEditGender("");
@@ -98,8 +106,21 @@ export const EditDetailsContext = ({ children }) => {
             employee._id === id ? { ...response.data } : employee
           )
         );
+        }
+
+        
+
+        
       } catch (error) {
-        console.log(`Error: ${error.message}`);
+        
+        setTimeout(() => {
+          toast.dismiss()
+        }, 3000);
+        setTimeout(() => {
+          toast.error(error.message)
+        }, 3000);
+
+        
       }
     }
   };
@@ -130,6 +151,8 @@ export const EditDetailsContext = ({ children }) => {
       }
     };
 
+    toast.loading("Saving Details...")
+
     if (editDepartment === "" || editReportingOfficer === "") {
       alert("fields cant be blank");
     } else {
@@ -139,23 +162,35 @@ export const EditDetailsContext = ({ children }) => {
           edit
         );
 
-        setEditEmployeeId("");
-        setEditEmployementType("");
-        setEditWorkSchedule("");
-        setEditJobTitle("");
-        setEditDepartment("");
-        setEditReportingOfficer("");
-        setEditRegion("");
-        setEditSkills();
-        setEditOfficialDetailsButton(false);
+        if (response.status === 200) {
 
-        setData(
-          data.map((employee) =>
-            employee._id === id ? { ...response.data } : employee
-          )
-        );
+          toast.dismiss()
+          setEditEmployeeId("");
+          setEditEmployementType("");
+          setEditWorkSchedule("");
+          setEditJobTitle("");
+          setEditDepartment("");
+          setEditReportingOfficer("");
+          setEditRegion("");
+          setEditSkills();
+          setEditOfficialDetailsButton(false);
+  
+          setData(
+            data.map((employee) =>
+              employee._id === id ? { ...response.data } : employee
+            )
+          );
+          
+        }
+
+       
       } catch (error) {
-        console.log(`Error: ${error.message}`);
+        setTimeout(() => {
+          toast.dismiss()
+        }, 3000);
+        setTimeout(() => {
+          toast.error(error.message)
+        }, 3000);
       }
     }
   };

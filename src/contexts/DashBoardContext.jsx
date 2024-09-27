@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect, useState } from "react";
 import useLocalStorage from "use-local-storage";
 import { useAxiosFetch, apiRequest } from "../hooks/UseAxiosFetch";
 import axios from "axios";
+import {  toast } from 'react-toastify';
+ 
 
 export const dashBoardContext = createContext();
 
@@ -200,16 +202,21 @@ if (result.error) {
       }, 3000);
       return;
     }
-
+    
+    toast.loading("Sending OTP...")
+    
     // API CALL
     try {
+      
       const {
         data: { code },
         status,
       } = await axios.get("https://hr360backendloginsignup.onrender.com/generateOTP", loginEmail);
 
       if (status === 200) {
+       
         const data = await getUser(loginEmail);
+        toast.dismiss()
 
         const text = `Your password recovery OTP is ${code}. Verify and recover your password.`;
         await axios.post("https://hr360backendloginsignup.onrender.com/sendOtp", {
@@ -261,10 +268,12 @@ if (result.error) {
   // reset password
 
   const [resetPassword, setResetPassword] = useState("");
+  const [isResetPasswordLoading,setIsResetPasswordLoading] = useState(false)
 
   const resetPasswordHandler = async () => {
     const user = await getUser(loginEmail);
     const password = resetPassword;
+    setIsResetPasswordLoading(true)
 
     try {
       const { data, status } = await axios.put(
@@ -275,6 +284,8 @@ if (result.error) {
         }
       );
 
+      
+
       if (status === 200) {
         setState("login");
         setResetPassword("")
@@ -282,8 +293,12 @@ if (result.error) {
       }
     } catch (error) {
       console.log(error);
+    } finally{
+      setIsResetPasswordLoading(false)
     }
   };
+
+  
 
   // const logOut = ()=>{
   //   sessionStorage.removeItem("logged")
@@ -340,6 +355,7 @@ if (result.error) {
         resetPassword,
         setResetPassword,
         resetPasswordHandler,
+        isResetPasswordLoading
       }}
     >
       {children}

@@ -10,7 +10,7 @@ const PasswordReset = () => {
   const [validPwd, setValidPwd] = useState(false);
   const [passwordFocus, setPassWordFocus] = useState(false);
 
-  const { resetPassword, setResetPassword, resetPasswordHandler} =
+  const { resetPassword, setResetPassword, resetPasswordHandler,isResetPasswordLoading} =
     Context();
   const [visible, setVisible] = useState(false);
 
@@ -77,7 +77,10 @@ const PasswordReset = () => {
             disabled={!validPwd}
             onClick={resetPasswordHandler}
           >
-            Reset Password
+            {
+              !isResetPasswordLoading ? "Reset Password" : <div className="isSignupLoader"></div>
+            }
+            
           </button>
         </div>
       </form>

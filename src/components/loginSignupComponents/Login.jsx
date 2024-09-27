@@ -8,6 +8,7 @@ const Login = () => {
     const {loginEmail,loginPassword,setLoginPassword,setLoginEmail, loginErrors,Login,setState, handleForgotPassword,isLoginLoading} = Context()
 
     const [visible,setVisible] = useState(false)
+    const [disabled,setDisabled] = useState(true)
 
   
 
@@ -78,6 +79,7 @@ const Login = () => {
                   <button
                     className="h-[60px] bg-[#176B87] font-[600] text-[24px] leading-[36px] text-white rounded-[10px] flex justify-center place-items-center"
                     onClick={Login}
+                    disabled={!loginEmail || !loginPassword }
                   >
                     {!isLoginLoading ? "Login" : <div className="isSignupLoader"></div> }
                   </button>

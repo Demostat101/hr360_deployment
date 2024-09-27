@@ -138,6 +138,23 @@ ul a.active .icon {
   100%{opacity: 0;font-size:20px}
 }
 
+/* customToast.css */
+.Toastify__toast {
+  background-color: #176b87;
+  font-weight: 600;
+}
+
+.Toastify__toast--success {
+  background-color: #4CAF50;
+  font-weight: 600;
+}
+
+.Toastify__toast--error {
+  background-color: #F44336;
+  font-weight: 600;
+}
+
+
 /* .loader {
   width: 65px;
   aspect-ratio: 1;
