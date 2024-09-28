@@ -2,6 +2,7 @@
 
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const employeeContext = createContext();
 
@@ -150,25 +151,83 @@ const postEmployeeData = async () => {
             bicCode: bankDetails.swiftCode,
           }
     }
-    try {
-        const response = await axios.post('https://hr360employeescrudbackend.onrender.com/employee', employeeData,{
-            headers:{"Content-Type":"multipart/form-data"}
-        });
-        if (response.status === 200) {
-            setMessage(response.data.message)
-            setTimeout(() => {
-                setMessage("");
-              }, 3000);
 
+    if (personalInfo.firstName === "" || personalInfo.dateOfBirth==="" || officialDetails.jobTitle === "" || emergencyContact.address === "" || bankDetails.accountHoldersName ==="") {
+        toast.info("All fields are required except middle name field")
+        return;
+    } else {
+        try {
+            const response = await axios.post('https://hr360employeescrudbackend.onrender.com/employee', employeeData,{
+                headers:{"Content-Type":"multipart/form-data"}
+            });
+            if (response.status === 200) {
+                setMessage(response.data.message)
+                setOfficialDetails({
+                    employeeId: '',
+                    jobTitle: '',
+                    department: '',
+                    email: '',
+                    phoneNoCode: '',
+                    phoneNo: '',
+                    reportingSupervisor: '',
+                    workSchedule: '',
+                    employmentType: '',
+                    region: '',
+                    role: '',
+                    basicSalary: '',
+                    startingDate: '',
+                    contractEndDate: '',
+                    skills: '',
+                });
+                setPersonalInfo({
+                    firstName: '',
+                    middleName: '',
+                    lastName: '',
+                    gender: '',
+                    email: '',
+                    phoneNoCode: '',
+                    phoneNo: '',
+                    address: '',
+                    dateOfBirth: '',
+                    maritalStatus: '',
+                    religion: '',
+                    educationalQualification: '',
+                    nationality: '',
+                    languageSpoken: '',
+                });
+                setEmergencyContact({
+                    name: '',
+                    phoneNoCode: '',
+                    phoneNo: '',
+                    relationship: '',
+                    address: '',
+                });
+                setBankDetails({
+                    bankName: '',
+                    accountNumber: '',
+                    accountHoldersName: '',
+                    swiftCode: ''
+                });
+                setFiles(null)
+                
+                
+                
+                
+                setTimeout(() => {
+                    setMessage("");
+                  }, 3000);
+    
+            }
+            console.log(response);
+        } catch (error) {
+            setError(error.message)
+                setTimeout(() => {
+                    setError("");
+                  }, 3000);
+            console.error('Error posting data:', error.message);
         }
-        console.log(response);
-    } catch (error) {
-        setError(error.message)
-            setTimeout(() => {
-                setError("");
-              }, 3000);
-        console.error('Error posting data:', error.message);
     }
+    
 };
 
 

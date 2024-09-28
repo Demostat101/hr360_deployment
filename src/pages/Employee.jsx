@@ -139,7 +139,7 @@ const Employee = () => {
             <div className="w-full h-full">
               {isLoading && (
                 <div className="w-full h-96 flex flex-col justify-center place-items-center">
-                  <div className="loader"></div>
+                  <div className="loading"></div>
                 </div>
               )}
 

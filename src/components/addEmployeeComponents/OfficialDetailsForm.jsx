@@ -101,8 +101,8 @@ const OfficialDetailsForm = () => {
                   onChange={handleChangeOfficialDetails}
                   id=""
                 >
-                  <option value="234">+234</option>
                   <option value="1">+1</option>
+                  <option value="234">+234</option>
                   <option value="+222">+222</option>
                 </select>
                 <input
@@ -280,6 +280,7 @@ const OfficialDetailsForm = () => {
             </label>
             <textarea
               className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[70px] focus:outline-none"
+              placeholder="react,node js,javascript"
               name="skills"
               value={officialDetails.skills}
                 onChange={handleChangeOfficialDetails}

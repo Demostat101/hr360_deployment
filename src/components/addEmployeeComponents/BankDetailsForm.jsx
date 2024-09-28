@@ -9,8 +9,8 @@ const BankDetailsForm = () => {
         onSubmit={e => e.preventDefault()}
         className="w-[100%] flex flex-col gap-[40px] my-[20px]"
       >
-        <div className="text-green-500">{message}</div>
-        <div className="text-red-500">{error}</div>
+        <div className="text-green-500 text-center">{message}</div>
+        <div className="text-red-500 text-center">{error}</div>
         <span className="flex flex-col gap-[2px]  w-full h-[73px]">
           <label
             className="font-[500] text-[14px] leading-[21px]"

@@ -164,7 +164,7 @@ const EmployeeDetails = () => {
                           }
                         >
                         <span>{months[Number(employee.officialDetails.startingDate.slice(6,7)-1)]}</span>
-                          <span> {employee.officialDetails.startingDate.slice(8,10)}th,</span>
+                          <span> {employee.officialDetails.startingDate.slice(8,10)},</span>
                         <span> {employee.officialDetails.startingDate.slice(0,4)}</span>
                           
                         </span>{" "}
