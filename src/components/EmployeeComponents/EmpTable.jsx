@@ -10,10 +10,18 @@ import {
 import { useMemo } from "react";
 import { useTable } from "react-table";
 import { Context } from "../../contexts/DashBoardContext";
+import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const EmpTable = () => {
   const { data, searchName, searchEmpID, handleCheckBox, searchEmpRegion } =
     Context();
+    const {addNewEmployee} = addEmployeeContext()
+    console.log(data);
+    console.log(addNewEmployee);
+    
+    
+    
+    
 
   const { palette } = createTheme();
   const theme = createTheme({
@@ -28,14 +36,14 @@ const EmpTable = () => {
     endPageIndex,
     currentPageIndex,
     setStartPageIndex,
-  ] = UsePagination(9, data.length);
+  ] = UsePagination(8, data.length);
 
   const filteredEmployeeList = useMemo(
     () =>
       data
         .filter(
           (employee) =>
-            employee.firstName.toLowerCase().includes(searchName.toLowerCase()) &&
+            (employee.firstName.toLowerCase().includes(searchName.toLowerCase()) || employee.lastName.toLowerCase().includes(searchName.toLowerCase())) &&
             employee.officialDetails.employeeId
             .toString().includes(searchEmpID.toString()) &&
             employee.officialDetails.region
@@ -46,7 +54,7 @@ const EmpTable = () => {
           startPageIndex * endPageIndex,
           startPageIndex * endPageIndex + endPageIndex
         ),
-    [startPageIndex, searchName, searchEmpID, searchEmpRegion, data]
+    [startPageIndex, searchName, searchEmpID, searchEmpRegion, data,addNewEmployee]
   );
 
   const columns = useMemo(

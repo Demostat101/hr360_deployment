@@ -20,10 +20,15 @@ export const ContextProvider = ({ children }) => {
   const [searchEmpRegion, setSearchEmpRegion] = useState("");
   const [open, setOpen] = useLocalStorage(false);
   const [openModal, setOpenModal] = useState(false);
+ 
 
   const { data, fetchError, isLoading, setData } = useAxiosFetch(
     `https://hr360employeescrudbackend.onrender.com/employees`
   );
+
+  console.log(data);
+  
+  
   
 
   const handleOpenBar = () => {
@@ -38,6 +43,7 @@ export const ContextProvider = ({ children }) => {
         ? { ...item, active: !item.active }
         : item}
     );
+
 
     setData(toggleCheckBox);
 
@@ -66,7 +72,7 @@ if (result.error) {
   setError(result.error); // Handle the error properly
 } else {
   // Handle success case, e.g., updating the state or notifying the user
-  console.log("successfully updated");
+  // console.log("successfully updated");
   
 }
 
@@ -355,7 +361,7 @@ if (result.error) {
         resetPassword,
         setResetPassword,
         resetPasswordHandler,
-        isResetPasswordLoading
+        isResetPasswordLoading,
       }}
     >
       {children}

@@ -3,6 +3,7 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { useAxiosFetch } from "../hooks/UseAxiosFetch";
 
 const employeeContext = createContext();
 
@@ -17,6 +18,12 @@ const AddEmployeeContext = ({children}) => {
     const [files, setFiles] = useState("");
     const [message,setMessage]=useState("")
     const [error,setError]=useState("")
+    const [addNewEmployee,setAddNewEmployee] = useState(0)
+    const {data} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`)
+    console.log(data.length);
+    console.log(addNewEmployee);
+    
+    
     
      // Personal Information State
      const [personalInfo, setPersonalInfo] = useState({
@@ -156,59 +163,63 @@ const postEmployeeData = async () => {
         toast.info("All fields are required except middle name field")
         return;
     } else {
+        toast.loading("Sending Data...")
         try {
             const response = await axios.post('https://hr360employeescrudbackend.onrender.com/employee', employeeData,{
                 headers:{"Content-Type":"multipart/form-data"}
             });
             if (response.status === 200) {
                 setMessage(response.data.message)
-                setOfficialDetails({
-                    employeeId: '',
-                    jobTitle: '',
-                    department: '',
-                    email: '',
-                    phoneNoCode: '',
-                    phoneNo: '',
-                    reportingSupervisor: '',
-                    workSchedule: '',
-                    employmentType: '',
-                    region: '',
-                    role: '',
-                    basicSalary: '',
-                    startingDate: '',
-                    contractEndDate: '',
-                    skills: '',
-                });
-                setPersonalInfo({
-                    firstName: '',
-                    middleName: '',
-                    lastName: '',
-                    gender: '',
-                    email: '',
-                    phoneNoCode: '',
-                    phoneNo: '',
-                    address: '',
-                    dateOfBirth: '',
-                    maritalStatus: '',
-                    religion: '',
-                    educationalQualification: '',
-                    nationality: '',
-                    languageSpoken: '',
-                });
-                setEmergencyContact({
-                    name: '',
-                    phoneNoCode: '',
-                    phoneNo: '',
-                    relationship: '',
-                    address: '',
-                });
-                setBankDetails({
-                    bankName: '',
-                    accountNumber: '',
-                    accountHoldersName: '',
-                    swiftCode: ''
-                });
-                setFiles(null)
+                toast.dismiss()
+                setAddNewEmployee(prev => prev + 1); 
+
+                // setOfficialDetails({
+                //     employeeId: '',
+                //     jobTitle: '',
+                //     department: '',
+                //     email: '',
+                //     phoneNoCode: '',
+                //     phoneNo: '',
+                //     reportingSupervisor: '',
+                //     workSchedule: '',
+                //     employmentType: '',
+                //     region: '',
+                //     role: '',
+                //     basicSalary: '',
+                //     startingDate: '',
+                //     contractEndDate: '',
+                //     skills: '',
+                // });
+                // setPersonalInfo({
+                //     firstName: '',
+                //     middleName: '',
+                //     lastName: '',
+                //     gender: '',
+                //     email: '',
+                //     phoneNoCode: '',
+                //     phoneNo: '',
+                //     address: '',
+                //     dateOfBirth: '',
+                //     maritalStatus: '',
+                //     religion: '',
+                //     educationalQualification: '',
+                //     nationality: '',
+                //     languageSpoken: '',
+                // });
+                // setEmergencyContact({
+                //     name: '',
+                //     phoneNoCode: '',
+                //     phoneNo: '',
+                //     relationship: '',
+                //     address: '',
+                // });
+                // setBankDetails({
+                //     bankName: '',
+                //     accountNumber: '',
+                //     accountHoldersName: '',
+                //     swiftCode: ''
+                // });
+                // setFiles(null)
                 
                 
                 
@@ -221,6 +232,7 @@ const postEmployeeData = async () => {
             console.log(response);
         } catch (error) {
             setError(error.message)
+            toast.dismiss()
                 setTimeout(() => {
                     setError("");
                   }, 3000);
@@ -248,7 +260,8 @@ const postEmployeeData = async () => {
         bankDetails,
         handleChangeBankDetails,
         message,
-        error
+        error,
+        addNewEmployee
 
     }}>
         {children}

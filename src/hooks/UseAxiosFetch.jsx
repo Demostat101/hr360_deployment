@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 export const useAxiosFetch = (dataUrl) => {
   const [data, setData] = useState([]);
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+ 
+  console.log(data);
+  
+  
+  
+  
 
   useEffect(() => {
     let isMounted = true;
@@ -27,16 +34,23 @@ export const useAxiosFetch = (dataUrl) => {
     };
 
     fetchData(dataUrl);
-
+    
     const cleanUp = () => {
       isMounted = false;
       source.cancel();
     };
-
+    
     return cleanUp;
   }, [dataUrl]);
+
+
+  
+  
+  
   return { data, fetchError, isLoading, setData };
 };
+
+
 
 export const apiRequest = async (url = [], optionObj = {}, errMsg = null) => {
   try {
