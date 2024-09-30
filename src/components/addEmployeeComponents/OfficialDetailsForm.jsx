@@ -2,13 +2,13 @@ import React from "react";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const OfficialDetailsForm = () => {
-  const {handleChangeOfficialDetails,officialDetails} = addEmployeeContext();
+  const { handleChangeOfficialDetails, officialDetails } = addEmployeeContext();
   return (
     <div>
       <form
         className="flex flex-col gap-[30px]"
         action=""
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
       >
         {/* Container holding top details */}
         <div className="flex flex-col gap-[13.8px]">
@@ -26,7 +26,7 @@ const OfficialDetailsForm = () => {
                 id="empID"
                 name="employeeId"
                 value={officialDetails.employeeId}
-               onChange={handleChangeOfficialDetails}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>{" "}
@@ -81,7 +81,7 @@ const OfficialDetailsForm = () => {
                 id="officialemail"
                 name="email"
                 value={officialDetails.email}
-               onChange={handleChangeOfficialDetails}
+                onChange={handleChangeOfficialDetails}
                 required
               />
             </span>
@@ -113,6 +113,7 @@ const OfficialDetailsForm = () => {
                   value={officialDetails.phoneNo}
                   onChange={handleChangeOfficialDetails}
                   required
+                  maxLength={10}
                 />
               </span>
             </span>
@@ -266,8 +267,7 @@ const OfficialDetailsForm = () => {
               id="role"
               name="role"
               value={officialDetails.role}
-               onChange={handleChangeOfficialDetails}
-              
+              onChange={handleChangeOfficialDetails}
               required
             />
           </div>{" "}
@@ -283,7 +283,7 @@ const OfficialDetailsForm = () => {
               placeholder="react,node js,javascript"
               name="skills"
               value={officialDetails.skills}
-                onChange={handleChangeOfficialDetails}
+              onChange={handleChangeOfficialDetails}
               id="skills"
             ></textarea>
           </div>{" "}

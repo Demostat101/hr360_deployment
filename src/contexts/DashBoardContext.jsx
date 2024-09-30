@@ -2,8 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import useLocalStorage from "use-local-storage";
 import { useAxiosFetch, apiRequest } from "../hooks/UseAxiosFetch";
 import axios from "axios";
-import {  toast } from 'react-toastify';
- 
+import { toast } from "react-toastify";
 
 export const dashBoardContext = createContext();
 
@@ -13,23 +12,17 @@ export const Context = () => {
 
 export const ContextProvider = ({ children }) => {
   // const API_URL = "http://localhost:4000/data";
-  
+
   const [error, setError] = useState(null);
   const [searchName, setSearchName] = useState("");
   const [searchEmpID, setSearchEmpID] = useState("");
   const [searchEmpRegion, setSearchEmpRegion] = useState("");
   const [open, setOpen] = useLocalStorage(false);
   const [openModal, setOpenModal] = useState(false);
- 
 
   const { data, fetchError, isLoading, setData } = useAxiosFetch(
     `https://hr360employeescrudbackend.onrender.com/employees`
   );
-
-  console.log(data);
-  
-  
-  
 
   const handleOpenBar = () => {
     const close = !open;
@@ -38,24 +31,19 @@ export const ContextProvider = ({ children }) => {
 
   const handleCheckBox = async (id) => {
     const API_URL = `https://hr360employeescrudbackend.onrender.com/employee/${id}`;
-    const toggleCheckBox = data.map((item) =>{
-    return  `${item._id}` === `${id}`
+    const toggleCheckBox = data.map((item) => {
+      return `${item._id}` === `${id}`
         ? { ...item, active: !item.active }
-        : item}
-    );
-
+        : item;
+    });
 
     setData(toggleCheckBox);
 
     //to update Status
 
-    const myItem = toggleCheckBox.filter(
-      (item) => {
-        
-        return `${item._id}` === `${id}`
-        
-      }
-    );
+    const myItem = toggleCheckBox.filter((item) => {
+      return `${item._id}` === `${id}`;
+    });
 
     const updateOptions = {
       method: "PATCH",
@@ -65,17 +53,12 @@ export const ContextProvider = ({ children }) => {
       body: JSON.stringify({ active: `${myItem[0]}`.active }),
     };
 
-    
     const result = await apiRequest(API_URL, updateOptions);
 
-if (result.error) {
-  setError(result.error); // Handle the error properly
-} else {
-  // Handle success case, e.g., updating the state or notifying the user
-  // console.log("successfully updated");
-  
-}
-
+    if (result.error) {
+      setError(result.error); // Handle the error properly
+    } else {
+    }
   };
 
   // LOGIN AND SIGNUP PAGE LOGIC
@@ -110,9 +93,6 @@ if (result.error) {
         signupFormData
       );
       const signUpData = await response.data;
-      console.log(signUpData);
-      
-
       if (signUpData.success) {
         sessionStorage.setItem("auth-token", signUpData.token);
         sessionStorage.setItem("logged", signUpData.success);
@@ -172,8 +152,6 @@ if (result.error) {
         setState("login");
       }
     } catch (error) {
-      console.log(error);
-
       setSignupErrors(error.response.data.errors);
 
       setTimeout(() => {
@@ -208,29 +186,33 @@ if (result.error) {
       }, 3000);
       return;
     }
-    
-    toast.loading("Sending OTP...")
-    
+
+    toast.loading("Sending OTP...");
+
     // API CALL
     try {
-      
       const {
         data: { code },
         status,
-      } = await axios.get("https://hr360backendloginsignup.onrender.com/generateOTP", loginEmail);
+      } = await axios.get(
+        "https://hr360backendloginsignup.onrender.com/generateOTP",
+        loginEmail
+      );
 
       if (status === 200) {
-       
         const data = await getUser(loginEmail);
-        toast.dismiss()
+        toast.dismiss();
 
         const text = `Your password recovery OTP is ${code}. Verify and recover your password.`;
-        await axios.post("https://hr360backendloginsignup.onrender.com/sendOtp", {
-          name: data.name,
-          email: data.email,
-          text,
-          subject: "Password Recovery OTP",
-        });
+        await axios.post(
+          "https://hr360backendloginsignup.onrender.com/sendOtp",
+          {
+            name: data.name,
+            email: data.email,
+            text,
+            subject: "Password Recovery OTP",
+          }
+        );
         setState("otp");
 
         return code;
@@ -274,12 +256,12 @@ if (result.error) {
   // reset password
 
   const [resetPassword, setResetPassword] = useState("");
-  const [isResetPasswordLoading,setIsResetPasswordLoading] = useState(false)
+  const [isResetPasswordLoading, setIsResetPasswordLoading] = useState(false);
 
   const resetPasswordHandler = async () => {
     const user = await getUser(loginEmail);
     const password = resetPassword;
-    setIsResetPasswordLoading(true)
+    setIsResetPasswordLoading(true);
 
     try {
       const { data, status } = await axios.put(
@@ -290,21 +272,16 @@ if (result.error) {
         }
       );
 
-      
-
       if (status === 200) {
         setState("login");
-        setResetPassword("")
+        setResetPassword("");
         return Promise.resolve({ data, status });
       }
     } catch (error) {
-      console.log(error);
-    } finally{
-      setIsResetPasswordLoading(false)
+    } finally {
+      setIsResetPasswordLoading(false);
     }
   };
-
-  
 
   // const logOut = ()=>{
   //   sessionStorage.removeItem("logged")
@@ -333,7 +310,6 @@ if (result.error) {
         setSearchEmpRegion,
         openModal,
         setOpenModal,
-
         setIsSignedIn,
         isSignedIn,
         loginEmail,

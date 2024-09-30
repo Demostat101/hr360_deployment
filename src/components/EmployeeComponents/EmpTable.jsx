@@ -7,21 +7,41 @@ import {
   ThemeProvider,
   Typography,
 } from "@mui/material";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useTable } from "react-table";
 import { Context } from "../../contexts/DashBoardContext";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
+import axios from "axios";
+import { useAxiosFetch } from "../../hooks/UseAxiosFetch";
 
 const EmpTable = () => {
-  const { data, searchName, searchEmpID, handleCheckBox, searchEmpRegion } =
+  const { searchName, searchEmpID, handleCheckBox, searchEmpRegion } =
     Context();
-    const {addNewEmployee} = addEmployeeContext()
-    console.log(data);
-    console.log(addNewEmployee);
-    
-    
-    
-    
+  const { setData, data } = useAxiosFetch(
+    `https://hr360employeescrudbackend.onrender.com/employees`
+  );
+  const { addNewEmployee, setAddNewEmployee } = addEmployeeContext();
+
+  // TO update table after a new employee has been added
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        "https://hr360employeescrudbackend.onrender.com/employees"
+      );
+      setData(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (addNewEmployee) {
+      fetchData();
+      setAddNewEmployee(false);
+    }
+  }, [addNewEmployee]);
+
+  // To change pagination background color
 
   const { palette } = createTheme();
   const theme = createTheme({
@@ -36,16 +56,22 @@ const EmpTable = () => {
     endPageIndex,
     currentPageIndex,
     setStartPageIndex,
-  ] = UsePagination(8, data.length);
+  ] = UsePagination(9, data.length);
 
   const filteredEmployeeList = useMemo(
     () =>
       data
         .filter(
           (employee) =>
-            (employee.firstName.toLowerCase().includes(searchName.toLowerCase()) || employee.lastName.toLowerCase().includes(searchName.toLowerCase())) &&
+            (employee.firstName
+              .toLowerCase()
+              .includes(searchName.toLowerCase()) ||
+              employee.lastName
+                .toLowerCase()
+                .includes(searchName.toLowerCase())) &&
             employee.officialDetails.employeeId
-            .toString().includes(searchEmpID.toString()) &&
+              .toString()
+              .includes(searchEmpID.toString()) &&
             employee.officialDetails.region
               .toLowerCase()
               .includes(searchEmpRegion.toLowerCase())
@@ -54,7 +80,14 @@ const EmpTable = () => {
           startPageIndex * endPageIndex,
           startPageIndex * endPageIndex + endPageIndex
         ),
-    [startPageIndex, searchName, searchEmpID, searchEmpRegion, data,addNewEmployee]
+    [
+      startPageIndex,
+      searchName,
+      searchEmpID,
+      searchEmpRegion,
+      data,
+      addNewEmployee,
+    ]
   );
 
   const columns = useMemo(
@@ -148,9 +181,13 @@ const EmpTable = () => {
                     name=""
                     id=""
                   />
-                  <span className="pl-[10px]">{val.officialDetails.employeeId}</span>
+                  <span className="pl-[10px]">
+                    {val.officialDetails.employeeId}
+                  </span>
                 </td>
-                <td className="flex gap-[8px] place-items-center"><span>{val.firstName}</span> <span>{val.lastName}</span></td>
+                <td className="flex gap-[8px] place-items-center">
+                  <span>{val.firstName}</span> <span>{val.lastName}</span>
+                </td>
                 <td>{val.officialDetails.department}</td>
                 <td>{val.officialDetails.role}</td>
                 <td>{val.officialDetails.email}</td>

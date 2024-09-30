@@ -24,7 +24,7 @@ const Stepper = ({ stepper, currentStep, isComplete }) => {
     <div className="w-full px-[125px]">
       <div className="w-full flex justify-between relative ">
         {/* stepper */}
-        {stepper.map(({ name }, index) => {
+        {stepper.map(({ Name }, index) => {
           return (
             <div
               ref={(dynamicWidth) => (stepRef.current[index] = dynamicWidth)}
@@ -43,7 +43,7 @@ const Stepper = ({ stepper, currentStep, isComplete }) => {
               </div>
               {/* step-number */}
               <div className="font-[500] text-[16px] leading-[24px] text-black opacity-70">
-                {name}
+                {Name}
               </div>
               {/* step-name */}
             </div>
@@ -57,7 +57,7 @@ const Stepper = ({ stepper, currentStep, isComplete }) => {
             marginLeft: widthMargin.marginLeft,
             marginRight: widthMargin.marginRight,
           }}
-          className="absolute top-[25%] left-0 h-1"
+          className="absolute top-[30%] left-0 h-1"
         >
           <div
             className="progress h-full bg-[#176b87]"

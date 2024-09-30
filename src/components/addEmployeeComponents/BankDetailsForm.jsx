@@ -1,12 +1,13 @@
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const BankDetailsForm = () => {
-  const { handleChangeBankDetails,bankDetails,message,error} = addEmployeeContext();
+  const { handleChangeBankDetails, bankDetails, message, error } =
+    addEmployeeContext();
   return (
     <div className="w-full flex flex-col  place-items-center">
       <form
         action=""
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
         className="w-[100%] flex flex-col gap-[40px] my-[20px]"
       >
         <div className="text-green-500 text-center">{message}</div>
@@ -24,7 +25,7 @@ const BankDetailsForm = () => {
             id="bank"
             name="bankName"
             value={bankDetails.bankName}
-               onChange={handleChangeBankDetails}
+            onChange={handleChangeBankDetails}
             required
           />
         </span>{" "}
@@ -41,8 +42,9 @@ const BankDetailsForm = () => {
             id="account"
             name="accountNumber"
             value={bankDetails.accountNumber}
-               onChange={handleChangeBankDetails}
+            onChange={handleChangeBankDetails}
             required
+            maxLength={10}
           />
         </span>{" "}
         <span className="flex flex-col gap-[2px]  w-full h-[73px]">
@@ -58,7 +60,7 @@ const BankDetailsForm = () => {
             id="accholder"
             name="accountHoldersName"
             value={bankDetails.accountHoldersName}
-               onChange={handleChangeBankDetails}
+            onChange={handleChangeBankDetails}
             required
           />
         </span>{" "}
@@ -75,7 +77,7 @@ const BankDetailsForm = () => {
             id="biccode"
             name="swiftCode"
             value={bankDetails.swiftCode}
-               onChange={handleChangeBankDetails}
+            onChange={handleChangeBankDetails}
             required
           />
         </span>{" "}

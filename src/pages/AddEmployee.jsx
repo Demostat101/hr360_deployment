@@ -10,7 +10,7 @@ import { addEmployeeContext } from "../contexts/AddEmployeeContext";
 const AddEmployee = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isComplete, setIsComplete] = useState(false);
-  const {postEmployeeData} = addEmployeeContext()
+  const { postEmployeeData } = addEmployeeContext();
   const [formData, setFormData] = useState({
     personal: {},
     official: {},
@@ -18,41 +18,25 @@ const AddEmployee = () => {
   });
 
   // Update form data based on the current step
-const handleDataChange = (step, data) => {
-  setFormData((prev) => ({ ...prev, [step]: data }));
-};
+  const handleDataChange = (step, data) => {
+    setFormData((prev) => ({ ...prev, [step]: data }));
+  };
 
-// In your stepper array, pass down the data and handler
-const stepper = [
-  {
-    Name: "Personal details",
-    Component: PersonalDetailsForm,
-  },
-  {
-    Name: "Official details",
-    Component: OfficialDetailsForm,
-  },
-  {
-    Name: "Bank details",
-    Component: BankDetailsForm,
-  },
-];
-
-
-  // const stepper = [
-  //   {
-  //     Name: "Personal details",
-  //     Component: () => <PersonalDetailsForm />,
-  //   },
-  //   {
-  //     Name: "Official details",
-  //     Component: () => <OfficialDetailsForm />,
-  //   },
-  //   {
-  //     Name: "Bank details",
-  //     Component: () => <BankDetailsForm />,
-  //   },
-  // ];
+  // In your stepper array, pass down the data and handler
+  const stepper = [
+    {
+      Name: "Personal details",
+      Component: PersonalDetailsForm,
+    },
+    {
+      Name: "Official details",
+      Component: OfficialDetailsForm,
+    },
+    {
+      Name: "Bank details",
+      Component: BankDetailsForm,
+    },
+  ];
 
   const handlePrevButton = () => {
     setCurrentStep((prevStep) => prevStep - 1);
@@ -69,7 +53,6 @@ const stepper = [
   };
 
   const ActiveComponent = stepper[currentStep - 1]?.Component;
-  
 
   return (
     <main className="w-full p-[20px]">
@@ -93,13 +76,21 @@ const stepper = [
           <div className="px-[65px]">
             {/* <ActiveComponent /> */}
 
-            <ActiveComponent 
-            formData={formData[stepper[currentStep - 1].Name.toLowerCase()]} 
-            onChange={(data) => handleDataChange(stepper[currentStep - 1].Name.toLowerCase(), data)} 
-          />
+            <ActiveComponent
+              formData={formData[stepper[currentStep - 1].Name.toLowerCase()]}
+              onChange={(data) =>
+                handleDataChange(
+                  stepper[currentStep - 1].Name.toLowerCase(),
+                  data
+                )
+              }
+            />
           </div>
           <div className="flex justify-between px-[65px] mt-[30px]">
-            <button className="p-[20px] border-[#ECEEF6] border-[1.66px] rounded-[8.28px] font-[500] text-[13.26px] leading-[19.88px]"  type="button">
+            <button
+              className="p-[20px] border-[#ECEEF6] border-[1.66px] rounded-[8.28px] font-[500] text-[13.26px] leading-[19.88px]"
+              type="button"
+            >
               Cancel
             </button>
             <div>
@@ -109,7 +100,7 @@ const stepper = [
                   <button
                     className="p-[20px] rounded-[8.28px] flex gap-[6.63px] bg-white text-black place-items-center border-[#ECEEF6] border-[1.66px]"
                     onClick={handlePrevButton}
-                     type="button"
+                    type="button"
                   >
                     {" "}
                     <FaArrowLeftLong size={19.88} />{" "}
@@ -120,7 +111,11 @@ const stepper = [
                   <div>
                     {" "}
                     {currentStep === stepper.length ? (
-                      <button className="p-[20px] rounded-[8.28px] flex gap-[6.63px] bg-[#176B87] text-white font-[500] text-[13.26px] leading-[19.88px]" onClick={postEmployeeData}  type="button">
+                      <button
+                        className="p-[20px] rounded-[8.28px] flex gap-[6.63px] bg-[#176B87] text-white font-[500] text-[13.26px] leading-[19.88px]"
+                        onClick={postEmployeeData}
+                        type="button"
+                      >
                         Submit
                       </button>
                     ) : (
@@ -142,7 +137,7 @@ const stepper = [
                 <button
                   className="p-[20px] rounded-[8.28px] flex gap-[6.63px] bg-[#176B87] text-white place-items-center"
                   onClick={handleNextButton}
-                   type="button"
+                  type="button"
                 >
                   <span className="font-[500] text-[13.26px] leading-[19.88px]">
                     Next

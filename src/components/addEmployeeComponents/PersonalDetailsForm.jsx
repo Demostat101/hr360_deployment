@@ -2,11 +2,15 @@ import { useEffect, useRef, useState } from "react";
 import { PiUploadThin } from "react-icons/pi";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
-
-
-
 const PersonalDetailsForm = () => {
-  const {files,setFiles,handleChangePersonalInfo,personalInfo,handleChangeEmergencyContact,emergencyContact} = addEmployeeContext();
+  const {
+    files,
+    setFiles,
+    handleChangePersonalInfo,
+    personalInfo,
+    handleChangeEmergencyContact,
+    emergencyContact,
+  } = addEmployeeContext();
   const inputRef = useRef();
 
   const handleDragOver = (event) => {
@@ -17,15 +21,14 @@ const PersonalDetailsForm = () => {
     event.preventDefault();
     const filesArray = [...event.dataTransfer.files];
     setFiles(filesArray);
-};
-
+  };
 
   return (
     <div>
       <form
         className="flex flex-col gap-[30px]"
         action=""
-        onSubmit={e => e.preventDefault()}
+        onSubmit={(e) => e.preventDefault()}
       >
         {/* Container holding top details */}
         <div className="flex flex-col gap-[13.8px]">
@@ -41,7 +44,7 @@ const PersonalDetailsForm = () => {
                 className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                 type="text"
                 id="fname"
-               onChange={handleChangePersonalInfo}
+                onChange={handleChangePersonalInfo}
                 name="firstName"
                 value={personalInfo.firstName}
                 required
@@ -61,7 +64,6 @@ const PersonalDetailsForm = () => {
                 value={personalInfo.middleName}
                 onChange={handleChangePersonalInfo}
                 name="middleName"
-              
               />
             </span>
             <span className="flex flex-col gap-[6.9px]  w-[30%]">
@@ -134,9 +136,8 @@ const PersonalDetailsForm = () => {
                   name="phoneNoCode"
                   id=""
                   value={personalInfo.phoneNoCode}
-                onChange={handleChangePersonalInfo}
+                  onChange={handleChangePersonalInfo}
                 >
-                
                   <option value="+1">+1</option>
                   <option value="+234">+234</option>
                   <option value="+222">+222</option>
@@ -146,10 +147,10 @@ const PersonalDetailsForm = () => {
                   type="tel"
                   id="phone"
                   name="phoneNo"
-                  
                   value={personalInfo.phoneNo}
-                onChange={handleChangePersonalInfo}
+                  onChange={handleChangePersonalInfo}
                   required
+                  maxLength={10}
                 />
               </span>
             </span>
@@ -167,8 +168,7 @@ const PersonalDetailsForm = () => {
               id="address"
               name="address"
               value={personalInfo.address}
-               onChange={handleChangePersonalInfo}
-              
+              onChange={handleChangePersonalInfo}
               required
             />
           </div>{" "}
@@ -244,7 +244,7 @@ const PersonalDetailsForm = () => {
               id="education"
               name="educationalQualification"
               value={personalInfo.educationalQualification}
-                onChange={handleChangePersonalInfo}
+              onChange={handleChangePersonalInfo}
               required
             />
           </div>{" "}
@@ -326,9 +326,8 @@ const PersonalDetailsForm = () => {
                   className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
                   name="phoneNoCode"
                   value={emergencyContact.phoneNoCode}
-                onChange={handleChangeEmergencyContact}
+                  onChange={handleChangeEmergencyContact}
                   id=""
-                
                 >
                   <option value="+1">+1</option>
                   <option value="+234">+234</option>
@@ -342,6 +341,7 @@ const PersonalDetailsForm = () => {
                   value={emergencyContact.phoneNo}
                   onChange={handleChangeEmergencyContact}
                   required
+                  maxLength={10}
                 />
               </span>
             </span>
@@ -358,7 +358,7 @@ const PersonalDetailsForm = () => {
                 id="relationship"
                 name="relationship"
                 value={emergencyContact.relationship}
-                  onChange={handleChangeEmergencyContact}
+                onChange={handleChangeEmergencyContact}
                 required
               />
             </span>
@@ -429,8 +429,6 @@ const PersonalDetailsForm = () => {
                       <button type="button" onClick={() => setFiles(null)}>
                         Cancel
                       </button>
-                    
-                     
                     </div>
                   </div>
                 )}
