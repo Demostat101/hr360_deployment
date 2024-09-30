@@ -784,8 +784,8 @@ const EmployeePage = () => {
                           <div
                             className={
                               employee.officialDetails.skills.length > 2
-                                ? "py-[9px] px-[5px] flex flex-wrap gap-[10px]"
-                                : "py-[9px] px-[5px] flex gap-[10px]"
+                                ? "py-[9px] px-[5px] flex flex-wrap gap-[10px] pr-[5px]"
+                                : "py-[9px] px-[5px] flex flex-wrap gap-[10px] pr-[10px]"
                             }
                           >
                             {employee.officialDetails.skills.map((val, index) => {
@@ -830,49 +830,49 @@ const EmployeePage = () => {
                   key={index}
                   className={
                     open
-                      ? "w-full h-[44px] flex justify-between"
-                      : "w-full h-[48.37px] flex justify-between"
+                      ? "w-full h-[44px] flex justify-between gap-3"
+                      : "w-full h-[48.37px] flex justify-between gap-3"
                   }
                 >
                   <a
                     className={
                       open
-                        ? " bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[5px] justify-center place-items-center"
-                        : "bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[8px] justify-center place-items-center"
+                        ? " bg-[#E1EDFD] w-fit border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[5px] justify-between place-items-center "
+                        : "bg-[#E1EDFD] w-fit border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[8px] justify-between place-items-center"
                     }
                     href={document}
                     target="_blank"
                   >
-                    <GoPaperclip size={18} />{" "}
-                    <span className="text-nowrap text-[16px]">
+                    <GoPaperclip size={24} />{" "}
+                    <span className=" text-[16px] text-center">
                       {lastName}'s Employment Contract pdf
                     </span>
                   </a>
                   <a
                     className={
                       open
-                        ? " bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[5px] justify-center place-items-center"
-                        : "bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[8px] justify-center place-items-center"
+                        ? " bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[5px] justify-between place-items-center"
+                        : "bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[8px] justify-between place-items-center"
                     }
                     href={document}
                     target="_blank"
                   >
-                    <GoPaperclip size={18} />{" "}
-                    <span className="text-nowrap">
+                    <GoPaperclip size={24} />{" "}
+                    <span className="text-center">
                       {lastName}'s Employment Contract pdf
                     </span>
                   </a>
                   <a
                     className={
                       open
-                        ? " bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[5px]  justify-center place-items-center"
-                        : "bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[8px] justify-center place-items-center"
+                        ? " bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[5px]  justify-between place-items-center"
+                        : "bg-[#E1EDFD] border-[1px] rounded-xl border-[#a5b5bb] p-[10px] flex gap-[8px] justify-between place-items-center"
                     }
                     href={document}
                     target="_blank"
                   >
-                    <GoPaperclip size={18} />{" "}
-                    <span className="text-nowrap">
+                    <GoPaperclip size={24} />{" "}
+                    <span className="text-center">
                       {lastName}'s Employment Contract pdf
                     </span>
                   </a>
