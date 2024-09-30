@@ -2,9 +2,11 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { MdPrint } from "react-icons/md";
 import { Context } from "../../contexts/DashBoardContext";
+import { useAxiosFetch } from "../../hooks/UseAxiosFetch";
 
 const PaySlip = () => {
-  const { open, data } = Context();
+  const { open } = Context();
+  const {data} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`)
   const { id } = useParams();
   const medicalAllowance = 20000
   const transportAllowance = 10000

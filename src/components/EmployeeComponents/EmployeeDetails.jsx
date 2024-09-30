@@ -5,11 +5,13 @@ import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { TbCalendarTime } from "react-icons/tb";
 import { Context } from "../../contexts/DashBoardContext";
+import { useAxiosFetch } from "../../hooks/UseAxiosFetch";
 
 const EmployeeDetails = () => {
   const { pathname } = useLocation();
   
-  const { open, data ,isLoading} = Context();
+  const { open ,isLoading} = Context();
+  const {data} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`)
   const { id } = useParams();
   const employeeFilter = data.filter(
     (employee) => employee._id.toString() === id

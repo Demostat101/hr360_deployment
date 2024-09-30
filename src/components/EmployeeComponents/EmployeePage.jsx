@@ -8,12 +8,13 @@ import { GoPaperclip } from "react-icons/go";
 import { editEmployeeContext } from "../../contexts/EditDetailsContext";
 import { Context } from "../../contexts/DashBoardContext";
 import MultipleSelectChip from "./EmployeeSkillsChip";
+import { useAxiosFetch } from "../../hooks/UseAxiosFetch";
 
 const EmployeePage = () => {
   const { id } = useParams();
 
   const { open } = Context();
-  const { data,isLoading } = editEmployeeContext();
+  const {data} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`)
 
   const {
     editPersonalDetailsButton,

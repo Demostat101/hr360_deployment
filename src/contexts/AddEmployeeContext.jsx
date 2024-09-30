@@ -1,7 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useAxiosFetch } from "../hooks/UseAxiosFetch";
 
 const employeeContext = createContext();
 
@@ -14,9 +13,6 @@ const AddEmployeeContext = ({ children }) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [addNewEmployee, setAddNewEmployee] = useState(false);
-  const { data } = useAxiosFetch(
-    `https://hr360employeescrudbackend.onrender.com/employees`
-  );
 
   // Personal Information State
   const [personalInfo, setPersonalInfo] = useState({
