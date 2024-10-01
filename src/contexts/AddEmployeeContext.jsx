@@ -90,6 +90,21 @@ const AddEmployeeContext = ({ children }) => {
     setBankDetails((prev) => ({ ...prev, [name]: value }));
   };
 
+  const { middleName, ...otherPersonalProps } = personalInfo;
+  const cantSavePersonalDetails = [...Object.values(otherPersonalProps)].every(
+    Boolean
+  );
+  const { ...otherOfficalProps } = officialDetails;
+  const cantSaveOfficialDetails = [...Object.values(otherOfficalProps)].every(
+    Boolean
+  );
+  const { ...otherBankProps } = bankDetails;
+  const cantSaveBankDetails = [...Object.values(otherBankProps)].every(Boolean);
+  const { ...otherEmergencyProps } = emergencyContact;
+  const cantSaveEmergencyDetails = [
+    ...Object.values(otherEmergencyProps),
+  ].every(Boolean);
+
   const postEmployeeData = async () => {
     const employeeData = {
       firstName: personalInfo.firstName,
@@ -143,11 +158,10 @@ const AddEmployeeContext = ({ children }) => {
     };
 
     if (
-      personalInfo.firstName === "" ||
-      personalInfo.dateOfBirth === "" ||
-      officialDetails.jobTitle === "" ||
-      emergencyContact.address === "" ||
-      bankDetails.accountHoldersName === ""
+      !cantSaveBankDetails ||
+      !cantSaveEmergencyDetails ||
+      !cantSaveOfficialDetails ||
+      !cantSavePersonalDetails
     ) {
       toast.info("All fields are required except middle name field");
       return;
