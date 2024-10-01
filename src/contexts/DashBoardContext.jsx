@@ -169,10 +169,10 @@ export const ContextProvider = ({ children }) => {
       const { data } = await axios.get(
         `https://hr360backendloginsignup.onrender.com/user/${loginEmail}`
       );
-
       return data;
     } catch (error) {
-      return null;
+      return;
+
     }
   };
 
@@ -185,7 +185,7 @@ export const ContextProvider = ({ children }) => {
         setLoginErrors("");
       }, 3000);
       return;
-    }
+    } 
 
     toast.loading("Sending OTP...");
 
@@ -201,9 +201,15 @@ export const ContextProvider = ({ children }) => {
 
       if (status === 200) {
         const data = await getUser(loginEmail);
-        toast.dismiss();
-
-        const text = `Your password recovery OTP is ${code}. Verify and recover your password.`;
+        if (!data || !data.name || !data.email) {
+          setLoginErrors("User not found. Please check your email.");
+          setTimeout(() => {
+            setLoginErrors("");
+          }, 5000);
+          toast.dismiss();
+          return;
+        } else {
+          const text = `Your password recovery OTP is ${code}. Verify and recover your password.`;
         await axios.post(
           "https://hr360backendloginsignup.onrender.com/sendOtp",
           {
@@ -214,15 +220,20 @@ export const ContextProvider = ({ children }) => {
           }
         );
         setState("otp");
+        toast.dismiss();
 
         return code;
+        }
+       
+
+        
       } else {
         setLoginErrors("Failed to generate OTP. Please try again.");
       }
     } catch (error) {
-      setLoginErrors(
-        "An error occured, please check your Network, Email and try again"
-      );
+      
+      setLoginErrors(error.message || "An error occurred.");
+      toast.dismiss()
       setTimeout(() => {
         setLoginErrors("");
       }, 5000);
