@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Context } from "../../contexts/DashBoardContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const OtpEmail = () => {
   const otpLength = 4;
@@ -64,9 +65,12 @@ const OtpEmail = () => {
         data: { code },
         status,
       } = await axios.get("https://hr360backendloginsignup.onrender.com/generateOTP", loginEmail);
+      toast.loading("Re-sendind OTP...")
 
       if (status === 200 || status === 201) {
         const data = await getUser(loginEmail);
+        toast.dismiss()
+        toast.success("OTP sent successfully!")
 
         const text = `Your password recovery OTP is ${code}. Verify and recover your password.`;
         await axios.post("https://hr360backendloginsignup.onrender.com/sendOtp", {
