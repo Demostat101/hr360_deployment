@@ -14,7 +14,9 @@ const EmployeePage = () => {
   const { id } = useParams();
 
   const { open } = Context();
-  const {data} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`)
+  const { data } = useAxiosFetch(
+    `https://hr360employeescrudbackend.onrender.com/employees`
+  );
 
   const {
     editPersonalDetailsButton,
@@ -52,7 +54,6 @@ const EmployeePage = () => {
   const employeeFilter = data.filter(
     (employee) => employee._id.toString() === id
   );
-  
 
   const handleEditPersonalDetailsButton = () => {
     setEditPersonalDetailsButton(true);
@@ -62,8 +63,6 @@ const EmployeePage = () => {
   };
 
   const post = data.find((post) => post._id.toString() === id);
-  
-
 
   useEffect(() => {
     if (post) {
@@ -83,7 +82,6 @@ const EmployeePage = () => {
       setEditEmergencyContactCode(post.emergencyContact.phoneNo.code);
       setEditEmergencyContactPhone(post.emergencyContact.phoneNo.phone);
       setEditEmergencyContactRelationship(post.emergencyContact.relationship);
-      
     }
   }, [
     post,
@@ -102,7 +100,7 @@ const EmployeePage = () => {
     setEditLanguageSpoken,
     setEditEmergencyContactCode,
     setEditEmergencyContactPhone,
-    setEditEmergencyContactRelationship
+    setEditEmergencyContactRelationship,
   ]);
 
   useEffect(() => {
@@ -140,9 +138,8 @@ const EmployeePage = () => {
     "September",
     "October",
     "November",
-    "December"
+    "December",
   ];
-  
 
   return (
     <div className="w-full h-full flex flex-col gap-[30px]">
@@ -338,10 +335,38 @@ const EmployeePage = () => {
                               : "font-[500] text-[17.6px] leading-[26.4px]"
                           }
                         >
-                        <span>{employee.dateOfBirth.slice(8,10)}</span>
-                        <span> {months[Number(employee.dateOfBirth.slice(6,7)-1)]},</span>
-                        <span> {employee.dateOfBirth.slice(0,4)}</span>
-                          
+                          <span>
+                            {employee.dateOfBirth.slice(8, 10)}
+                            <sup>
+                              {Number(employee.dateOfBirth.slice(8, 10)) ===
+                                1 ||
+                              Number(employee.dateOfBirth.slice(8, 10)) ===
+                                21 ||
+                              Number(employee.dateOfBirth.slice(8, 10)) === 31
+                                ? "st"
+                                : Number(employee.dateOfBirth.slice(8, 10)) ===
+                                    2 ||
+                                  Number(employee.dateOfBirth.slice(9, 10)) ===
+                                    22
+                                ? "nd"
+                                : Number(employee.dateOfBirth.slice(8, 10)) ===
+                                    3 ||
+                                  Number(employee.dateOfBirth.slice(8, 10)) ===
+                                    23
+                                ? "rd"
+                                : "th"}
+                            </sup>
+                          </span>
+                          <span>
+                            {" "}
+                            {
+                              months[
+                                Number(employee.dateOfBirth.slice(6, 7) - 1)
+                              ]
+                            }
+                            ,
+                          </span>
+                          <span> {employee.dateOfBirth.slice(0, 4)}</span>
                         </div>
                       </div>
 
@@ -498,7 +523,9 @@ const EmployeePage = () => {
                         >
                           <span>{employee.emergencyContact.phoneNo.code}</span>
                           <span>{employee.emergencyContact.phoneNo.phone}</span>
-                          <span>({employee.emergencyContact.relationship})</span>
+                          <span>
+                            ({employee.emergencyContact.relationship})
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -759,8 +786,7 @@ const EmployeePage = () => {
                         </div>
 
                         <div className="w-full h-full flex flex-col gap-[5px]">
-
-                        {/* <span
+                          {/* <span
                             className={
                               open
                                 ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
@@ -788,20 +814,22 @@ const EmployeePage = () => {
                                 : "py-[9px] px-[5px] flex flex-wrap gap-[10px] pr-[10px]"
                             }
                           >
-                            {employee.officialDetails.skills.map((val, index) => {
-                              return (
-                                <div
-                                  key={index}
-                                  className={
-                                    open
-                                      ? "py-[9px] px-[20px] bg-[#E0ECFC] rounded-[10px] border-[1px] border-[#176B87] font-[400] text-[14px] leading-[21px] text-[#176B87] text-nowrap"
-                                      : "py-[9px] px-[20px] bg-[#E0ECFC] rounded-[10px] border-[1px] border-[#176B87] font-[400] text-[14px] leading-[21px] text-[#176B87] text-nowrap"
-                                  }
-                                >
-                                  {val}
-                                </div>
-                              );
-                            }).reverse()}
+                            {employee.officialDetails.skills
+                              .map((val, index) => {
+                                return (
+                                  <div
+                                    key={index}
+                                    className={
+                                      open
+                                        ? "py-[9px] px-[20px] bg-[#E0ECFC] rounded-[10px] border-[1px] border-[#176B87] font-[400] text-[14px] leading-[21px] text-[#176B87] text-nowrap"
+                                        : "py-[9px] px-[20px] bg-[#E0ECFC] rounded-[10px] border-[1px] border-[#176B87] font-[400] text-[14px] leading-[21px] text-[#176B87] text-nowrap"
+                                    }
+                                  >
+                                    {val}
+                                  </div>
+                                );
+                              })
+                              .reverse()}
                           </div>
                         </div>
                       </div>
@@ -825,7 +853,7 @@ const EmployeePage = () => {
               Attachment
             </div>
             <>
-              {employeeFilter.map(({ lastName,document }, index) => (
+              {employeeFilter.map(({ lastName, document }, index) => (
                 <div
                   key={index}
                   className={

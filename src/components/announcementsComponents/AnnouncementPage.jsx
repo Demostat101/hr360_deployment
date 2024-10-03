@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
 import { FaTrashCan } from "react-icons/fa6";
 
-
 import {
   createTheme,
   PaginationItem,
@@ -20,17 +19,12 @@ const AnnouncementPage = () => {
   const [fetchError, setFetchError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-
-
-  
-
   const { palette } = createTheme();
   const theme = createTheme({
     palette: {
       primaryBlue: palette.augmentColor({ color: { main: "#176B87" } }),
     },
   });
-
 
   const [
     totalPages,
@@ -80,19 +74,18 @@ const AnnouncementPage = () => {
   //Edit functionalities
 
   const [editAnnouncementTitle, setEditAnnouncementTitle] = useState("");
-  const [editAnnouncementBody,setEditAnnouncementBody] = useState("");
+  const [editAnnouncementBody, setEditAnnouncementBody] = useState("");
   const [targetId, setTargetId] = useState("");
-  const [showEditDelete, setEditDelete] = useState("")
+  const [showEditDelete, setEditDelete] = useState("");
 
   let handleEditAnnouncement = (getSelected) => {
     setTargetId(getSelected === targetId ? "" : getSelected);
   };
 
-const showEditDeleteButton = (getSelected)=>{
-  setEditDelete(getSelected === showEditDelete ? "" : getSelected) 
-  
-}
-  
+  const showEditDeleteButton = (getSelected) => {
+    setEditDelete(getSelected === showEditDelete ? "" : getSelected);
+  };
+
   const post = data.find((post) => post._id.toString() === targetId);
 
   useEffect(() => {
@@ -102,7 +95,7 @@ const showEditDeleteButton = (getSelected)=>{
     }
   }, [post, setEditAnnouncementBody, setEditAnnouncementTitle]);
 
-  const handleEdit = async (_id,getSelected) => {
+  const handleEdit = async (_id, getSelected) => {
     const edit = {
       _id: (data.length + 1).toString(),
       title: editAnnouncementTitle,
@@ -120,8 +113,8 @@ const showEditDeleteButton = (getSelected)=>{
 
         setEditAnnouncementBody("");
         setEditAnnouncementTitle("");
-        setTargetId(getSelected !== targetId ? getSelected : "")
-        setEditDelete(getSelected !== showEditDelete ? getSelected : "")
+        setTargetId(getSelected !== targetId ? getSelected : "");
+        setEditDelete(getSelected !== showEditDelete ? getSelected : "");
         setData(
           data.map((post) => (post._id === _id ? { ...response.data } : post))
         );
@@ -138,13 +131,10 @@ const showEditDeleteButton = (getSelected)=>{
     try {
       let deleteAnnouncement = data.filter((post) => post._id !== _id);
       setData(deleteAnnouncement);
-      
     } catch (error) {
       console.log(`Error: ${error.message}`);
     }
   };
-
-
 
   return (
     <>
@@ -169,81 +159,107 @@ const showEditDeleteButton = (getSelected)=>{
                 className="flex flex-col gap-[20px] place-items-center mt-[30px]"
               >
                 <div className=" w-[100%] pl-[20px] pr-[40px] h-[126px] border-l-[6px] justify-between place-items-center border-l-[#176B87] rounded-md flex border-[1.17px] bg-white border-[#ECEEF6]">
-                  {
-                    targetId !== _id ?
+                  {targetId !== _id ? (
                     <>
                       <div>
-                    <div className="font-[600] text-[16.66px] leading-[24.99px]">
-                      {title}
-                    </div>
-                    <div className="font-[400] text-[16px] leading-[24px]">
-                      {body.length > 70 ? (
-                        <div>{body.slice(0, 71)}...</div>
-                      ) : (
-                        <div>{body}</div>
-                      )}
-                    </div>
-                  </div>
-                  <div className="flex justify-between place-items-center w-[310px] h-[53.95px]">
-                    <div>
-                      <div className="font-[400] text-[16px] leading-[24.99px] text-black opacity-70">
-                        Posted
+                        <div className="font-[600] text-[16.66px] leading-[24.99px]">
+                          {title}
+                        </div>
+                        <div className="font-[400] text-[16px] leading-[24px]">
+                          {body.length > 70 ? (
+                            <div>{body.slice(0, 71)}...</div>
+                          ) : (
+                            <div>{body}</div>
+                          )}
+                        </div>
                       </div>
-                      <div className="font-[400] text-[16px] leading-[24px] text-black opacity-70 flex gap-[10px]">
-                        {created.slice(0, 10)}{" "}
-                        <span>
-                          {created.slice(11, 20)}{" "}
-                        </span>
+                      <div className="flex justify-between place-items-center w-[310px] h-[53.95px]">
+                        <div>
+                          <div className="font-[400] text-[16px] leading-[24.99px] text-black opacity-70">
+                            Posted
+                          </div>
+                          <div className="font-[400] text-[16px] leading-[24px] text-black opacity-70 flex gap-[10px]">
+                            {created.slice(0, 10).replaceAll("-", "/")}{" "}
+                            <span>
+                              {created.slice(11, 16)}
+                              {created.slice(11, 13) >= 12 ? "PM" : "AM"}{" "}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="relative">
+                          <div
+                            onClick={() => showEditDeleteButton(_id)}
+                            className="w-[40px] h-[40px] bg-[#D9D9D9] grid place-items-center rounded-lg text-[#464646] cursor-pointer"
+                          >
+                            {" "}
+                            <IoIosMore size={20} />{" "}
+                          </div>
+                          {showEditDelete === _id ? (
+                            <div className="absolute flex justify-center font-[600] gap-[20px] w-[100px] border-2 left-[-20px] top-[70px] py-2 bg-white cursor-pointer">
+                              <span onClick={() => handleEditAnnouncement(_id)}>
+                                <AiFillEdit
+                                  className="text-[#176B87]"
+                                  size={30}
+                                />
+                              </span>
+                              <span onClick={() => handleDelete(_id)}>
+                                <FaTrashCan className="text-[red]" size={30} />
+                              </span>
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                        </div>
                       </div>
-                    </div>
-                    <div className="relative">
-                    <div onClick={()=> showEditDeleteButton(_id)}  className="w-[40px] h-[40px] bg-[#D9D9D9] grid place-items-center rounded-lg text-[#464646] cursor-pointer">
-                      {" "}
-                      <IoIosMore size={20} />{" "}
-                     
-                    </div>
-                    {
-                      showEditDelete === _id ?
-                      <div className="absolute flex justify-center font-[600] gap-[20px] w-[100px] border-2 left-[-20px] top-[70px] py-2 bg-white cursor-pointer">
-                        <span onClick={()=> handleEditAnnouncement(_id)}><AiFillEdit className="text-[#176B87]" size={30}/></span>
-                        <span onClick={()=>handleDelete(_id)}><FaTrashCan className="text-[red]" size={30}/></span>
-                      </div>
-                      : ""
-                    }
-                    </div>
-                    
-                  </div>
                     </>
-                     : 
-
-                     <>
-                        <div className="border-2 w-full flex flex-col gap-2">
-                    <div className="font-[600] text-[16.66px] leading-[24.99px] w-full">
-                    <input className="w-full h-8 border-2 rounded-[5px] focus:outline-none" placeholder="Announcement Title" type="text" value={editAnnouncementTitle} onChange={(e)=> setEditAnnouncementTitle(e.target.value)} />
-                    </div>
-                    <div className="font-[400] text-[16px] leading-[24px] w-full">
-                      <input className="w-full h-8 border-2 rounded-[5px] focus:outline-none" placeholder="Announcement Body" type="text" value={editAnnouncementBody} onChange={(e)=> setEditAnnouncementBody(e.target.value)} />
-                    </div>
-                  </div>
-                  <div className="flex justify-between place-items-center w-[310px] h-[53.95px]">
-                    <div>
-                      <div className="font-[400] text-[16px] leading-[24.99px] text-black opacity-70">
-                        Posted
+                  ) : (
+                    <>
+                      <div className="border-2 w-full flex flex-col gap-2">
+                        <div className="font-[600] text-[16.66px] leading-[24.99px] w-full">
+                          <input
+                            className="w-full h-8 border-2 rounded-[5px] focus:outline-none"
+                            placeholder="Announcement Title"
+                            type="text"
+                            value={editAnnouncementTitle}
+                            onChange={(e) =>
+                              setEditAnnouncementTitle(e.target.value)
+                            }
+                          />
+                        </div>
+                        <div className="font-[400] text-[16px] leading-[24px] w-full">
+                          <input
+                            className="w-full h-8 border-2 rounded-[5px] focus:outline-none"
+                            placeholder="Announcement Body"
+                            type="text"
+                            value={editAnnouncementBody}
+                            onChange={(e) =>
+                              setEditAnnouncementBody(e.target.value)
+                            }
+                          />
+                        </div>
                       </div>
-                      <div className="font-[400] text-[16px] leading-[24px] text-black opacity-70 flex gap-[10px]">
-                        {created.slice(0, 10)}{" "}
-                        <span>
-                          {created.slice(11, 20)}{" "}
-                        </span>
+                      <div className="flex justify-between place-items-center w-[310px] h-[53.95px]">
+                        <div className="w-fit">
+                          <div className="font-[400] text-[16px] leading-[24.99px] text-black opacity-70">
+                            Posted
+                          </div>
+                          <div className="font-[400] text-[16px] leading-[24px] text-black opacity-70 flex gap-[10px]">
+                            {created.slice(0, 10)}
+                            <span className="border-2">
+                              {created.slice(11, 20)}
+                            </span>
+                          </div>
+                        </div>
+                        <div
+                          onClick={() => handleEdit(_id)}
+                          className="w-[40px] h-[40px] bg-[#D9D9D9] grid place-items-center rounded-lg text-[#464646] cursor-pointer"
+                        >
+                          {" "}
+                          Save{" "}
+                        </div>
                       </div>
-                    </div>
-                    <div onClick={()=> handleEdit(_id)} className="w-[40px] h-[40px] bg-[#D9D9D9] grid place-items-center rounded-lg text-[#464646] cursor-pointer">
-                      {" "}
-                      Save{" "}
-                    </div>
-                  </div>
-                     </>
-                  }
+                    </>
+                  )}
                 </div>
               </div>
             );
