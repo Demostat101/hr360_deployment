@@ -11,7 +11,6 @@ export const Context = () => {
 };
 
 export const ContextProvider = ({ children }) => {
-  // const API_URL = "http://localhost:4000/data";
 
   const [error, setError] = useState(null);
   const [searchName, setSearchName] = useState("");

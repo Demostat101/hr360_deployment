@@ -1,19 +1,16 @@
 import { NavLink, Outlet, useLocation, useParams } from "react-router-dom";
-import Image from "../../assets/ajayiImage.jfif";
+import Image from "../../assets/sevenupLogo1.jfif";
 import { BsDiagram3 } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
 import { FaPhone } from "react-icons/fa6";
 import { TbCalendarTime } from "react-icons/tb";
 import { Context } from "../../contexts/DashBoardContext";
-import { useAxiosFetch } from "../../hooks/UseAxiosFetch";
+
 
 const EmployeeDetails = () => {
   const { pathname } = useLocation();
 
   const { open, isLoading,data } = Context();
-  // const { data } = useAxiosFetch(
-  //   `https://hr360employeescrudbackend.onrender.com/employees`
-  // );
   const { id } = useParams();
   const employeeFilter = data.filter(
     (employee) => employee._id.toString() === id
@@ -50,7 +47,7 @@ const EmployeeDetails = () => {
             </div>
           )}
 
-          {!isLoading && (
+          {!isLoading && data.length && (
             <>
               {employeeFilter.map((employee) => {
                 return (
@@ -62,24 +59,24 @@ const EmployeeDetails = () => {
                         : "w-[589.17px] h-[180.35px] flex gap-[10.97px] place-items-center"
                     }
                   >
-                    {/* <div className={
-                    open
-                      ? "w-[164.37px] h-[164.37px] border-2 text-[40px]"
-                      : "w-[180.85px] h-[180.85px] border-2 text-[45px]"
-                  }>
-                    <span>{employee.firstName.slice(0,1)}</span>
-                    <span>{employee.lastName.slice(0,1)}</span>
-
-                </div> */}
-                    <img
+                    <div className={
+                        open
+                          ? "w-[164.37px] h-[164.37px] rounded-lg text-center bg-[#F6F7FA] text-[#176B87]"
+                          : "w-[180.85px] h-[180.85px] rounded-lg text-center bg-[#F6F7FA] text-[#176B87]"
+                      }>
+                      <span className="text-[100px]">{employee.firstName.slice(0,1)}</span>
+                      <span className="text-[100px]">{employee.lastName.slice(0,1)}</span>
+                    </div>
+                  
+                    {/* <img
                       src={Image}
                       alt=""
                       className={
                         open
-                          ? "w-[164.37px] h-[164.37px] object-cover"
+                          ? "w-[164.37px] h-[164.37px] object-cover border-2 rounded-lg"
                           : "w-[180.85px] h-[180.85px] object-cover"
                       }
-                    />
+                    /> */}
                     <div
                       className={
                         open ? "w-fit h-[138px] " : "w-fit h-[150.38px]"
