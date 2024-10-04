@@ -157,6 +157,14 @@ const AddEmployeeContext = ({ children }) => {
       },
     };
 
+    if (!/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.firstName) || !/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.middleName) || !/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.lastName)) {
+      setError("First name, Middle name, and Last name must start with uppercase letter");
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+      return;
+  }
+
     if (
       !cantSaveBankDetails ||
       !cantSaveEmergencyDetails ||
