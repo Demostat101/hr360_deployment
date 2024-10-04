@@ -20,7 +20,7 @@ const BankDetailsForm = () => {
             Bank Name
           </label>
           <input
-            className="border-[1.63px] w-full border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
+            className="border-[1.63px] w-full border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none px-3"
             type="text"
             id="bank"
             name="bankName"
@@ -37,7 +37,7 @@ const BankDetailsForm = () => {
             Account Number
           </label>
           <input
-            className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
+            className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none px-3"
             type="text"
             id="account"
             name="accountNumber"
@@ -55,7 +55,7 @@ const BankDetailsForm = () => {
             Account Holder's Name
           </label>
           <input
-            className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
+            className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none px-3"
             type="text"
             id="accholder"
             name="accountHoldersName"
@@ -72,7 +72,7 @@ const BankDetailsForm = () => {
             Swift/BIC Code
           </label>
           <input
-            className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none"
+            className="border-[1.63px] border-solid border-[#ECEEF6] rounded-[8.16px] h-[50px] focus:outline-none px-3"
             type="text"
             id="biccode"
             name="swiftCode"

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { PiUploadThin } from "react-icons/pi";
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
+import { FaTimes } from "react-icons/fa";
 
 const PersonalDetailsForm = () => {
   const {
@@ -41,9 +42,11 @@ const PersonalDetailsForm = () => {
                 First Name
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="text"
                 id="fname"
+                pattern="^[A-Z][a-z]+(\s[A-Z][a-z]+)?$"
+                title="Name should start with UpperCase"
                 onChange={handleChangePersonalInfo}
                 name="firstName"
                 value={personalInfo.firstName}
@@ -58,9 +61,11 @@ const PersonalDetailsForm = () => {
                 Middle Name
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="text"
                 id="middlename"
+                pattern="^[A-Z][a-z]+(\s[A-Z][a-z]+)?$"
+                title="Name should start with UpperCase"
                 value={personalInfo.middleName}
                 onChange={handleChangePersonalInfo}
                 name="middleName"
@@ -74,9 +79,11 @@ const PersonalDetailsForm = () => {
                 Last Name
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="text"
                 id="lastname"
+                pattern="^[A-Z][a-z]+(\s[A-Z][a-z]+)?$"
+                title="Name should start with UpperCase"
                 value={personalInfo.lastName}
                 onChange={handleChangePersonalInfo}
                 name="lastName"
@@ -95,7 +102,7 @@ const PersonalDetailsForm = () => {
                 Gender
               </label>
               <select
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3 text-black opacity-60 text-[10.12px] font-[500]"
                 value={personalInfo.gender}
                 onChange={handleChangePersonalInfo}
                 name="gender"
@@ -114,7 +121,7 @@ const PersonalDetailsForm = () => {
                 Email
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="email"
                 id="email"
                 value={personalInfo.email}
@@ -132,7 +139,7 @@ const PersonalDetailsForm = () => {
               </label>
               <span className="flex justify-between">
                 <select
-                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-[10px]"
+                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3 text-[10px]"
                   name="phoneNoCode"
                   id=""
                   value={personalInfo.phoneNoCode}
@@ -143,7 +150,7 @@ const PersonalDetailsForm = () => {
                   <option value="+222">+222</option>
                 </select>
                 <input
-                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
+                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3 w-[65%]"
                   type="tel"
                   id="phone"
                   name="phoneNo"
@@ -163,7 +170,7 @@ const PersonalDetailsForm = () => {
               Address
             </label>
             <input
-              className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+              className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
               type="text"
               id="address"
               name="address"
@@ -183,7 +190,7 @@ const PersonalDetailsForm = () => {
                 Date of Birth
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="date"
                 id="dob"
                 name="dateOfBirth"
@@ -200,7 +207,7 @@ const PersonalDetailsForm = () => {
                 Marital Status
               </label>
               <select
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3 text-black opacity-60 text-[10.12px] font-[500]"
                 name="maritalStatus"
                 value={personalInfo.maritalStatus}
                 onChange={handleChangePersonalInfo}
@@ -219,7 +226,7 @@ const PersonalDetailsForm = () => {
                 Religion
               </label>
               <select
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none text-black opacity-60 text-[10.12px] font-[500]"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3 text-black opacity-60 text-[10.12px] font-[500]"
                 name="religion"
                 value={personalInfo.religion}
                 onChange={handleChangePersonalInfo}
@@ -239,7 +246,7 @@ const PersonalDetailsForm = () => {
               Educational Qualification
             </label>
             <input
-              className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+              className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
               type="text"
               id="education"
               name="educationalQualification"
@@ -259,7 +266,7 @@ const PersonalDetailsForm = () => {
                 Nationality
               </label>
               <select
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 name="nationality"
                 value={personalInfo.nationality}
                 onChange={handleChangePersonalInfo}
@@ -278,7 +285,7 @@ const PersonalDetailsForm = () => {
                 Language Spoken
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="text"
                 id="language"
                 name="languageSpoken"
@@ -305,7 +312,7 @@ const PersonalDetailsForm = () => {
                 Name
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="text"
                 id="name"
                 name="name"
@@ -321,9 +328,9 @@ const PersonalDetailsForm = () => {
               >
                 Phone No
               </label>
-              <span className="flex justify-between">
+              <span className="flex justify-between gap-2">
                 <select
-                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                   name="phoneNoCode"
                   value={emergencyContact.phoneNoCode}
                   onChange={handleChangeEmergencyContact}
@@ -334,7 +341,7 @@ const PersonalDetailsForm = () => {
                   <option value="+222">+222</option>
                 </select>
                 <input
-                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none w-[65%]"
+                  className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3 w-[65%]"
                   type="tel"
                   id="contactphone"
                   name="phoneNo"
@@ -353,7 +360,7 @@ const PersonalDetailsForm = () => {
                 Relationship
               </label>
               <input
-                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+                className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
                 type="text"
                 id="relationship"
                 name="relationship"
@@ -371,7 +378,7 @@ const PersonalDetailsForm = () => {
               Address
             </label>
             <input
-              className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none"
+              className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[36.79px] focus:outline-none px-3"
               type="text"
               id="contactaddress"
               name="address"
@@ -396,7 +403,7 @@ const PersonalDetailsForm = () => {
                   <div
                     onDragOver={handleDragOver}
                     onDrop={handleDrop}
-                    className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[180.6px] focus:outline-none text-center flex flex-col justify-center place-items-center font-[400] text-[12px] text-black opacity-60"
+                    className="border-[1.55px] border-solid border-[#ECEEF6] rounded-[7.73px] h-[180.6px] focus:outline-none px-3 text-center flex flex-col justify-center place-items-center font-[400] text-[12px] text-black opacity-60"
                   >
                     <div
                       onClick={() => inputRef.current.click()}
@@ -420,16 +427,16 @@ const PersonalDetailsForm = () => {
                 )}
 
                 {files && (
-                  <div>
+                  <div className="flex justify-between flex-row">
                     <span>
-                      {/* {Array.from(files).map((file, index) => file.name)} */}
+                      
                       {files.name}
                     </span>
-                    <div>
+                    
                       <button type="button" onClick={() => setFiles(null)}>
-                        Cancel
+                        <FaTimes size={20} className="text-red-500"/>
                       </button>
-                    </div>
+                    
                   </div>
                 )}
               </>

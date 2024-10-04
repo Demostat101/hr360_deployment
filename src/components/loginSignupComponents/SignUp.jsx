@@ -78,6 +78,7 @@ const SignUp = () => {
                 onChange={(e) => setName(e.target.value)}
                 className="h-[50px] bg-white rounded-[10px] pl-[20px] focus:outline-none border-2"
                 type="text"
+                pattern="^[A-Z][a-z]+(\s[A-Z][a-z]+)?$"
                 placeholder="Enter your first name"
                 required
               />
@@ -93,6 +94,7 @@ const SignUp = () => {
                 id="surname"
                 className="h-[50px] bg-white rounded-[10px] pl-[20px] focus:outline-none border-2"
                 type="text"
+                pattern="^[A-Z][a-z]+(\s[A-Z][a-z]+)?$"
                 autoComplete="off"
                 placeholder="Enter your surname"
                 value={surname}

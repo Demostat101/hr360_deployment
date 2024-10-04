@@ -68,15 +68,6 @@ const EmployeeDetails = () => {
                       <span className="text-[100px]">{employee.lastName.slice(0,1)}</span>
                     </div>
                   
-                    {/* <img
-                      src={Image}
-                      alt=""
-                      className={
-                        open
-                          ? "w-[164.37px] h-[164.37px] object-cover border-2 rounded-lg"
-                          : "w-[180.85px] h-[180.85px] object-cover"
-                      }
-                    /> */}
                     <div
                       className={
                         open ? "w-fit h-[138px] " : "w-fit h-[150.38px]"
