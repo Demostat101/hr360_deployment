@@ -10,10 +10,10 @@ import { useAxiosFetch } from "../../hooks/UseAxiosFetch";
 const EmployeeDetails = () => {
   const { pathname } = useLocation();
 
-  const { open, isLoading } = Context();
-  const { data } = useAxiosFetch(
-    `https://hr360employeescrudbackend.onrender.com/employees`
-  );
+  const { open, isLoading,data } = Context();
+  // const { data } = useAxiosFetch(
+  //   `https://hr360employeescrudbackend.onrender.com/employees`
+  // );
   const { id } = useParams();
   const employeeFilter = data.filter(
     (employee) => employee._id.toString() === id
@@ -169,11 +169,12 @@ const EmployeeDetails = () => {
                               }
                             >
                               <span>
+                                
                                 {
                                   months[
                                     Number(
                                       employee.officialDetails.startingDate.slice(
-                                        6,
+                                        5,
                                         7
                                       ) - 1
                                     )
@@ -214,7 +215,7 @@ const EmployeeDetails = () => {
                                       ) === 2 ||
                                       Number(
                                         employee.officialDetails.startingDate.slice(
-                                          9,
+                                          8,
                                           10
                                         )
                                       ) === 22
@@ -236,7 +237,7 @@ const EmployeeDetails = () => {
                                 </sup>
                                 ,
                               </span>
-                              <span className="ml-2">
+                              <span className="ml-1">
                                 {employee.officialDetails.startingDate.slice(
                                   0,
                                   4

@@ -344,6 +344,7 @@ export const ContextProvider = ({ children }) => {
         setResetPassword,
         resetPasswordHandler,
         isResetPasswordLoading,
+        setData
       }}
     >
       {children}

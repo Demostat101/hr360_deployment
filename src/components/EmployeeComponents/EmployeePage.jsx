@@ -14,9 +14,7 @@ const EmployeePage = () => {
   const { id } = useParams();
 
   const { open } = Context();
-  const { data } = useAxiosFetch(
-    `https://hr360employeescrudbackend.onrender.com/employees`
-  );
+  const {data} = editEmployeeContext()
 
   const {
     editPersonalDetailsButton,
@@ -63,6 +61,7 @@ const EmployeePage = () => {
   };
 
   const post = data.find((post) => post._id.toString() === id);
+  
 
   useEffect(() => {
     if (post) {
@@ -346,7 +345,7 @@ const EmployeePage = () => {
                                 ? "st"
                                 : Number(employee.dateOfBirth.slice(8, 10)) ===
                                     2 ||
-                                  Number(employee.dateOfBirth.slice(9, 10)) ===
+                                  Number(employee.dateOfBirth.slice(8, 10)) ===
                                     22
                                 ? "nd"
                                 : Number(employee.dateOfBirth.slice(8, 10)) ===
@@ -361,7 +360,7 @@ const EmployeePage = () => {
                             {" "}
                             {
                               months[
-                                Number(employee.dateOfBirth.slice(6, 7) - 1)
+                                Number(employee.dateOfBirth.slice(5,7) - 1)
                               ]
                             }
                             ,

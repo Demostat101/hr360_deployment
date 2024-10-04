@@ -2,6 +2,7 @@ import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useAxiosFetch } from "../hooks/UseAxiosFetch";
 import {  toast } from 'react-toastify';
+import { Context } from "./DashBoardContext";
 
 export const editContext = createContext();
 
@@ -15,7 +16,7 @@ export const EditDetailsContext = ({ children }) => {
   const [editOfficialDetailsButton, setEditOfficialDetailsButton] =
     useState(false);
 
-  const { data, setData ,isLoading} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`);
+  const {data,setData,isLoading} =  Context()
 
   
 
@@ -72,7 +73,8 @@ export const EditDetailsContext = ({ children }) => {
     
 
     if (editName === "" || editEmail === "" || editDateOfBirth === "") {
-      alert("fields cant be blank");
+      toast.dismiss()
+      toast.info("Fields cant be blank")
       return;
     } else {
       try {

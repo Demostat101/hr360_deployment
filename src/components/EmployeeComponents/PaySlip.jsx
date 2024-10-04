@@ -5,8 +5,8 @@ import { Context } from "../../contexts/DashBoardContext";
 import { useAxiosFetch } from "../../hooks/UseAxiosFetch";
 
 const PaySlip = () => {
-  const { open } = Context();
-  const {data} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`)
+  const { open,data } = Context();
+  // const {data} = useAxiosFetch(`https://hr360employeescrudbackend.onrender.com/employees`)
   const { id } = useParams();
   const medicalAllowance = 20000
   const transportAllowance = 10000
