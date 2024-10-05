@@ -192,7 +192,6 @@ const AddEmployeeContext = ({ children }) => {
             headers: { "Content-Type": "multipart/form-data" },
           }
         );
-        console.log(response);
 
         if (response.status === 200) {
           setMessage(response.data.message);
@@ -252,15 +251,6 @@ const AddEmployeeContext = ({ children }) => {
           }, 3000);
         }
 
-        if (response.status === 400) {
-          console.log(response.data.error);
-          console.log(`im in status code: ${response.status}`);
-
-          setError(response.data.error);
-          setTimeout(() => {
-            setError("");
-          }, 5000);
-        }
       } catch (error) {
         if (error.response) {
           if (error.response.status === 400) {
