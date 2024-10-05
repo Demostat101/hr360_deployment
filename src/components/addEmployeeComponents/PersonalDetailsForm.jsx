@@ -428,15 +428,11 @@ const PersonalDetailsForm = () => {
 
                 {files && (
                   <div className="flex justify-between flex-row">
-                    <span>
-                      
-                      {files.name}
-                    </span>
-                    
-                      <button type="button" onClick={() => setFiles(null)}>
-                        <FaTimes size={20} className="text-red-500"/>
-                      </button>
-                    
+                    <span>{files.name}</span>
+
+                    <button type="button" onClick={() => setFiles(null)}>
+                      <FaTimes size={20} className="text-red-500" />
+                    </button>
                   </div>
                 )}
               </>

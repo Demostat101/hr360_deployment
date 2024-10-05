@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { useAxiosFetch } from "../hooks/UseAxiosFetch";
-import {  toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import { Context } from "./DashBoardContext";
 
 export const editContext = createContext();
@@ -16,9 +16,7 @@ export const EditDetailsContext = ({ children }) => {
   const [editOfficialDetailsButton, setEditOfficialDetailsButton] =
     useState(false);
 
-  const {data,setData,isLoading} =  Context()
-
-  
+  const { data, setData, isLoading } = Context();
 
   // Handle Edit Personal Employee Details
 
@@ -32,49 +30,48 @@ export const EditDetailsContext = ({ children }) => {
   const [editMaritalStatus, setEditMaritalStatus] = useState("");
   const [editReligion, setEditReligion] = useState("");
   const [editAddress, setEditAddress] = useState("");
-  const [editEducationalQualification, setEditEducationalQualification] = useState("");
+  const [editEducationalQualification, setEditEducationalQualification] =
+    useState("");
   const [editNationality, setEditNationality] = useState("");
   const [editLanguageSpoken, setEditLanguageSpoken] = useState("");
   const [editEmergencyContactCode, setEditEmergencyContactCode] = useState("");
-  const [editEmergencyContactPhone, setEditEmergencyContactPhone] = useState("");
-  const [editEmergencyContactRelationship, setEditEmergencyContactRelationship] = useState("");
+  const [editEmergencyContactPhone, setEditEmergencyContactPhone] =
+    useState("");
+  const [
+    editEmergencyContactRelationship,
+    setEditEmergencyContactRelationship,
+  ] = useState("");
 
   const handleEditPersonalDetails = async (id) => {
     const edit = {
       id: (data.length + 1).toString(),
-      firstName:editName,
-        middleName:editMiddleName,
-        lastName:editSurname,
-        gender:editGender,
-        email:editEmail,
-        phoneNo:{phone: editPhone },
-        address:editAddress,
-        dateOfBirth:editDateOfBirth,
-        maritalStatus:editMaritalStatus,
-        religion:editRegion,
-        educationalQualification:editEducationalQualification,
-        nationality:editNationality,
-        languageSpoken:editLanguageSpoken,
-        emergencyContact: {
-        
-          phoneNo: { 
-              code:editEmergencyContactCode,
-              phone:editEmergencyContactPhone
-           },
-          relationship: editEmergencyContactRelationship
-          
+      firstName: editName,
+      middleName: editMiddleName,
+      lastName: editSurname,
+      gender: editGender,
+      email: editEmail,
+      phoneNo: { phone: editPhone },
+      address: editAddress,
+      dateOfBirth: editDateOfBirth,
+      maritalStatus: editMaritalStatus,
+      religion: editRegion,
+      educationalQualification: editEducationalQualification,
+      nationality: editNationality,
+      languageSpoken: editLanguageSpoken,
+      emergencyContact: {
+        phoneNo: {
+          code: editEmergencyContactCode,
+          phone: editEmergencyContactPhone,
+        },
+        relationship: editEmergencyContactRelationship,
       },
-     
     };
 
-    toast.loading("Saving Details...")
-    
-
-    
+    toast.loading("Saving Details...");
 
     if (editName === "" || editEmail === "" || editDateOfBirth === "") {
-      toast.dismiss()
-      toast.info("Fields cant be blank")
+      toast.dismiss();
+      toast.info("Fields cant be blank");
       return;
     } else {
       try {
@@ -84,45 +81,38 @@ export const EditDetailsContext = ({ children }) => {
         );
 
         if (response.status === 200) {
-          toast.dismiss()
+          toast.dismiss();
           setEditName("");
-        setEditSurname("");
-        setEditMiddleName("");
-        setEditGender("");
-        setEditPhone("");
-        setEditEmail("");
-        setEditDateOfBirth("");
-        setEditMaritalStatus("");
-        setEditReligion("");
-        setEditAddress("");
-        setEditEducationalQualification("");
-        setEditNationality("");
-        setEditLanguageSpoken("");
-        setEditEmergencyContactCode("");
-        setEditEmergencyContactPhone("");
-        setEditEmergencyContactRelationship("");
-        setEditPersonalDetailsButton(false);
+          setEditSurname("");
+          setEditMiddleName("");
+          setEditGender("");
+          setEditPhone("");
+          setEditEmail("");
+          setEditDateOfBirth("");
+          setEditMaritalStatus("");
+          setEditReligion("");
+          setEditAddress("");
+          setEditEducationalQualification("");
+          setEditNationality("");
+          setEditLanguageSpoken("");
+          setEditEmergencyContactCode("");
+          setEditEmergencyContactPhone("");
+          setEditEmergencyContactRelationship("");
+          setEditPersonalDetailsButton(false);
 
-        setData(
-          data.map((employee) =>
-            employee._id === id ? { ...response.data } : employee
-          )
-        );
+          setData(
+            data.map((employee) =>
+              employee._id === id ? { ...response.data } : employee
+            )
+          );
         }
-
-        
-
-        
       } catch (error) {
-        
         setTimeout(() => {
-          toast.dismiss()
+          toast.dismiss();
         }, 3000);
         setTimeout(() => {
-          toast.error(error.message)
+          toast.error(error.message);
         }, 3000);
-
-        
       }
     }
   };
@@ -145,15 +135,15 @@ export const EditDetailsContext = ({ children }) => {
         employeeId: editEmployeeId,
         jobTitle: editJobTitle,
         department: editDepartment,
-        reportingOfficer:editReportingOfficer,
+        reportingOfficer: editReportingOfficer,
         workSchedule: editWorkSchedule,
         employmentType: editEmployementType,
         region: editRegion,
-        skills: editSkills
-      }
+        skills: editSkills,
+      },
     };
 
-    toast.loading("Saving Details...")
+    toast.loading("Saving Details...");
 
     if (editDepartment === "" || editReportingOfficer === "") {
       alert("fields cant be blank");
@@ -165,8 +155,7 @@ export const EditDetailsContext = ({ children }) => {
         );
 
         if (response.status === 200) {
-
-          toast.dismiss()
+          toast.dismiss();
           setEditEmployeeId("");
           setEditEmployementType("");
           setEditWorkSchedule("");
@@ -176,22 +165,19 @@ export const EditDetailsContext = ({ children }) => {
           setEditRegion("");
           setEditSkills();
           setEditOfficialDetailsButton(false);
-  
+
           setData(
             data.map((employee) =>
               employee._id === id ? { ...response.data } : employee
             )
           );
-          
         }
-
-       
       } catch (error) {
         setTimeout(() => {
-          toast.dismiss()
+          toast.dismiss();
         }, 3000);
         setTimeout(() => {
-          toast.error(error.message)
+          toast.error(error.message);
         }, 3000);
       }
     }
@@ -224,7 +210,7 @@ export const EditDetailsContext = ({ children }) => {
         setEditReligion,
         editAddress,
         setEditAddress,
-        editEducationalQualification, 
+        editEducationalQualification,
         setEditEducationalQualification,
         editNationality,
         setEditNationality,
@@ -232,7 +218,7 @@ export const EditDetailsContext = ({ children }) => {
         setEditLanguageSpoken,
         editEmergencyContactCode,
         setEditEmergencyContactCode,
-        editEmergencyContactPhone, 
+        editEmergencyContactPhone,
         setEditEmergencyContactPhone,
         editEmergencyContactRelationship,
         setEditEmergencyContactRelationship,
@@ -257,7 +243,7 @@ export const EditDetailsContext = ({ children }) => {
         editSkills,
         setEditSkills,
         data,
-        isLoading
+        isLoading,
       }}
     >
       {children}

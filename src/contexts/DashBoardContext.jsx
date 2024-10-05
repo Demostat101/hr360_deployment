@@ -11,7 +11,6 @@ export const Context = () => {
 };
 
 export const ContextProvider = ({ children }) => {
-
   const [error, setError] = useState(null);
   const [searchName, setSearchName] = useState("");
   const [searchEmpID, setSearchEmpID] = useState("");
@@ -343,7 +342,7 @@ export const ContextProvider = ({ children }) => {
         setResetPassword,
         resetPasswordHandler,
         isResetPasswordLoading,
-        setData
+        setData,
       }}
     >
       {children}
