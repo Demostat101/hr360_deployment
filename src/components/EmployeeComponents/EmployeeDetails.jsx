@@ -84,7 +84,7 @@ const EmployeeDetails = () => {
                           className={
                             open
                               ? "font-[600] text-[16px] leading-[24px] text-nowrap flex gap-[8px]"
-                              : "font-[600] text-[17.56px] leading-[26.33px] text-nowrap flex gap-[8px"
+                              : "font-[600] text-[17.56px] leading-[26.33px] text-nowrap flex gap-[8px]"
                           }
                         >
                           <span>{employee.firstName}</span>
