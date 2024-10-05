@@ -157,21 +157,30 @@ const AddEmployeeContext = ({ children }) => {
       },
     };
 
-    if (!/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.firstName) || !/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.middleName) || !/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.lastName)) {
-      setError("First name, Middle name, and Last name must start with uppercase letter");
+    if (
+      !/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.firstName) ||
+      !/^[A-Z][a-z]+(\s[A-Z][a-z]+)?$/.test(personalInfo.lastName)
+    ) {
+      setError(
+        "First name, Middle name, and Last name must start with uppercase letter"
+      );
       setTimeout(() => {
         setError("");
       }, 5000);
       return;
-  }
+    }
 
     if (
       !cantSaveBankDetails ||
       !cantSaveEmergencyDetails ||
       !cantSaveOfficialDetails ||
-      !cantSavePersonalDetails
+      !cantSavePersonalDetails ||
+      !files
     ) {
-      toast.info("All fields are required except middle name field");
+      setError("All fields are required except middle name field");
+      setTimeout(() => {
+        setError("");
+      }, 5000);
       return;
     } else {
       toast.loading("Sending Data...");
@@ -183,6 +192,8 @@ const AddEmployeeContext = ({ children }) => {
             headers: { "Content-Type": "multipart/form-data" },
           }
         );
+        console.log(response);
+
         if (response.status === 200) {
           setMessage(response.data.message);
           toast.dismiss();
@@ -240,13 +251,32 @@ const AddEmployeeContext = ({ children }) => {
             setMessage("");
           }, 3000);
         }
-      } catch (error) {
-        setError(error.response.data.error);
 
-        toast.dismiss();
+        if (response.status === 400) {
+          console.log(response.data.error);
+          console.log(`im in status code: ${response.status}`);
+
+          setError(response.data.error);
+          setTimeout(() => {
+            setError("");
+          }, 5000);
+        }
+      } catch (error) {
+        if (error.response) {
+          if (error.response.status === 400) {
+            setError(error.response.data.error);
+          } else {
+            setError(error.message);
+          }
+        } else {
+          setError("Network error");
+        }
+
         setTimeout(() => {
           setError("");
-        }, 3000);
+        }, 5000);
+
+        toast.dismiss();
       }
     }
   };

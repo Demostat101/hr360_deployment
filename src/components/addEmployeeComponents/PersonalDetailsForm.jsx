@@ -412,7 +412,7 @@ const PersonalDetailsForm = () => {
                       <div>
                         Click or Drag a file to the <br /> area to upload
                       </div>
-                      <PiUploadThin size={24} />
+                      <PiUploadThin size={24} /> <br /> Document type(.pdf)
                       <input
                         type="file"
                         id="file"
