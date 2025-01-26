@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { createContext, useContext, useEffect, useState } from "react";
-import useLocalStorage from "use-local-storage";
+
 import { useAxiosFetch, apiRequest } from "../hooks/UseAxiosFetch";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -15,7 +16,7 @@ export const ContextProvider = ({ children }) => {
   const [searchName, setSearchName] = useState("");
   const [searchEmpID, setSearchEmpID] = useState("");
   const [searchEmpRegion, setSearchEmpRegion] = useState("");
-  const [open, setOpen] = useLocalStorage(false);
+  const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
   const { data, fetchError, isLoading, setData } = useAxiosFetch(
