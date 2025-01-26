@@ -12,8 +12,8 @@ const OfficialDetailsForm = () => {
       >
         {/* Container holding top details */}
         <div className="flex flex-col gap-[13.8px]">
-          <div className="flex justify-between">
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+          <div className=" grid gap-5 md:grid-cols-3">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="empID"
@@ -30,7 +30,7 @@ const OfficialDetailsForm = () => {
                 required
               />
             </span>{" "}
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="jobtitle"
@@ -47,7 +47,7 @@ const OfficialDetailsForm = () => {
                 required
               />
             </span>
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="department"
@@ -66,9 +66,9 @@ const OfficialDetailsForm = () => {
             </span>
           </div>
           <div
-            className="flex justify-between"
+            className=" grid gap-5 md:grid-cols-3"
           >
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="officialemail"
@@ -86,7 +86,7 @@ const OfficialDetailsForm = () => {
               />
             </span>
 
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="officialphone"
@@ -118,7 +118,7 @@ const OfficialDetailsForm = () => {
               </span>
             </span>
 
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="supervisor"
@@ -137,9 +137,9 @@ const OfficialDetailsForm = () => {
             </span>
           </div>
           <div
-            className="flex justify-between"
+            className=" grid gap-5 md:grid-cols-3"
           >
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="schedule"
@@ -159,7 +159,7 @@ const OfficialDetailsForm = () => {
               </select>
             </span>
 
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="empType"
@@ -179,7 +179,7 @@ const OfficialDetailsForm = () => {
               </select>
             </span>
 
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="region"
@@ -200,9 +200,9 @@ const OfficialDetailsForm = () => {
             </span>
           </div>
           <div
-            className="flex justify-between"
+            className=" grid gap-5 md:grid-cols-3"
           >
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="salary"
@@ -219,7 +219,7 @@ const OfficialDetailsForm = () => {
                 required
               />
             </span>{" "}
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="startdate"
@@ -236,7 +236,7 @@ const OfficialDetailsForm = () => {
                 required
               />
             </span>{" "}
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="enddate"

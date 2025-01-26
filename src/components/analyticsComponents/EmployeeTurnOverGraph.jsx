@@ -50,8 +50,8 @@ export const graphLegend = [
 const EmployeeTurnOverGraph = () => {
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%">
-        <BarChart barCategoryGap={20} data={data}>
+      <ResponsiveContainer height="100%">
+        <BarChart data={data}>
           <XAxis
             dataKey="name"
             tickLine={false}

@@ -78,9 +78,9 @@ export const graphLegend = [
 const HiredVsLeftGraph = () => {
   return (
     <>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer height="100%">
         <BarChart
-          barCategoryGap={10}
+          // barCategoryGap={10}
           data={data}
           stackOffset="sign"
           Legend="circle"

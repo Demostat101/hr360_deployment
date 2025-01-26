@@ -57,7 +57,7 @@ const renderCustomizedLabel = ({
 
 const TeamPerformanceRatingGraph = () => {
   return (
-    <div className="min-w-[100%] h-full">
+    <div className=" h-full">
       <ResponsiveContainer>
         <PieChart>
           <Pie
@@ -67,7 +67,7 @@ const TeamPerformanceRatingGraph = () => {
             fill="#8884d8"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={170}
+            // outerRadius={150}
             dataKey="value"
             style={{ outline: "none" }}
           >

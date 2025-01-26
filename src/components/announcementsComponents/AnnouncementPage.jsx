@@ -156,13 +156,13 @@ const AnnouncementPage = () => {
             return (
               <div
                 key={_id}
-                className="flex flex-col gap-[20px] place-items-center mt-[30px]"
+                className="flex flex-col gap-[20px] place-items-center mt-[30px] "
               >
-                <div className=" w-[100%] pl-[20px] pr-[40px] h-[126px] border-l-[6px] justify-between place-items-center border-l-[#176B87] rounded-md flex border-[1.17px] bg-white border-[#ECEEF6]">
+                <div className=" w-[100%] pl-5 md:pl-[20px] md:pr-[40px] border-l-[6px] justify-between gap-5 flex-wrap place-items-center border-l-[#176B87] rounded-md flex border-[1.17px] bg-white border-[#ECEEF6]">
                   {targetId !== _id ? (
                     <>
                       <div>
-                        <div className="font-[600] text-[16.66px] leading-[24.99px]">
+                        <div className="font-[600] text-[16.66px] leading-[24.99px] ">
                           {title}
                         </div>
                         <div className="font-[400] text-[16px] leading-[24px]">
@@ -173,7 +173,7 @@ const AnnouncementPage = () => {
                           )}
                         </div>
                       </div>
-                      <div className="flex justify-between place-items-center w-[310px] h-[53.95px]">
+                      <div className="flex justify-between place-items-center h-[53.95px]">
                         <div>
                           <div className="font-[400] text-[16px] leading-[24.99px] text-black opacity-70">
                             Posted
@@ -189,13 +189,13 @@ const AnnouncementPage = () => {
                         <div className="relative">
                           <div
                             onClick={() => showEditDeleteButton(_id)}
-                            className="w-[40px] h-[40px] bg-[#D9D9D9] grid place-items-center rounded-lg text-[#464646] cursor-pointer"
+                            className="w-[40px] h-[40px] bg-[#D9D9D9] grid place-items-center rounded-lg text-[#464646] cursor-pointer ml-1"
                           >
                             {" "}
                             <IoIosMore size={20} />{" "}
                           </div>
                           {showEditDelete === _id ? (
-                            <div className="absolute flex justify-center font-[600] gap-[20px] w-[100px] border-2 left-[-20px] top-[70px] py-2 bg-white cursor-pointer">
+                            <div className="absolute z-20 flex justify-center font-[600] gap-[20px] w-[100px] border-2 left-[-20px] top-[70px] py-2 bg-white cursor-pointer">
                               <span onClick={() => handleEditAnnouncement(_id)}>
                                 <AiFillEdit
                                   className="text-[#176B87]"
@@ -214,7 +214,7 @@ const AnnouncementPage = () => {
                     </>
                   ) : (
                     <>
-                      <div className="border-2 w-full flex flex-col gap-2">
+                      <div className=" w-full flex flex-col gap-2">
                         <div className="font-[600] text-[16.66px] leading-[24.99px] w-full">
                           <input
                             className="w-full h-8 border-2 rounded-[5px] focus:outline-none"
@@ -238,14 +238,14 @@ const AnnouncementPage = () => {
                           />
                         </div>
                       </div>
-                      <div className="flex justify-between place-items-center w-[310px] h-[53.95px]">
+                      <div className="flex justify-between place-items-center h-[53.95px]">
                         <div className="w-fit">
                           <div className="font-[400] text-[16px] leading-[24.99px] text-black opacity-70">
                             Posted
                           </div>
                           <div className="font-[400] text-[16px] leading-[24px] text-black opacity-70 flex gap-[10px]">
                             {created.slice(0, 10)}
-                            <span className="border-2">
+                            <span className=" mr-1">
                               {created.slice(11, 20)}
                             </span>
                           </div>
@@ -271,7 +271,8 @@ const AnnouncementPage = () => {
         )}
       </>
 
-      <div className=" w-full flex justify-between mt-[25px]">
+     <div className=" overflow-x-auto max-w-full hide-scrollbar">
+     <div className=" w-full flex justify-between mt-[25px] min-w-[22rem] place-items-center">
         <div className="flex gap-[8.92px] h-[22.19px] place-items-center">
           <div className="text-[14.28px] font-[400] leading-[21.42px] text-black">
             View
@@ -286,7 +287,7 @@ const AnnouncementPage = () => {
             <option value="10">10</option>
             <option value="15">15</option>
           </select>
-          <div className="text-[14.28px] font-[400] leading-[21.42px] text-black">
+          <div className="text-[14.28px] font-[400] leading-[21.42px] text-black text-nowrap">
             per page
           </div>
         </div>
@@ -310,6 +311,7 @@ const AnnouncementPage = () => {
           />
         </ThemeProvider>
       </div>
+     </div>
     </>
   );
 };

@@ -4,7 +4,7 @@ import { graphLegend } from "./HiredVsLeftGraph";
 const HiredVsLeft = () => {
   return (
     <div className="w-[100%] h-[285.72px] flex flex-col shadow-md rounded-lg justify-between p-[15px] bg-white">
-      <div className="w-full h-[43.15px] flex justify-between place-items-center ">
+      <div className="w-full h-[43.15px] flex justify-between place-items-center gap-5 flex-wrap">
         <span className="font-[600] text-[16.27px] leading-[24.41px] text-black opacity-80">
           Hired Vs Left
         </span>

@@ -12,8 +12,8 @@ const AnnouncementModal = () => {
   };
   return (
     <div className="w-full flex flex-col place-items-center">
-      <div className="w-[808px] h-[366px] flex flex-col gap-[40px] border-[1px] border-[#ECEEF6] bg-[#F6F7FA]">
-        <div className="w-full h-[80px] bg-[#FFFFFF] flex justify-between place-items-center px-[30px]">
+      <div className="max-w-[50rem] w-full flex flex-col gap-[40px] border-[1px] border-[#ECEEF6] bg-[#F6F7FA]">
+        <div className="w-full h-[80px] bg-[#FFFFFF] flex justify-between gap-5 place-items-center px-[30px]">
           <span className="font-[500] text-[18px] leading-[27px]">
             Select Announcement Platform
           </span>
@@ -24,10 +24,10 @@ const AnnouncementModal = () => {
           />
         </div>
 
-        <div className="flex gap-[30px] justify-center">
+        <div className=" grid md:grid-cols-2 gap-[30px] px-4">
           <Link
             to="intranet-announcement"
-            className="w-[340px] h-[206px] flex flex-col place-items-center justify-center  bg-white cursor-pointer"
+            className=" flex h-[16rem] max-w-[18rem] md:max-w-full w-full flex-col place-items-center justify-center  bg-white cursor-pointer"
           >
             <TbWorldUp className="text-[#464646]" size={40} />
             <div className="font-[500] text-[32px] leading-[48px] text-[#464646]">
@@ -36,7 +36,7 @@ const AnnouncementModal = () => {
           </Link>
           <Link
             to="email-announcement"
-            className="w-[340px] h-[206px] flex flex-col place-items-center justify-center  bg-white cursor-pointer"
+            className=" h-[16rem] max-w-[18rem] md:max-w-full w-full flex flex-col place-items-center justify-center  bg-white cursor-pointer"
           >
             <TbMailForward className="text-[#464646]" size={40} />
             <div className="font-[500] text-[32px] leading-[48px] text-[#464646]">

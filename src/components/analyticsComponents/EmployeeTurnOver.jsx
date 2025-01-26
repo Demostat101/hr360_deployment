@@ -4,7 +4,7 @@ import { graphLegend } from "./EmployeeTurnOverGraph";
 const EmployeeTurnOver = () => {
   return (
     <div className="w-[99.5%] h-[277.7px] shadow-md rounded-lg p-[15px] bg-white flex flex-col justify-between">
-      <div className="w-full h-[43.15px] flex justify-between place-items-center">
+      <div className="w-full h-[43.15px] flex justify-between place-items-center gap-5 flex-wrap">
         <span className="font-[600] text-[16.27px] leading-[24.41px] text-black opacity-80">
           Employee Turn Over Rate
         </span>

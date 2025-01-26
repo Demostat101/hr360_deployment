@@ -4,8 +4,8 @@ import TeamPerformanceRating from "./TeamPerformanceRating";
 
 const AnalyticsComponent = () => {
   return (
-    <div className="w-full mt-[25px] flex gap-[20px]">
-      <div className="flex flex-col justify-between w-[90%]">
+    <div className="w-full mt-[25px] grid  xl:grid-cols-2 gap-[20px]">
+      <div className=" grid gap-5">
         <EmployeeTurnOver />
         <HiredVsLeft />
       </div>

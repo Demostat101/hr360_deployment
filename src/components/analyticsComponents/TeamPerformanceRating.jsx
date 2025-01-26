@@ -5,13 +5,13 @@ import TeamPerformanceRatingGraph, {
 
 const TeamPerformanceRating = () => {
   return (
-    <div className="w-[40%] flex flex-col place-items-center h-[600px] p-5 bg-white shadow-md rounded-lg ">
+    <div className=" flex flex-col place-items-center p-5 bg-white shadow-md rounded-lg ">
       <div className="flex flex-col gap-[50px] h-[100%]">
         <div className="font-[600] text-[16.66px] leading-[24.99px]">
           Team Performance Rating
         </div>
 
-        <div className="w-[380px]  h-[389px]">
+        <div className="md:w-[380px]  h-[389px]">
           <TeamPerformanceRatingGraph />
         </div>
         <div className="flex justify-center gap-[12.71px] w-full mt-[20px]">

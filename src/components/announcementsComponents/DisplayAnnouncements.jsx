@@ -3,21 +3,21 @@ import { FaPlus } from "react-icons/fa";
 import AnnouncementPlatform from "./AnnouncementPlatform";
 import AnnouncementModal from "./AnnouncementModal";
 import AnnouncementPage from "./AnnouncementPage";
-import { Context } from "../../contexts/DashBoardContext";
+// import { Context } from "../../contexts/DashBoardContext";
 
 const DisplayAnnouncements = () => {
-  const { setOpenModal } = Context();
+  // const { setOpenModal } = Context();
 
-  const openPost = () => {
-    setOpenModal(true);
-  };
+  // const openPost = () => {
+  //   setOpenModal(true);
+  // };
   return (
-    <div className="px-[20px]">
+    <div className="px-[20px] h-full">
       <AnnouncementPlatform>
         <AnnouncementModal />
       </AnnouncementPlatform>
       <div>
-        <div className="flex justify-between">
+        <div className="flex justify-between gap-5 flex-wrap">
           <div>
             <div className="flex gap-[10px] place-items-center">
               {" "}
@@ -34,7 +34,7 @@ const DisplayAnnouncements = () => {
 
           <div
             className=" w-[254px] h-[54px] flex gap-[16px] rounded-lg justify-center place-items-center bg-[#176B87] text-white cursor-pointer"
-            onClick={openPost}
+            // onClick={openPost}
           >
             <FaPlus size={20} />{" "}
             <span className="font-[500] text-[14px] leading-[21px]">
