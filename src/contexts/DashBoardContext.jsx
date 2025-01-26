@@ -298,6 +298,7 @@ export const ContextProvider = ({ children }) => {
       value={{
         handleOpenBar,
         open,
+        setOpen,
         name,
         setName,
         setSurname,

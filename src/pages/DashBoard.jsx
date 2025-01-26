@@ -4,7 +4,7 @@ import TopComponent from "../components/dashBoardComponents/DashboardTopComponen
 import { Context } from "../contexts/DashBoardContext";
 
 const DashBoard = () => {
-  const { open, userName } = Context();
+  const { userName } = Context();
   const date = new Date();
   const time = date.getHours()
   
@@ -12,24 +12,16 @@ const DashBoard = () => {
   return (
     <main className="w-full flex flex-col min-h-screen p-[25px]">
       <div
-        className={open ? "w-[100%] h-[978.82px] " : "w-[100%]  h-[1077.8px] "}
+        className="w-[100%] h-[978.82px] "
       >
         <h1
-          className={
-            open
-              ? "font-[600] text-[24px] leading-[39px]"
-              : "font-[600] text-[26px] leading-[42.94px] "
-          }
+          className="font-[600] text-[24px] leading-[39px]"
         >
           Good {time >=12 ?  time>=16 ? "Evening": "Afternoon" : "Morning" }, {userName}{" "}
         </h1>
         {/* container holding all contents */}
         <div
-          className={
-            open
-              ? "w-[100%] 2xl:h-[914.82px] mt-[23px] flex flex-col gap-[25px]"
-              : "w-[100%] 2xl:h-[1007.28px]  mt-[50px] flex flex-col gap-[27.53px]"
-          }
+          className="w-[100%] 2xl:h-[914.82px] mt-[23px] flex flex-col gap-[25px]"
         >
           <TopComponent />
           <MiddleComponent />

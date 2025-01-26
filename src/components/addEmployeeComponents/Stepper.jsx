@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from "react";
 import { useState } from "react";
 import { useRef } from "react";
@@ -21,7 +22,7 @@ const Stepper = ({ stepper, currentStep, isComplete }) => {
   }, [stepRef]);
 
   return (
-    <div className="w-full px-[125px]">
+    <div className="w-full xl:px-[125px]">
       <div className="w-full flex justify-between relative ">
         {/* stepper */}
         {stepper.map(({ Name }, index) => {

@@ -8,7 +8,7 @@ const Login = () => {
     const {loginEmail,loginPassword,setLoginPassword,setLoginEmail, loginErrors,Login,setState, handleForgotPassword,isLoginLoading} = Context()
 
     const [visible,setVisible] = useState(false)
-    const [disabled,setDisabled] = useState(true)
+    
 
   
 
@@ -18,7 +18,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="w-[80%] h-fit flex flex-col gap-[20px] bg-white p-[20px]">
+      <div className="max-w-[30rem] w-full h-fit flex flex-col gap-[20px] bg-white p-[20px]">
               <div className="flex flex-col gap-[20px] text-center">
                 <span className="font-[600] text-[20px] leading-[30px] text-[#464646]">
                   Welcome To HR360
@@ -79,11 +79,11 @@ const Login = () => {
                   <button
                     className="h-[60px] bg-[#176B87] font-[600] text-[24px] leading-[36px] text-white rounded-[10px] flex justify-center place-items-center"
                     onClick={Login}
-                    disabled={!loginEmail || !loginPassword }
+                    disabled={!loginEmail || !loginPassword || isLoginLoading }
                   >
                     {!isLoginLoading ? "Login" : <div className="isSignupLoader"></div> }
                   </button>
-                  <div className="w-full flex justify-between font-[500] text-[16px] leading-[24px] text-[#464646]">
+                  <div className="w-full flex justify-between font-[500] text-[16px] leading-[24px] text-[#464646] text-nowrap gap-5 flex-wrap">
                   <span>
                   Dont have an account?{" "}
                     <span

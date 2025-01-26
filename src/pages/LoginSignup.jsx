@@ -8,8 +8,8 @@ const LoginSignup = () => {
   const { state } = Context();
 
   return (
-    <div className="w-full flex">
-      <div className="w-[50%] h-screen bg-[#176B87] relative flex justify-center place-items-center">
+    <div className="w-full lg:grid lg:grid-cols-2">
+      <div className=" hidden  h-screen bg-[#176B87] relative lg:flex justify-center place-items-center">
         <div className="absolute top-0 left-0">
           <svg
             width="94"
@@ -115,7 +115,8 @@ const LoginSignup = () => {
           </span>
         </div>
       </div>
-      <div className="w-[50%] h-screen flex justify-center place-items-center bg-[#F6F7FA]">
+     <div className=" overflow-y-auto hide-scrollbar max-w-full  w-full">
+     <div className="w-full h-screen flex justify-center place-items-center bg-[#F6F7FA] p-5  xl:p-10 shadow-lg">
         {state === "login" ? (
           <>
             <Login />
@@ -136,6 +137,7 @@ const LoginSignup = () => {
           ""
         )}
       </div>
+     </div>
     </div>
   );
 };

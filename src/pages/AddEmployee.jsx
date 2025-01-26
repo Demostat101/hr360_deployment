@@ -64,16 +64,18 @@ const AddEmployee = () => {
           Please enter the employee details below
         </div>
       </div>
-      <div className="w-full  px-[85px]">
-        <div className=" flex flex-col place-items-center mb-[20px]">
+      <div className="w-full  xl:px-[85px]">
+       <div className=" overflow-x-auto max-w-full hide-scrollbar">
+       <div className=" flex flex-col mb-[20px] min-w-[30rem]">
           <Stepper
             stepper={stepper}
             currentStep={currentStep}
             isComplete={isComplete}
           />
         </div>
+       </div>
         <div className="bg-[#FFFFFF] py-[30px] shadow-sm">
-          <div className="px-[65px]">
+          <div className=" px-5 xl:px-[65px]">
             {/* <ActiveComponent /> */}
 
             <ActiveComponent
@@ -86,9 +88,9 @@ const AddEmployee = () => {
               }
             />
           </div>
-          <div className="flex justify-between px-[65px] mt-[30px]">
+          <div className="flex justify-between px-5 md:px-[65px] mt-[30px]">
             <button
-              className="p-[20px] border-[#ECEEF6] border-[1.66px] rounded-[8.28px] font-[500] text-[13.26px] leading-[19.88px]"
+              className="p-[20px] hidden md:block border-[#ECEEF6] border-[1.66px] rounded-[8.28px] font-[500] text-[13.26px] leading-[19.88px]"
               type="button"
             >
               Cancel

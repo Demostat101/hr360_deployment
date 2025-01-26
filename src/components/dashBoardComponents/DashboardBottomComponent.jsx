@@ -1,17 +1,12 @@
 import Events from "./bottomComponents/Events";
 import Announcements from "./bottomComponents/Announcements";
 import Celebrations from "./bottomComponents/Celebration";
-import { Context } from "../../contexts/DashBoardContext";
+
 
 const BottomComponent = () => {
-  const { open } = Context();
   return (
     <main
-      className={
-        open
-          ? "w-[100%] h-[311.1px] open-container"
-          : "w-[100%] h-[342.55px] close-container "
-      }
+      className="w-[100%] grid md:grid-cols-[2fr_1fr] xl:grid-cols-3 gap-5 mb-5"
     >
       <Events />
       <Announcements />

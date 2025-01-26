@@ -45,7 +45,7 @@ const SignUp = () => {
 
   return (
     <>
-      <div className="w-[80%] h-fit flex flex-col gap-1 bg-white p-[10px]">
+      <div className="max-w-[30rem] w-full max-h-fit flex flex-col gap-[20px] bg-white p-[20px]">
         <div className="flex flex-col gap-[5px] text-center">
           <span className="font-[600] text-[20px] leading-[30px] text-[#464646]">
             Welcome To HR360

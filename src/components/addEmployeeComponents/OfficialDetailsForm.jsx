@@ -1,4 +1,4 @@
-import React from "react";
+
 import { addEmployeeContext } from "../../contexts/AddEmployeeContext";
 
 const OfficialDetailsForm = () => {
@@ -66,7 +66,7 @@ const OfficialDetailsForm = () => {
             </span>
           </div>
           <div
-            className={open ? "flex justify-between" : "flex justify-between"}
+            className="flex justify-between"
           >
             <span className="flex flex-col gap-[6.9px]  w-[30%]">
               <label
@@ -137,7 +137,7 @@ const OfficialDetailsForm = () => {
             </span>
           </div>
           <div
-            className={open ? "flex justify-between" : "flex justify-between"}
+            className="flex justify-between"
           >
             <span className="flex flex-col gap-[6.9px]  w-[30%]">
               <label
@@ -200,7 +200,7 @@ const OfficialDetailsForm = () => {
             </span>
           </div>
           <div
-            className={open ? "flex justify-between" : "flex justify-between"}
+            className="flex justify-between"
           >
             <span className="flex flex-col gap-[6.9px]  w-[30%]">
               <label

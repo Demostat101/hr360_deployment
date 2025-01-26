@@ -1,7 +1,7 @@
-import { Context } from "../../contexts/DashBoardContext";
+
 
 const LeaveHistory = () => {
-  const { open } = Context();
+  
 
   const header = [
     {
@@ -95,15 +95,11 @@ const LeaveHistory = () => {
   ];
 
   return (
-    <>
-      <table className="w-full payslip-table bg-white shadow-lg">
+    <div className=" overflow-x-auto max-w-full hide-scrollbar">
+      <table className="w-full payslip-table bg-white shadow-lg min-w-[60rem]">
         <thead className="payslip-head">
           <tr
-            className={
-              open
-                ? "h-[62.62px] font-[600] text-[16px] leading-[24px] text-left header-tr"
-                : "h-[69px] font-[600] text-[17.57px] leading-[26.36px] text-left header-tr"
-            }
+            className="h-[62.62px] font-[600] text-[16px] leading-[24px] text-left header-tr"
           >
             <>
               {header.map(({ head }, index) => (
@@ -117,11 +113,7 @@ const LeaveHistory = () => {
             {Body.map(({ date, leaveType, leaveDate, days, status }, index) => {
               return (
                 <tr
-                  className={
-                    open
-                      ? "h-[62.62px] font-[400] text-[16.3px] leading-[24.45px] text-black opacity-60"
-                      : "h-[69px] font-[400] text-[17.9px] leading-[26.86px] text-black opacity-60"
-                  }
+                  className="h-[62.62px] font-[400] text-[16.3px] leading-[24.45px] text-black opacity-60"
                   key={index}
                 >
                   <td>{date}</td>
@@ -145,7 +137,7 @@ const LeaveHistory = () => {
           </>
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

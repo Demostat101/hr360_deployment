@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 
 import * as React from 'react';
@@ -32,6 +33,7 @@ function getStyles(name, personName, theme) {
   };
 }
 
+// eslint-disable-next-line react/prop-types
 export default function MultipleSelectChip({employeeSkills}) {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);

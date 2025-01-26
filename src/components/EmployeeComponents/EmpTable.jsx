@@ -53,29 +53,21 @@ const EmpTable = () => {
     totalPages,
     startPageIndex,
     endPageIndex,
-    currentPageIndex,
+    // currentPageIndex,
     setStartPageIndex,
   ] = UsePagination(9, data.length);
   
+
   
 
   const filteredEmployeeList = useMemo(
     () =>
-      data
-        .filter(
+      data?.filter(
           (employee) =>
-            (employee.firstName
-              .toLowerCase()
-              .includes(debouncedSearchName.toLowerCase()) ||
-              employee.lastName
-                .toLowerCase()
-                .includes(debouncedSearchName.toLowerCase())) &&
-            employee.officialDetails.employeeId
-              .toString()
-              .includes(debouncedSearchEmpID.toString()) &&
-            employee.officialDetails.region
-              .toLowerCase()
-              .includes(searchEmpRegion.toLowerCase())
+            (employee?.firstName.toLowerCase().includes(debouncedSearchName.toLowerCase()) ||
+              employee?.lastName?.toLowerCase().includes(debouncedSearchName.toLowerCase())) &&
+            employee?.officialDetails.employeeId.toString().includes(debouncedSearchEmpID.toString()) &&
+            employee?.officialDetails.region.toLowerCase().includes(searchEmpRegion.toLowerCase())
         )
         .slice(
           startPageIndex * endPageIndex,
@@ -131,22 +123,20 @@ const EmpTable = () => {
   const { getTableProps, headerGroups } = table;
 
   return (
-    <div className="w-full table-container">
-      <table {...getTableProps()}>
+    <div className="w-full table-container text-nowrap">
+     <div className=" overflow-x-auto hide-scrollbar">
+     <table {...getTableProps()}>
         {/* header */}
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr
-              className={
-                open
-                  ? "w-[100%] h-[62.62px] bg-[#E7F0FD] "
-                  : "w-[100%] h-[69px] bg-[#E7F0FD]"
-              }
+            key={headerGroup.Header}
+              className="w-[100%] h-[62.62px] px-4 bg-[#E7F0FD] "
               {...headerGroup.getHeaderGroupProps()}
             >
               {headerGroup.headers.map((column) => {
                 return (
-                  <th {...column.getHeaderProps()}>
+                  <th className="px-5 xl:px-0" key={column.Header} {...column.getHeaderProps()}>
                     {column.render("Header")}
                   </th>
                 );
@@ -157,23 +147,15 @@ const EmpTable = () => {
         {/* body */}
 
         <tbody
-          className={
-            open
-              ? " w-full h-[62.62px] text-[#8F8F8F] th-bb"
-              : " w-full h-[69px] text-[#8F8F8F] th-bb"
-          }
+          className=" w-full h-[62.62px] text-[#8F8F8F] th-bb"
         >
           {filteredEmployeeList.map((val) => {
             return (
               <tr
                 key={val._id}
-                className={
-                  open
-                    ? " w-full h-[62.62px] text-[#8F8F8F] th-bb"
-                    : " w-full h-[69px] text-[#8F8F8F] th-bb"
-                }
+                className=" w-full h-[62.62px] text-[#8F8F8F] th-bb"
               >
-                <td>
+                <td className="px-5 xl:px-0">
                   <input
                     className="ml-[15px] border-[#8F8F8F]"
                     onChange={() => handleCheckBox(val._id)}
@@ -185,21 +167,21 @@ const EmpTable = () => {
                     {val.officialDetails.employeeId}
                   </span>
                 </td>
-                <td className="flex gap-[8px] place-items-center">
+                <td className="flex gap-[8px] place-items-center px-5 xl:px-0">
                   <span>{val.firstName}</span> <span>{val.lastName}</span>
                 </td>
-                <td>{val.officialDetails.department}</td>
-                <td>{val.officialDetails.role}</td>
-                <td>{val.officialDetails.email}</td>
-                <td>{val.officialDetails.employmentType}</td>
-                <td>
+                <td className="px-5 xl:px-0">{val.officialDetails.department}</td>
+                <td className="px-5 xl:px-0">{val.officialDetails.role}</td>
+                <td className="px-5 xl:px-0">{val.officialDetails.email}</td>
+                <td className="px-5 xl:px-0">{val.officialDetails.employmentType}</td>
+                <td className="px-5 xl:px-0">
                   {val.active ? (
                     <div className="text-green-400">Active</div>
                   ) : (
                     <div className="text-red-500">On leave</div>
                   )}
                 </td>
-                <td>
+                <td className="px-5 xl:px-0">
                   <Link
                     to={`${val._id}`}
                     className="link text-[#176B87] bg-white"
@@ -212,6 +194,7 @@ const EmpTable = () => {
           })}
         </tbody>
       </table>
+     </div>
       <ThemeProvider theme={theme}>
         <Pagination
           className="flex flex-col place-items-end pt-[15px] pb-[15px]"
@@ -237,3 +220,6 @@ const EmpTable = () => {
 };
 
 export default EmpTable;
+
+
+

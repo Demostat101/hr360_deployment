@@ -2,7 +2,6 @@ import { editEmployeeContext } from "../../contexts/EditDetailsContext";
 
 const PersonalDetailsEditForm = () => {
   const {
-        open,
         editName,
         setEditName,
         editSurname,
@@ -41,57 +40,33 @@ const PersonalDetailsEditForm = () => {
     <>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className={
-          open
-            ? "w-full h-fit flex justify-between gap-[30px]"
-            : "w-full h-fit flex justify-between"
-        }
+        className="w-full h-fit flex justify-between gap-[30px]"
       >
         <div
-          className={
-            open
-              ? "w-[211.69px] h-fit flex flex-col  gap-[18.07px]"
-              : "w-[232.88px] h-fit flex flex-col  gap-[19.88px]"
-          }
+          className="w-[211.69px] h-fit flex flex-col gap-[18.07px]"
         >
           <div className="w-full flex gap-4 flex-col">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60 "
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60 "
             >
               Full Name
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="first Name"
               value={editName}
               onChange={(e) => setEditName(e.target.value)}
             />
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Middle Name"
               value={editMiddleName}
               onChange={(e) => setEditMiddleName(e.target.value)}
             />
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Surname"
               value={editSurname}
@@ -101,20 +76,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Gender
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Gender"
               value={editGender}
@@ -124,20 +91,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Phone No
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Phone Number"
               value={editPhone}
@@ -147,20 +106,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Email
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="email"
               placeholder="Omikay@gmail.com"
               value={editEmail}
@@ -170,30 +121,17 @@ const PersonalDetailsEditForm = () => {
         </div>
 
         <div
-          className={
-            open
-              ? "w-[224.18px] h-[292.35px] flex flex-col  gap-[18.07px]"
-              : "w-[246.61px] h-[318px] flex flex-col  gap-[19.88px]"
-          }
+          className="w-[224.18px] h-[292.35px] flex flex-col gap-[18.07px]"
         >
-          <div className="w-full ">
+          <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Date of Birth
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="date"
-              
               value={editDateOfBirth}
               onChange={(e) => setEditDateOfBirth(e.target.value)}
             />
@@ -201,20 +139,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Marital Status
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="marital status"
               value={editMaritalStatus}
@@ -224,20 +154,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Religion
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Religion"
               value={editReligion}
@@ -247,20 +169,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Address
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Address"
               value={editAddress}
@@ -270,29 +184,16 @@ const PersonalDetailsEditForm = () => {
         </div>
 
         <div
-          className={
-            open
-              ? "w-[267.26px] h-[269.52px] flex flex-col  gap-[18.07px]"
-              : "w-[294.01px] h-[293.28px] flex flex-col  gap-[19.88px]"
-          }
+          className="w-[267.26px] h-[269.52px] flex flex-col gap-[18.07px]"
         >
-          <div className="w-full ">
+          <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Education
-            </label>{" "}
-            <br />
+            </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Education"
               value={editEducationalQualification}
@@ -302,20 +203,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Nationality
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Nationality"
               value={editNationality}
@@ -325,20 +218,12 @@ const PersonalDetailsEditForm = () => {
 
           <div className="w-full">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Language Spoken
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="Language Spoken"
               value={editLanguageSpoken}
@@ -348,42 +233,25 @@ const PersonalDetailsEditForm = () => {
 
           <div className="flex gap-4 flex-col border-2">
             <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
+              className="font-[400] text-[16px] leading-[24px] text-black opacity-60"
             >
               Emergency Contact
             </label>
             <input
-              className={
-                open
-                  ? "w-full font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="w-full font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
-              
               value={editEmergencyContactCode}
               onChange={(e) => setEditEmergencyContactCode(e.target.value)}
             />
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="7045237883"
               value={editEmergencyContactPhone}
               onChange={(e) => setEditEmergencyContactPhone(e.target.value)}
             />
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               type="text"
               placeholder="brother, sister, father"
               value={editEmergencyContactRelationship}

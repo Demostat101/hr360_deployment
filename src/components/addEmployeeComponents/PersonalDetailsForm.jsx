@@ -33,8 +33,8 @@ const PersonalDetailsForm = () => {
       >
         {/* Container holding top details */}
         <div className="flex flex-col gap-[13.8px]">
-          <div className="flex justify-between">
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+          <div className=" grid gap-5 md:grid-cols-3">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="fname"
@@ -53,7 +53,7 @@ const PersonalDetailsForm = () => {
                 required
               />
             </span>{" "}
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="middlename"
@@ -71,7 +71,7 @@ const PersonalDetailsForm = () => {
                 name="middleName"
               />
             </span>
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="lastname"
@@ -92,9 +92,9 @@ const PersonalDetailsForm = () => {
             </span>
           </div>
           <div
-            className={open ? "flex justify-between" : "flex justify-between"}
+            className="grid gap-5 md:grid-cols-3" 
           >
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="gender"
@@ -113,7 +113,7 @@ const PersonalDetailsForm = () => {
                 <option value="Female">Female</option>
               </select>
             </span>{" "}
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="email"
@@ -130,7 +130,7 @@ const PersonalDetailsForm = () => {
                 required
               />
             </span>
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="phone"
@@ -180,9 +180,9 @@ const PersonalDetailsForm = () => {
             />
           </div>{" "}
           <div
-            className={open ? "flex justify-between" : "flex justify-between"}
+            className="grid gap-5 md:grid-cols-3"
           >
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="dob"
@@ -199,7 +199,7 @@ const PersonalDetailsForm = () => {
                 required
               />
             </span>{" "}
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="maritalstatus"
@@ -218,7 +218,7 @@ const PersonalDetailsForm = () => {
                 <option value="Married">Married</option>
               </select>
             </span>
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="religion"
@@ -256,9 +256,9 @@ const PersonalDetailsForm = () => {
             />
           </div>{" "}
           <div
-            className={open ? "flex justify-between" : "flex justify-between"}
+            className="grid gap-5 md:grid-cols-2"
           >
-            <span className="flex flex-col gap-[6.9px]  w-[47%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="nationality"
@@ -277,7 +277,7 @@ const PersonalDetailsForm = () => {
                 <option value="London">London</option>
               </select>
             </span>
-            <span className="flex flex-col gap-[6.9px]  w-[47%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="language"
@@ -303,8 +303,8 @@ const PersonalDetailsForm = () => {
           <div className="font-[600] text-[14.91px] leading-[22.37px] text-black opacity-80">
             Emergency Contact
           </div>
-          <div className="flex justify-between">
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+          <div className="grid gap-5 md:grid-cols-3">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="name"
@@ -321,7 +321,7 @@ const PersonalDetailsForm = () => {
                 required
               />
             </span>{" "}
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="contactphone"
@@ -352,7 +352,7 @@ const PersonalDetailsForm = () => {
                 />
               </span>
             </span>
-            <span className="flex flex-col gap-[6.9px]  w-[30%]">
+            <span className="flex flex-col gap-[6.9px]  w-full">
               <label
                 className="font-[500] text-[12.37px] leading-[18.55px]"
                 htmlFor="relationship"
@@ -388,7 +388,7 @@ const PersonalDetailsForm = () => {
             />
           </div>{" "}
           <div
-            className={open ? "flex justify-between" : "flex justify-between"}
+            className="flex justify-between" 
           >
             <div className="flex flex-col gap-[20px]  w-[100%]">
               <label

@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+/* eslint-disable react/no-unescaped-entities */
+import { useEffect, useRef, useState } from "react";
 import { Context } from "../../contexts/DashBoardContext";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -103,7 +104,7 @@ const OtpEmail = () => {
 
   return (
     <>
-      <div className="w-[70%] h-fit flex flex-col gap-[30px] bg-white p-[40px]">
+      <div className="max-w-[30rem] lg:max-w-full w-full max-h-fit flex flex-col gap-[20px] bg-white p-[20px]">
         <div className="flex flex-col gap-[10px] text-center">
           <span className="font-[600] text-[20px] leading-[30px] text-[#746f6f]">
             Email Verification
@@ -131,7 +132,7 @@ const OtpEmail = () => {
               return (
                 <div key={index}>
                   <input
-                    className="h-[60px] w-[60px] font-[500] text-center text-[18px] text-[#176B87] border-2 focus:border-[#176B87] bg-white rounded-[10px] focus:outline-none"
+                    className="sm:h-[60px] sm:w-[60px] h-[40px] w-[40px] font-[500] text-center text-[18px] text-[#176B87] border-2 focus:border-[#176B87] bg-white rounded-[10px] focus:outline-none"
                     type="text"
                     ref={(input) => (inputRefs.current[index] = input)}
                     value={value}

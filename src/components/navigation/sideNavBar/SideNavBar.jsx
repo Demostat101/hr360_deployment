@@ -2,29 +2,28 @@ import { NavLink } from "react-router-dom";
 import { Paths } from "./SideBarArray";
 import SevenUpLogo from "../../../assets/SevenUpLogo.jfif";
 import { Context } from "../../../contexts/DashBoardContext";
+import { FaTimes } from "react-icons/fa";
 
 const SideNavBar = () => {
-  const { open /* ,menu */ } = Context();
+  const { open , setOpen } = Context();
   return (
     <nav /* id="side-bar" */
-      className={
-        open
-          ? "w-[250px] h-[100vh] trans bg-[#176B87] text-[#FFFFFF] pt-[20px] flex flex-col justify-between pb-[8px] "
-          : "w-[130px] h-[100vh] transit bg-[#176B87] place-items-center text-white pt-[28px] flex flex-col justify-between pb-[12px]" /* ,
-          open || menu ? "#side-bar hide-nav w-[250px] h-[100vh] trans bg-[#176B87] text-[#FFFFFF] pt-[100px] flex flex-col justify-between pb-[8px]" : !open || menu ?  "#side-bar hide-nav w-[130px] h-[100vh] transit bg-[#176B87] place-items-center text-white pt-[110px] flex flex-col justify-between pb-[12px]" : "#side-bar" */
-      }
+      className={`w-[250px] h-[100vh] trans bg-[#176B87] text-[#FFFFFF] pt-[20px] flex flex-col justify-between pb-[8px] transition duration-700 absolute z-40 py-5  lg:sticky ${
+        !open
+          ? " transform translate-x-[-120%]  lg:translate-x-[0%]"
+          : "transform translate-x-[0%]"
+      }`}
     >
       <ul
-        className={
-          open
-            ? "w-[250px] trans bg-[#176B87] pl-8"
-            : "w-[130px] transit bg-[#176B87] flex flex-col place-items-center "
-        }
+        className="w-[250px] trans bg-[#176B87] pl-8"
       >
+        <div className="flex justify-end pr-5 w-full lg:hidden cursor-pointer">
+        <FaTimes size={24}  onClick={()=> setOpen(false)}/>
+        </div>
         
-          <h1 className={open ? " relative w-[100%] h-[60px] text-[40px] font-[600] mb-[40px]" : " relative w-[100%] h-[60px] text-[20px] font-[600] text-center"}>
+          <h1 className=" relative w-[100%] h-[60px] text-[40px] font-[600] mb-[40px]">
             HR 360{" "}
-            <sup className={open ? " absolute top-1 right-[-1] text-[20px]" : " absolute top-0 right-[-1] text-[10px]"}>
+            <sup className=" absolute top-1 right-[-1] text-[20px]">
               <div className="w-[10px] h-[10px] rounded-full bg-white"></div>
             </sup>
           </h1>
@@ -32,37 +31,24 @@ const SideNavBar = () => {
         {Paths.map((path, index) => {
           return (
             <NavLink
-              className={
-                !open
-                  ? "pl-0 m-1"
-                  : "flex flex-col gap-2 mb-3 pl-4 place-items-center"
-              }
+            onClick={()=> setOpen(false)}
+              className="flex flex-col gap-2 mb-3 pl-4 place-items-center"
               to={path.to}
               key={index}
             >
               <li
-                className={
-                  !open
-                    ? "w-[80px] h-[80px] flex flex-col justify-center place-items-center"
-                    : "w-[221px] flex h-[50px] place-items-center gap-4 font-bold pl-3 justify-left"
-                }
+                className="w-[221px] flex h-[50px] place-items-center gap-4 font-bold pl-3 justify-left"
               >
                 <span
                   className={
-                    path.label === "Dashboard" && !open
-                      ? " text-white icon "
-                      : open
-                      ? "text-[#FFF] icon"
-                      : "text-[#FFFFFF] icon"
+                    path.label === "Dashboard" ? " text-white icon " : " text-white icon "
                   }
                 >
-                  {!open ? path.icons[0] : path.icons[1]}
+                  { path.icons[1]}
                 </span>{" "}
                 <span
                   id="label"
-                  className={
-                    !open ? " hidden" : "text-[#FFFFFF] text-[16px] font-[400]"
-                  }
+                  className="text-[#FFFFFF] text-[16px] font-[400]"
                 >
                   {path.label}
                 </span>
@@ -74,15 +60,11 @@ const SideNavBar = () => {
 
       <footer className="w-full flex flex-col place-items-center text-center">
         <img className="w-[34px] h-[50px] " src={SevenUpLogo} alt="" />
-        {open ? (
-          <div className="text-[#DDE2E3] font-[600] text-[11px] w-[171px] h-[24px] flex justify-center place-items-center">
+        <div className="text-[#DDE2E3] font-[600] text-[11px] w-[171px] h-[24px] flex justify-center place-items-center">
             {" "}
             <span className=" text-[24px]">&copy;</span>2024. All Rights
             Reserved.
           </div>
-        ) : (
-          ""
-        )}
       </footer>
     </nav>
   );

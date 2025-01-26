@@ -1,11 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import { editEmployeeContext } from "../../contexts/EditDetailsContext";
 import { FaPlus } from "react-icons/fa";
 
-const OfficialDetailsEditForm = ({employee}) => {
+const OfficialDetailsEditForm = ({ employee }) => {
   
   const {
-    open,
     editEmployeeId,
     setEditEmployeeId,
     editEmployementType,
@@ -20,16 +20,15 @@ const OfficialDetailsEditForm = ({employee}) => {
     setEditReportingOfficer,
     editRegion,
     setEditRegion,
-    editSkills,
+    // editSkills,
     setEditSkills,
   } = editEmployeeContext();
 
   const [skills, setSkills] = useState("")
-  const [message,setMessage] = useState("")
-
+  const [message, setMessage] = useState("")
 
   const handleEditSkills = () => {
-    if(!skills){
+    if (!skills) {
       setMessage("No skill added, kindly add a skill.")
       setTimeout(() => {
         setMessage("")
@@ -37,10 +36,9 @@ const OfficialDetailsEditForm = ({employee}) => {
       return;
     }
 
-     setEditSkills(prev => {
+    setEditSkills(prev => {
       const skillExists = prev.find(skill => skill.toLowerCase() === skills.trim().toLowerCase())
-      if(!!skillExists){
-
+      if (skillExists) {
         setMessage("skill already exist")
         setTimeout(() => {
           setMessage("")
@@ -52,46 +50,24 @@ const OfficialDetailsEditForm = ({employee}) => {
         setMessage("")
       }, 5000);
       return [...prev, skills]
-      
     });
 
     setSkills("")
   }
 
-
   return (
     <>
       <form
         onSubmit={(e) => e.preventDefault()}
-        className={
-          open
-            ? "w-full h-fit flex justify-between gap-[30px]"
-            : "w-full h-fit flex justify-between gap-[30px]"
-        }
+        className="w-full h-fit flex justify-between gap-[30px]"
       >
-        <div
-          className={
-            open
-              ? " w-[161.42px] h-[200.46px] flex flex-col  gap-[18.07px]"
-              : "w-[177.47px] h-[220.39px] flex flex-col  gap-[19.86px]"
-          }
-        >
+        <div className="w-[161.42px] h-[200.46px] flex flex-col gap-[18.07px]">
           <div className="w-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
               Employee ID
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               value={editEmployeeId}
               onChange={(e) => setEditEmployeeId(e.target.value)}
               type="text"
@@ -100,21 +76,11 @@ const OfficialDetailsEditForm = ({employee}) => {
           </div>
 
           <div className="w-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
               Employment Type
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               value={editEmployementType}
               onChange={(e) => setEditEmployementType(e.target.value)}
               type="text"
@@ -123,129 +89,67 @@ const OfficialDetailsEditForm = ({employee}) => {
           </div>
 
           <div className="w-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
-              Work Shedule
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
+              Work Schedule
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               value={editWorkSchedule}
               onChange={(e) => setEditWorkSchedule(e.target.value)}
               type="text"
-              placeholder="Work Shedule"
+              placeholder="Work Schedule"
             />
           </div>
         </div>
 
-        <div
-          className={
-            open
-              ? " w-[187.06px] h-[200.46px] flex flex-col  gap-[18.07px]"
-              : "w-[205.66px] h-[220.39px] flex flex-col  gap-[19.86px]"
-          }
-        >
+        <div className="w-[187.06px] h-[200.46px] flex flex-col gap-[18.07px]">
           <div className="w-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
               Job Title
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               value={editJobTitle}
               onChange={(e) => setEditJobTitle(e.target.value)}
               type="text"
-              placeholder="job title"
+              placeholder="Job Title"
             />
           </div>
 
           <div className="w-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
               Department
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               value={editDepartment}
               onChange={(e) => setEditDepartment(e.target.value)}
               type="text"
-              placeholder="department"
+              placeholder="Department"
             />
           </div>
 
           <div className="w-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
               Reporting Supervisor
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               value={editReportingOfficer}
               onChange={(e) => setEditReportingOfficer(e.target.value)}
               type="text"
-              placeholder="Reporting supervisor"
+              placeholder="Reporting Supervisor"
             />
           </div>
         </div>
 
-        <div
-          className={
-            open
-              ? " w-[267.26px] h-fit flex flex-col  gap-[18.07px]"
-              : "w-[294.01px] h-fit flex flex-col  gap-[19.86px]"
-          }
-        >
+        <div className="w-[267.26px] h-fit flex flex-col gap-[18.07px]">
           <div className="w-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
               Region
             </label>
             <input
-              className={
-                open
-                  ? "font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                  : "font-[500] text-[17.6px] leading-[26.4px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-              }
+              className="font-[500] text-[16px] leading-[24px] focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
               value={editRegion}
               onChange={(e) => setEditRegion(e.target.value)}
               type="text"
@@ -254,55 +158,33 @@ const OfficialDetailsEditForm = ({employee}) => {
           </div>
 
           <div className="w-full h-full flex flex-col gap-[5px]">
-            <label
-              className={
-                open
-                  ? "font-[400] text-[16px] leading-[24px] text-black opacity-60"
-                  : "font-[400] text-[17.6px] leading-[26.4px] text-black opacity-60"
-              }
-            >
+            <label className="font-[400] text-[16px] leading-[24px] text-black opacity-60">
               Skills
             </label>
-
-              <div>
-                <div className="font-[500] text-red-500">{message}</div>
-            <div className="flex gap-4 items-center">
-              <input
-               
-                className="focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
-                value={skills}
-                onChange={e => setSkills(e.target.value)}
-                
-                
-                type="text"
-                placeholder="skills"
-              />
-              <button 
-                onClick={handleEditSkills}
-                ><FaPlus/>
-              </button>
+            <div>
+              <div className="font-[500] text-red-500">{message}</div>
+              <div className="flex gap-4 items-center">
+                <input
+                  className="focus:outline-none border-[1px] border-[#a5b5bb] rounded-md"
+                  value={skills}
+                  onChange={e => setSkills(e.target.value)}
+                  type="text"
+                  placeholder="Skills"
+                />
+                <button onClick={handleEditSkills}><FaPlus /></button>
               </div>
-              <div className="w-full mt-2  border-2">
-                {
-                  employee.map((val,index)=>{
-                    return <div className="flex flex-wrap gap-2" key={index}>
-                      {
-                        val.officialDetails.skills.map((val,index)=>{
-                          return <div key={index}>{val},</div>
-                        })
-                      }
-                     
-                    
+              <div className="w-full mt-2 border-2">
+                {employee.map((val, index) => {
+                  return (
+                    <div className="flex flex-wrap gap-2" key={index}>
+                      {val.officialDetails.skills.map((val, index) => {
+                        return <div key={index}>{val},</div>
+                      })}
                     </div>
-                  })
-                  
-                 
-                }
+                  )
+                })}
               </div>
-                <div>
-                  
-                </div>
-              </div>
+            </div>
           </div>
         </div>
       </form>

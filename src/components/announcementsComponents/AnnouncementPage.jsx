@@ -56,7 +56,7 @@ const AnnouncementPage = () => {
         startPageIndex * endPageIndex + endPageIndex
       ),
 
-    [startPageIndex, data, endPageIndex, initialRowLength]
+    [startPageIndex, data, endPageIndex]
   );
 
   useEffect(() => {

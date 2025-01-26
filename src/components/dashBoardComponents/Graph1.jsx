@@ -12,7 +12,7 @@ const halfsales = salesData.slice(0, 6);
 const Graph1 = () => {
   return (
     <ResponsiveContainer width="100%" height="100%">
-      <BarChart barCategoryGap={25} data={halfsales}>
+      <BarChart  data={halfsales}>
         <XAxis
           dataKey="month"
           tickLine={false}

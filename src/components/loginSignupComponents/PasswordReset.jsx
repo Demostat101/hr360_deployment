@@ -30,7 +30,7 @@ const PasswordReset = () => {
         action=""
         onSubmit={(e) => e.preventDefault()}
       >
-        <div className="w-[80%] flex flex-col gap-[20px] bg-white p-[20px]">
+        <div className="max-w-[30rem] w-full max-h-fit flex flex-col gap-[20px] bg-white p-[20px]">
           <div className="text-center mb-[30px]">
             <div className="font-[600] text-[30px] leading-[30px] text-[#464646] mb-[10px]">Reset</div>
             <div className="font-[400] text-[20px] leading-[30px] text-[#464646]">Enter new password</div>

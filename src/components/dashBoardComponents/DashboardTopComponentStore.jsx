@@ -1,4 +1,4 @@
-import { IoIosPeople } from "react-icons/io";
+
 
 export const EmployeeStore = [
   {

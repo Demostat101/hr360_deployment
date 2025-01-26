@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import ReactDom from "react-dom";
 import { Context } from "../../contexts/DashBoardContext";
 

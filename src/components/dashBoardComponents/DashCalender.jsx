@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import { generateDate } from "./DashCalenderFunctions";
 import { useState } from "react";
-import { Context } from "../../contexts/DashBoardContext";
 
 function cn(...classes) {
   return classes.filter(Boolean).join();
@@ -10,7 +9,7 @@ function cn(...classes) {
 const DashCalender = () => {
   const currentDay = dayjs();
 
-  const { open } = Context();
+
 
   const days = ["S", "M", "T", "W", "T", "F", "S"];
 
@@ -36,11 +35,7 @@ const DashCalender = () => {
   return (
     <div className="w-full h-80%">
       <h1
-        className={
-          open
-            ? "h-[40px] grid justify-center place-items-center text-[16px] text-black font-[600]"
-            : "h-[43.62px] text-black font-[600] text-[17.62px] grid justify-center place-items-center"
-        }
+        className="h-[40px] grid justify-center place-items-center text-[16px] text-black font-[600]"
       >
         {months[today.month()]} {[today.year()]}
       </h1>
@@ -55,11 +50,7 @@ const DashCalender = () => {
         })}
       </div>
       <div
-        className={
-          open
-            ? "w-[100%] h-[166.82px] grid grid-cols-7 place-items-center justify-center"
-            : "w-[100%] place-items-center justify-center h-[183.68px] grid grid-cols-7"
-        }
+        className="w-[100%] h-[166.82px] grid grid-cols-7 place-items-center justify-center"
       >
         {generateDate().map(({ date, currentMonth, today }, index) => {
           return (
