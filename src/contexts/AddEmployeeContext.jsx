@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+
 import { toast } from "react-toastify";
 
 const employeeContext = createContext();
@@ -13,6 +14,7 @@ const AddEmployeeContext = ({ children }) => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [addNewEmployee, setAddNewEmployee] = useState(false);
+  
 
   // Personal Information State
   const [personalInfo, setPersonalInfo] = useState({
@@ -197,6 +199,8 @@ const AddEmployeeContext = ({ children }) => {
           setMessage(response.data.message);
           toast.dismiss();
           setAddNewEmployee((prev) => !prev);
+          window.location.replace("employee");
+          
 
           setOfficialDetails({
             employeeId: "",
